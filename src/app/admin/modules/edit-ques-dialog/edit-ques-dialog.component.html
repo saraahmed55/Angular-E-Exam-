@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Edit Question </h1>
+<mat-divider></mat-divider>
+
+<div mat-dialog-content>
+    
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label> Question</mat-label>
+          <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label> Type </mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label> Choices </mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Answer</mat-label>
+            <input matInput placeholder="Placeholder">
+        </mat-form-field>
+    </div>
+
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
+    <button mat-raised-button color="primary" >Edit</button>
+ </div>
+

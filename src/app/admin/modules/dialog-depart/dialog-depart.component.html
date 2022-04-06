@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add new Department</h1>
+<mat-divider></mat-divider>
+
+<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
+  <span>{{this.message}}</span>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.errorMsg != null && this.errorMsg != ''">
+  <span>{{this.errorMsg}}</span>
+</div>
+
+<div mat-dialog-content>
+  <form class="row g-3" [formGroup]="departmentForm"(ngSubmit)="AddNewdepartment()">
+    <div class="container">
+
+         <mat-form-field appearance="fill">
+         <mat-label>Departement Name</mat-label>
+        <input matInput placeholder="Placeholder" name="name" formControlName="name">
+        </mat-form-field>
+        <div mat-dialog-actions [align]="'end'">
+          <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
+          <button mat-raised-button color="primary" >Save</button>
+        </div>
+
+     </div>
+     </form>
+</div>
+
+

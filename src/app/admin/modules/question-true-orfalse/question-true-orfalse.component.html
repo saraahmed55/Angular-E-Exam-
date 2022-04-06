@@ -1,0 +1,62 @@
+<body>
+  <div class="background">
+      <div class="space"></div>
+       <div class="container">
+         
+          <mat-divider></mat-divider>
+
+          <mat-form-field appearance="standard">
+              <mat-label>Filter</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+
+          <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="trueOrFalse">
+                          <!-- id Column -->
+                  <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef> ID </th>
+                      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="chapters_id">
+                      <th mat-header-cell *matHeaderCellDef> Chapters ID </th>
+                      <td mat-cell *matCellDef="let element"> {{element.chapters_id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="difficulty">
+                      <th mat-header-cell *matHeaderCellDef> Difficulty </th>
+                      <td mat-cell *matCellDef="let element"> {{element.difficulty}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="question_text">
+                      <th mat-header-cell *matHeaderCellDef> Question Text </th>
+                      <td mat-cell *matCellDef="let element"> {{element.question_text}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="CorrectAnswer">
+                      <th mat-header-cell *matHeaderCellDef> Correct Answer </th>
+                      <td mat-cell *matCellDef="let element"> {{element.CorrectAnswer}} </td>
+                    </ng-container>
+
+                                     <!-- Actions -->
+                       <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Actions</th>
+                        <td mat-cell *matCellDef="let element" >
+                            <button mat-mini-fab color="light" class="icon"(click)="DeleteConfirm(element.id)">
+                                <mat-icon color="warn">delete</mat-icon>
+                             </button>
+
+                             <button mat-mini-fab color="light" class="icon"(click)="editDialog()" >
+                                <mat-icon color="primary">edit</mat-icon>
+                             </button>
+                        </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+               </table>
+
+               <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+          </div>
+       </div>
+  </div>
+</body>
+

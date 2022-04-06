@@ -1,0 +1,30 @@
+<body>
+    <div class="background">
+        <div class="space"></div>
+        <div class="container">
+          <div class="alert alert-danger fade show" role="alert" *ngIf="this.dangerMessage != null && this.dangerMessage != ''">
+            <span>{{this.dangerMessage}}</span>
+          </div>
+            <div class="row">
+            <div class="col col-4" >
+                <img  class="rotate" src="../../../assets/images/download.png">
+            </div>
+              <div class="col col-8" id="login">
+                  <h2>Student Login</h2>
+                  <form [formGroup]="loginForm"(ngSubmit)="login()" >
+                          <div class="mb-3">
+                              <label  class="form-label">University Email</label>
+                              <input name="email" formControlName="email" type="email" class="form-control"  placeholder="EX:ahmed.fci_12@fci.kfs.edu.eg" required>
+                          </div>
+
+                          <div class="mb-3">
+                              <label  class="form-label">Password</label>
+                              <input  name="password" formControlName="password" type="password" class="form-control" required>
+                          </div>
+                          <button type="submit" class="btn btn-primary" >Login</button>
+                    </form>
+              </div>
+          </div>
+      </div>
+    </div>
+</body>

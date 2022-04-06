@@ -1,0 +1,29 @@
+<body>
+    <div class="background">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <!-- we will add logo later-->
+              <a class="navbar-brand" href="#">E-Exam </a>
+              <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" (click)="toggleNav()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- will change from database-->
+                 <span> Sabreen  </span>
+                </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [class.show]="isOpen">
+                  <a class="dropdown-item" routerLink="/studentAccount">Account</a>
+                  <a class="dropdown-item" routerLink="/logout">Log Out</a>
+                </div>
+             </div>
+            </div>
+        </nav>
+        <div class="space"></div>
+            <div class="container" id="con2">
+                <div class="welcome">
+                    <p>
+                        <span><fa-icon [icon]="faSmile"></fa-icon></span> Hi dear, Sabreen Hassan! You are Welcome!
+                    </p>
+                </div>
+                <button class="btn btn-success "> <span><fa-icon [icon]="faBook"></fa-icon> </span>  Your Exams</button>
+            </div>
+    </div>
+</body>

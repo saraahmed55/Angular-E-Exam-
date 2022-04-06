@@ -1,0 +1,63 @@
+<body>
+    <div class="background">
+        
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <!-- we will add logo later-->
+              <a class="navbar-brand" href="#">E-Exam </a>
+              <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" (click)="toggleNav()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- will change from database-->
+                 <span> Sabreen  </span>
+                </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [class.show]="isOpen">
+                  <a class="dropdown-item" routerLink="/studentHome">Home</a>
+                  <a class="dropdown-item" routerLink="/logout">Log Out</a>
+                </div>
+             </div>
+            </div>
+        </nav>
+
+        <div class="space"></div>
+
+        <div class="container" id="con2">
+            <div class="row">
+                <div class="col col-4" id="subjects">
+                    <img  class="rotate" src="../../../assets/images/download.png" width="200px" height="110px">
+                    <h3> <span><fa-icon [icon]="faBookMedical"></fa-icon></span> YOUR SUBJECTS</h3>
+
+                     <div class="sidebar">
+                        <a > <span><fa-icon [icon]="faLocationArrow"></fa-icon></span> Modeling and Simulation</a>
+                        <a ><span><fa-icon [icon]="faLocationArrow"></fa-icon></span> Software Construction</a>
+                        <a ><span><fa-icon [icon]="faLocationArrow"></fa-icon></span> Computer Networks</a>
+                        <a ><span><fa-icon [icon]="faLocationArrow"></fa-icon></span> Opreating System</a>
+                        <a ><span><fa-icon [icon]="faLocationArrow"></fa-icon></span> Reuirements Analysis</a>
+                      </div>
+
+                </div>
+
+                <div class="col col-8" id="dash">
+                    <h2>Sabreen Hassan</h2>
+                    <h4><span><fa-icon [icon]="faGraduationCap"></fa-icon></span> Student</h4>
+
+                    <div class="information">
+                       <a routerLink="/info"> Information</a>
+                       <a  routerLink="/info">Exams Results</a>  
+                    </div>
+
+                    
+
+                   
+                   
+
+
+                </div>
+
+
+           </div>
+
+        </div>
+
+
+    </div>
+</body>

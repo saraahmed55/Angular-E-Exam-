@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Add New Professer</h1>
+<mat-divider></mat-divider>
+
+
+<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
+  <span>{{this.message}}</span>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.errorMsg != null && this.errorMsg != ''">
+  <span>{{this.errorMsg}}</span>
+</div>
+
+<div mat-dialog-content>
+  <form class="row g-3" [formGroup]="professorForm"(ngSubmit)="AddProfessor()">
+
+
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Placeholder"name="first_name" formControlName="first_name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Placeholder"name="last_name" formControlName="last_name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Code</mat-label>
+            <input matInput placeholder="Placeholder" name="prof_code"formControlName="prof_code">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Enter Professer email</mat-label>
+            <input matInput placeholder="pat@example.com" name="email" formControlName="email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Enter Professer password</mat-label>
+            <input matInput name="password" formControlName="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide"  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
+            <button mat-raised-button color="primary" >Save</button>
+          </div>
+      </div>
+    </form>
+  </div>
+
