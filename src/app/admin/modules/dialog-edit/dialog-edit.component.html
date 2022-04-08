@@ -4,7 +4,7 @@
 <div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
   <span>{{this.message}}</span>
 </div>
-<div class="alert alert-danger fade show" role="alert" *ngIf="this.errorMsg != null && this.errorMsg != ''">
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.message == null && this.errorMsg != null && this.errorMsg != ''">
   <span>{{this.errorMsg}}</span>
 </div>
 
@@ -52,18 +52,23 @@
     <div class="container">
 
       <mat-form-field appearance="fill">
-        <mat-label>Student Level</mat-label>
-          <input matInput placeholder="element.level" value="element.level"name="level" formControlName="level" >
-      </mat-form-field>
+        <mat-label>Select Student Level</mat-label>
+        <mat-select formControlName="level" name="level">
+          <mat-option value="1" >1</mat-option>
+          <mat-option value="2" >2</mat-option>
+          <mat-option value="3" >3</mat-option>
+          <mat-option value="4" >4</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-          <!-- <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Select Student Departement</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let department of departments" [value]="department.id" formControlName="department_id"name="department_id">{{department.name}}</mat-option>
+            <mat-select formControlName="department_id"name="department_id">
+              <mat-option *ngFor="let department of departments" [value]="department.id" >{{department.name}}</mat-option>
             </mat-select>
-          </mat-form-field> -->
+          </mat-form-field>
           <div mat-dialog-actions [align]="'end'">
-            <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
+            <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
             <button mat-raised-button color="primary" >Edit</button>
           </div>
     </div>

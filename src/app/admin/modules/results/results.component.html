@@ -2,53 +2,31 @@
     <div class="background">
         <div class="space"></div>
          <div class="container">
-            <div class="add ">
-                <button mat-raised-button color="primary" >Add New Result</button>
-            </div>
-            <mat-divider></mat-divider>
-             
             <mat-form-field appearance="standard">
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-              </mat-form-field>
-            
+            </mat-form-field>
+
             <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="dataSource">
-                            <!-- studentname Column -->
-                    <ng-container matColumnDef="studentname">
-                        <th mat-header-cell *matHeaderCellDef>  studentname </th>
-                        <td mat-cell *matCellDef="let element"> {{element.studentname}} </td>
-                      </ng-container>
-
-                       <!-- Actions -->
-                       <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef> Actions</th>
-                        <td mat-cell *matCellDef="let element" > 
-                            <button mat-mini-fab color="light" class="icon" >
-                                <mat-icon color="warn">delete</mat-icon>
-                             </button>
-
-                             <button mat-mini-fab color="light" class="icon"  >
-                                <mat-icon color="primary">edit</mat-icon>
-                             </button>
-                            
-                        </td>
+                <table mat-table [dataSource]="results">
+                    <ng-container matColumnDef="subject">
+                        <th mat-header-cell *matHeaderCellDef>  Subject </th>
+                        <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
                     </ng-container>
-
+                    <ng-container matColumnDef="exams_id">
+                      <th mat-header-cell *matHeaderCellDef>  Exam Id </th>
+                      <td mat-cell *matCellDef="let element"> {{element.exams_id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="average_result">
+                      <th mat-header-cell *matHeaderCellDef>  Average Result </th>
+                      <td mat-cell *matCellDef="let element"> {{element.average_result}} </td>
+                    </ng-container>
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
                 </table>
 
                 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
-
-
-          </div>
-                                 
-
-                   
-            
+            </div>
          </div>
     </div>
 </body>

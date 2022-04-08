@@ -11,6 +11,8 @@ import { TrueOrFalse } from '../Models/TrueOrFalse';
 import { Roles } from '../Models/Roles';
 import { professors } from '../Models/professors';
 import { Exams } from '../Models/Exams';
+import { AdminResults } from '../Models/AdminResults';
+import { AdminExams } from '../Models/AdminExams';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +68,7 @@ export class AdminService {
   GetAllDepartments(): Observable<Departments[]> {
     return this.httpClient.get<Departments[]>(this.baseUrl+'departments').pipe();
   }
+
   AddNewdepartment(model:Departments):Observable<Departments[]>{
     return this.httpClient.post<Departments[]>(this.baseUrl+'adddepartment/',model).pipe();
   }
@@ -108,8 +111,12 @@ export class AdminService {
   GetRolesProfessors(role_id:any): Observable<professors[]> {
     return this.httpClient.get<professors[]>(this.baseUrl+'user_roles/'+role_id+'/professors').pipe();
   }
-  GetExams(): Observable<Exams[]> {
-    return this.httpClient.get<Exams[]>(this.baseUrl+'exams').pipe();
+  GetExams(): Observable<AdminExams[]> {
+    return this.httpClient.get<AdminExams[]>(this.baseUrl+'exams').pipe();
+  }
+
+  GetAvgResults(): Observable<AdminResults[]>{
+    return this.httpClient.get<AdminResults[]>(this.baseUrl+'results').pipe();
   }
 
 }

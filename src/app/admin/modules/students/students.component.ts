@@ -30,7 +30,8 @@ export interface PeriodicElement {
 })
 export class StudentsComponent implements OnInit {
 
-  students:Students[]=[];
+  // students:Students[]=[];
+  students:any=[];
 
 
 

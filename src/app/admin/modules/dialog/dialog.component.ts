@@ -24,7 +24,7 @@ export class DialogComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   students:StudentsModel;
   message:string;
-  errorMsg:string;
+  errorMsg:any;
   departments:Departments[];
 
   constructor(
@@ -38,6 +38,7 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
 
     this.departments=[];
+    this.GetDepartments();
     this.students = {
       student_code:'',
       first_name: '',
@@ -58,7 +59,7 @@ export class DialogComponent implements OnInit {
       department_id:[0,Validators.required],
 
     })
-    this.GetDepartments();
+
   }
 
   displayedColumns: string[]=['id', 'student_code'  , 'first_name' , 'last_name' , 'level' , 'email' ,'department_id' ,'password' , "action"]
@@ -77,7 +78,7 @@ export class DialogComponent implements OnInit {
   GetDepartments(){
     this.service.GetDepartments().subscribe(subs=>{
       this.departments=subs;
-    },ex=>console.log(ex));
+    },ex=>console.log('No departments Found'));
   }
 
   validateRegisterModel() {
@@ -95,13 +96,14 @@ export class DialogComponent implements OnInit {
 
   AddStudent(){
     this.validateRegisterModel();
-    console.log(this.students);
-
     this.service.AddNewStudent(this.students).subscribe(list=>{
       this.ngOnInit();
       this.message="Added Student Sucessfully";
       this.route.navigate(['students']).then(x=>{window.location.reload();});
-    },ex=>this.errorMsg=ex);
+    },ex=>{
+      this.errorMsg="please fill all fields correctly"
+
+    });
 
    };
 

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
 import { Exams } from 'src/app/Models/Exams';
 import { Subjects } from 'src/app/Models/Subjects';
+import { AdminExams } from 'src/app/Models/AdminExams';
 
 @Component({
   selector: 'app-exams-list',
@@ -16,11 +17,11 @@ import { Subjects } from 'src/app/Models/Subjects';
 })
 export class ExamsListComponent implements OnInit {
 
-  exams:Exams[]=[];
+  exams:AdminExams[]=[];
   id:any;
 
-  displayedColumns: string[]=['exam_id', 'subject_name' ,'start_time' , 'end_time'  , 'duration_minutes'  , "action"]
-  dataSource = new MatTableDataSource<Exams>(this.exams);
+  displayedColumns: string[]=['exam_id', 'subject_name' ,'start_time' , 'end_time'  , 'duration_minutes' ]
+  dataSource = new MatTableDataSource<AdminExams>(this.exams);
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -61,9 +62,7 @@ export class ExamsListComponent implements OnInit {
 
   getExams() {
     this.service.GetExams().subscribe(list=>{
-      console.log(this.exams);
       this.exams=list;
-      console.log(this.exams);
    });
   }
 

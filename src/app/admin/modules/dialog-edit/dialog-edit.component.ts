@@ -72,7 +72,7 @@ export class DialogEditComponent implements OnInit {
   GetDepartments(){
     this.service.GetDepartments().subscribe(subs=>{
       this.departments=subs;
-    },ex=>console.log(ex));
+    },ex=>console.log('No Departments Found'));
   }
 
   GetStudent(){
@@ -85,9 +85,10 @@ export class DialogEditComponent implements OnInit {
 
   EditStudent(){
     this.service.EditStudent(this.students,this.id).subscribe(success=>{
-    this.message="Updated StudentSucessfully";
+    this.message="Updated Student Sucessfully";
   },ex=>{
-    console.log(ex);
+    // this.errorMsg="please fill all fields correctly";
+    this.errorMsg=JSON.stringify(ex.errors);
   })
   }
 

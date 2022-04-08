@@ -3,9 +3,8 @@ body{
     padding: 0;
 }
 .background{
-    
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrgZ-mmHrl2IL8s4RMHpWv3jBig8jW8nJMBQ&usqp=CAU');
-    background-size: cover;
+    background-image: url(../../../assets/images/board.jpg);
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100vh;
 }
@@ -13,7 +12,6 @@ body{
 .title{
     text-align: center;
     padding-top: 250px;
-   
     color: rgb(245, 245, 245);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

@@ -82,7 +82,7 @@ export class NewProfDialogComponent implements OnInit {
       this.ngOnInit();
       this.message="Added Professor Sucessfully";
       this.route.navigate(['profs']).then(x=>{window.location.reload();});
-    },ex=>this.errorMsg=ex);
+    },ex=>this.errorMsg='please, fill all fields correctly');
 
    };
 
