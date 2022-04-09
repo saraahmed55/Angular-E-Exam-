@@ -13,6 +13,7 @@ import { professors } from '../Models/professors';
 import { Exams } from '../Models/Exams';
 import { AdminResults } from '../Models/AdminResults';
 import { AdminExams } from '../Models/AdminExams';
+import { SimpleProfessor } from '../Models/SimpleProfessor';
 
 @Injectable({
   providedIn: 'root'
@@ -117,6 +118,22 @@ export class AdminService {
 
   GetAvgResults(): Observable<AdminResults[]>{
     return this.httpClient.get<AdminResults[]>(this.baseUrl+'results').pipe();
+  }
+
+  GetAdminProfessors(): Observable<SimpleProfessor[]>{
+    return this.httpClient.get<SimpleProfessor[]>(this.baseUrl+'user_roles/admins').pipe();
+  }
+
+  GetProfessorProfessors(): Observable<SimpleProfessor[]>{
+    return this.httpClient.get<SimpleProfessor[]>(this.baseUrl+'user_roles/professors').pipe();
+  }
+
+  ChangeToAdmin(id: any){
+    return this.httpClient.get(this.baseUrl+'user_roles/toadmin/' + id).pipe();
+  }
+
+  ChangeToProfessor(id:any){
+    return this.httpClient.get(this.baseUrl+'user_roles/toprofessor/' + id).pipe();
   }
 
 }

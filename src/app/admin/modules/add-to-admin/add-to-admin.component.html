@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Add To Admins</h1>
+<mat-divider></mat-divider>
+
+
+<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
+  <span>{{this.message}}</span>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.errorMsg != null && this.errorMsg != ''">
+  <span>{{this.errorMsg}}</span>
+</div>
+
+<div mat-dialog-content>
+  <form class="row g-3" [formGroup]="professorForm">
+
+
+    <div class="container">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Professor</mat-label>
+        <mat-select formControlName="prof" name="prof">
+          <mat-option *ngFor="let professor of professors" [value]="professor.id" >{{professor.first_name}} {{professor.last_name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+          <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" (click)="AddtoAdmins()">Save</button>
+          </div>
+      </div>
+    </form>
+  </div>

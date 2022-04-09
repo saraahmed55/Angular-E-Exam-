@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
 import { professors } from 'src/app/Models/professors';
 import { Router } from '@angular/router';
+import { AddToAdminComponent } from '../add-to-admin/add-to-admin.component';
 
 @Component({
   selector: 'app-admin-list',
@@ -46,7 +47,7 @@ export class AdminListComponent implements OnInit {
 
 
   openDialog() {
-    const dialogRef = this.dialog.open(NewProfDialogComponent, { width:'30%'});
+    const dialogRef = this.dialog.open(AddToAdminComponent, { width:'30%'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

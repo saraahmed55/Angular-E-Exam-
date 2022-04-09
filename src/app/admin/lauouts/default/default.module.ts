@@ -43,6 +43,8 @@ import { RolesListComponent } from '../../modules/roles-list/roles-list.componen
 import { AdminListComponent } from '../../modules/admin-list/admin-list.component';
 import { ProfessorListComponent } from '../../modules/professor-list/professor-list.component';
 import { ExamsListComponent } from '../../modules/exams-list/exams-list.component';
+import { AddToAdminComponent } from '../../modules/add-to-admin/add-to-admin.component';
+import { AddToProfessorRoleComponent } from '../../modules/add-to-professor-role/add-to-professor-role.component';
 
 
 
@@ -72,6 +74,8 @@ import { ExamsListComponent } from '../../modules/exams-list/exams-list.componen
     AdminListComponent,
     ProfessorListComponent,
     ExamsListComponent,
+    AddToAdminComponent,
+    AddToProfessorRoleComponent,
 
   ],
   imports: [

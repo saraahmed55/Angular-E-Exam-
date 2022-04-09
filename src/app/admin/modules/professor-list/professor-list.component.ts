@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
 import { professors } from 'src/app/Models/professors';
 import { Router } from '@angular/router';
+import { AddToProfessorRoleComponent } from '../add-to-professor-role/add-to-professor-role.component';
 
 
 @Component({
@@ -47,7 +48,7 @@ export class ProfessorListComponent implements OnInit {
 
 
   openDialog() {
-    const dialogRef = this.dialog.open(NewProfDialogComponent, { width:'30%'});
+    const dialogRef = this.dialog.open(AddToProfessorRoleComponent, { width:'30%',});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
