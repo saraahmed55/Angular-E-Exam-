@@ -11,33 +11,17 @@ body{
 }
 
 .space{
-  height: 20px;
+  height: 40px;
 }
+
 .container{
-
-  height: 600px;
-  width:900px;
-  padding-top: 10px;
-  background-color: white;
-  box-shadow: 0px 8px 60px -10px rgba(241, 244, 247, 0.6);
-  border-radius: 10px;
-  position: relative;
+margin-left:350px;
 }
 
-.add{
-  padding-bottom: 20px;
-}
-
-
-table {
-  width: 100%;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-.icon{
-   margin: 2px;
+button{
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 300px;
+  height: 100px;
+  font-size: 20px;
 }

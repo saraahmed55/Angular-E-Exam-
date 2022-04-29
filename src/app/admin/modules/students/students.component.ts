@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
 
 
+
 export interface PeriodicElement {
   id:number;
   student_code?:string;
@@ -77,10 +78,12 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  editDialog(id:any) {
-    console.log(id);
+  editDialog(student_code:any,id:any) {
+    console.log(student_code,id);
     const dialogRef = this.dialog.open(DialogEditComponent , { width:'50%',
-    data: { StudentId: id},});
+    data: { StudentCode: student_code,
+            Id:id,
+    },});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

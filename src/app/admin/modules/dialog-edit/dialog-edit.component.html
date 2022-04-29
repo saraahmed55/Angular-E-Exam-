@@ -9,7 +9,7 @@
 </div>
 
 <div mat-dialog-content >
-  <form class="row g-3" [formGroup]="studentForm"(ngSubmit)="EditStudent()">
+  <form class="row g-3" [formGroup]="studentForm"(ngSubmit)="AddUser()">
     <div class="container">
         <mat-form-field  appearance="fill">
           <mat-label >First Name</mat-label>
@@ -39,14 +39,6 @@
           <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'"name="password" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-
     </div>
 
     <div class="container">
@@ -63,7 +55,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Select Student Departement</mat-label>
-            <mat-select formControlName="department_id"name="department_id">
+            <mat-select formControlName="department_id" name="department_id">
               <mat-option *ngFor="let department of departments" [value]="department.id" >{{department.name}}</mat-option>
             </mat-select>
           </mat-form-field>

@@ -40,7 +40,8 @@ export class ProfLoginComponent implements OnInit {
       this.validateLoginModel();
       this.auth.ProfessorLogin(this.logmodel).subscribe(success => {
         const email = this.loginForm.value.email;
-        this.route.navigate(['']).then(x=>{window.location.reload();});
+        this.auth.installStorage(email);
+        this.route.navigate(['/professor_defalt']).then(x=>{window.location.reload();});
       }, err => {
         console.log(err);
         this.dangerMessage = 'Cannot login. Please, try again';

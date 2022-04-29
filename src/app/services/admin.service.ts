@@ -14,6 +14,7 @@ import { Exams } from '../Models/Exams';
 import { AdminResults } from '../Models/AdminResults';
 import { AdminExams } from '../Models/AdminExams';
 import { SimpleProfessor } from '../Models/SimpleProfessor';
+import { EditStudentModel } from '../Models/EditStudentModel';
 
 @Injectable({
   providedIn: 'root'
@@ -42,16 +43,16 @@ export class AdminService {
     return this.httpClient.get<Departments[]>(this.baseUrl + 'departments').pipe();
   }
 
-  GetStudent(id:any){
-    return this.httpClient.get(this.baseUrl+'students/'+id).pipe();
+  GetStudent(code:any){
+    return this.httpClient.get(this.baseUrl+'students/'+code).pipe();
   }
 
   DeleteStudent(id:any){
     return this.httpClient.delete(this.baseUrl+'deletestudent/'+id);
   }
 
-  EditStudent(model:StudentsModel,id:any): Observable<StudentsModel> {
-    return this.httpClient.put<StudentsModel>(this.baseUrl + 'editstudent/'+id,model).pipe();
+  EditStudent(model:EditStudentModel,id:any): Observable<Students> {
+    return this.httpClient.put<Students>(this.baseUrl + 'editstudent/'+id,model).pipe();
   }
 
   GetAllSubjects(): Observable<Subjects[]> {

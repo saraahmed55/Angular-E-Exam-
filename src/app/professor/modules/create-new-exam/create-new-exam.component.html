@@ -1,0 +1,84 @@
+<body>
+    <div class="background">
+        <div class="space"></div>
+        <div class="container" id="con">
+            <h1>Create New Exam </h1>
+            <mat-divider></mat-divider>
+
+            <div class="container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Exam Name</mat-label>
+                  <input matInput placeholder="Ex:MidTerm ">
+                </mat-form-field>
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Subject Name</mat-label>
+                    <input matInput placeholder="Placeholder">
+                  </mat-form-field>
+             </div>
+
+             <div class="container" >
+                <mat-form-field appearance="fill" class="Qtype">
+                  <mat-label>Easy Question Count </mat-label>
+                  <input matInput placeholder="Ex:MidTerm ">
+                </mat-form-field>
+        
+                <mat-form-field appearance="fill" class="Qtype">
+                    <mat-label>Medium Question Count</mat-label>
+                    <input matInput placeholder="Placeholder">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="Qtype">
+                    <mat-label>Hard Question Count</mat-label>
+                    <input matInput placeholder="Placeholder">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" class="Qtype">
+                    <mat-label>All</mat-label>
+                    <input matInput placeholder="Placeholder">
+                  </mat-form-field>
+             </div>
+
+             <div class="container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Exam  Duration </mat-label>
+                  <input matInput placeholder="Ex:MidTerm ">
+                </mat-form-field>
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Exam type</mat-label>
+                    <mat-select>
+                    <mat-option value="option"> MCQ</mat-option>
+                    <mat-option value="option"> Written </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+             </div>
+
+             <div class="container">
+                <mat-form-field color="accent" appearance="fill">
+                    <mat-label>Opening Date</mat-label>
+                    <input matInput [matDatepicker]="picker1">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field color="accent" appearance="fill">
+                    <mat-label>Closing date</mat-label>
+                    <input matInput [matDatepicker]="picker2">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                  </mat-form-field>
+
+             </div>
+
+             <div mat-dialog-actions [align]="'end'">
+              <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
+              <button mat-raised-button color="primary" >Save</button>
+           
+            </div>
+
+        </div>
+    </div>
+</body>

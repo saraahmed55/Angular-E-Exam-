@@ -8,6 +8,7 @@ import { StudentsModel } from 'src/app/Models/StudentsModel';
 import { AdminService } from 'src/app/services/admin.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { EditStudentModel } from 'src/app/Models/EditStudentModel';
 
 export interface PeriodicElement {
   id:number;
@@ -29,12 +30,24 @@ export interface PeriodicElement {
 export class DialogEditComponent implements OnInit {
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
-  students=new StudentsModel();
+  userData:Students;
   message:string;
   errorMsg:string;
+  isEditMode:boolean;
   departments:Departments[];
   info:any;
+  code:any;
   id:any;
+  student_code:string;
+  password:string;
+  first_name:string;
+  last_name:string;
+  level:string;
+  department_id:string;
+
+  student:Students;
+  editUserData:EditStudentModel;
+
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -47,7 +60,7 @@ export class DialogEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.id=this.data.StudentId;
+    this.id=this.data.Id;
     console.log(this.id+' of the student');
     this.departments=[];
     this.studentForm=this.fb.group({
@@ -59,16 +72,85 @@ export class DialogEditComponent implements OnInit {
       password:[''],
       department_id:[0],
 
-    })
+    });
+    this.editUserData={
+      id:'',
+      first_name: '',
+      last_name: '',
+      email: '',
+      level: '',
+      department_id: '',
+      student_code: '',
+      password: '',
+    }
     this.GetDepartments();
     this.GetStudent();
 
+    this.service.GetStudent(this.id).subscribe(x=>{
+      this.userData=x;
+      this.isEditMode=true;
+      this.AddUserData();
+      },ex=>console.log(ex));
 
+
+    // this.service.GetStudent(this.id).subscribe(student=>{
+    //   console.log("sssss");
+    //   console.log(student);
+    //   this.AddUserData();
+    // })
   }
 
- // dataSource = new MatTableDataSource<PeriodicElement>(this.students);
+
+
+
   displayedColumns: string[]=['id', 'student_code'  , 'first_name' , 'last_name' , 'level' , 'email' ,'password' , "action"]
 
+  AddUserData() {
+    if(this.userData!==null){
+    this.studentForm.patchValue({
+      student_code:this.userData.student_code,
+      password:this.userData.password,
+      first_name:this.userData.first_name,
+      last_name:this.userData.last_name,
+      email:this.userData.email,
+      level:this.userData.level,
+      department_id:this.userData.department_id,
+    })
+   }
+  }
+
+
+  AddUser(){
+    if(this.studentForm.valid){
+      this.editUserData.id=this.id;
+      this.editUserData.first_name=this.studentForm.value.first_name;
+      this.editUserData.last_name=this.studentForm.value.last_name;
+      this.editUserData.email=this.studentForm.value.email;
+      this.editUserData.level=this.studentForm.value.level;
+      this.editUserData.department_id=this.studentForm.value.departmet_id;
+      this.editUserData.student_code=this.studentForm.value.student_code;
+      this.editUserData.password=this.studentForm.value.password;
+
+
+      this.service.EditStudent(this.editUserData,this.id).subscribe(x=>{
+        this.message="Information is Updated Succesfully";
+      },ex=>console.log(ex));
+    }
+  }
+
+
+  validateRegisterModel() {
+    this.student.first_name=this.studentForm.value.first_name;
+    this.student.last_name=this.studentForm.value.last_name;
+    this.student.email=this.studentForm.value.email;
+    this.student.level=this.studentForm.value.level;
+    this.student.department_id=this.studentForm.value.departmet_id;
+    this.student.student_code=this.studentForm.value.student_code;
+    this.student.password=this.studentForm.value.password;
+
+
+
+}
   GetDepartments(){
     this.service.GetDepartments().subscribe(subs=>{
       this.departments=subs;
@@ -78,19 +160,19 @@ export class DialogEditComponent implements OnInit {
   GetStudent(){
     this.service.GetStudent(this.data.id).subscribe(res=>{
       this.info=res;
-      this.students=this.info;
+      console.log("getstudent"+this.info);
+      // this.students=this.info;
     })
 
   }
 
-  EditStudent(){
-    this.service.EditStudent(this.students,this.id).subscribe(success=>{
-    this.message="Updated Student Sucessfully";
-  },ex=>{
-    // this.errorMsg="please fill all fields correctly";
-    this.errorMsg=JSON.stringify(ex.errors);
-  })
-  }
+  // EditStudent(){
+  //   this.service.EditStudent(this.students,this.code).subscribe(success=>{
+  //   this.message="Updated Student Sucessfully";
+  // },ex=>{
+  //   this.errorMsg=JSON.stringify(ex.errors);
+  // })
+  // }
 
   getErrorMessage() {
     if (this.email.hasError('required')) {

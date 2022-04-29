@@ -21,6 +21,11 @@ import { SubjectsComponent } from './admin/modules/subjects/subjects.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentAccountComponent } from './student-component/student-account/student-account.component';
 import { StudentHomeComponent } from './student-component/student-home/student-home.component';
+import { DefaultProfComponent } from './professor/layouts/default-prof/default-prof.component';
+import { ExamsComponent } from './professor/modules/exams/exams.component';
+import { SubjectComponent } from './professor/modules/subject/subject.component';
+import { SubjectListComponent } from './professor/modules/subject-list/subject-list.component';
+
 
 const routes: Routes = [
   {path:'first' , component: FirstComponent},
@@ -99,7 +104,18 @@ const routes: Routes = [
     component:ExamsListComponent
   },
 
-
+  {
+    path:'professor_defalt',
+    component:DefaultProfComponent
+  },
+  {
+    path:'professorExams',
+    component:ExamsComponent
+  },
+  {
+    path:'professorSujects',
+    component:SubjectListComponent
+  },
 
 
 ]

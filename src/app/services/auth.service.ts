@@ -4,6 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginModel } from '../Models/LoginModel';
+import { ProfessorCode } from '../Models/ProfessorCode';
+import { professors } from '../Models/professors';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,22 @@ export class AuthService {
 
   ProfessorLogin(logmodel: LoginModel): Observable<LoginModel> {
     return this.httpClient.post<LoginModel>(this.baseUrl + 'login/professor', logmodel).pipe();
+  }
+
+  GetprofessorCode(email:any):Observable<professors>{
+    return this.httpClient.get<professors>(this.baseUrl + 'professors/'+email).pipe();
+  }
+
+  prof_code:any="";
+  emaill:any;
+  public installStorage(email:string){
+
+    localStorage.setItem('email',email);
+    this.GetprofessorCode(email).subscribe(success => {
+      console.log("sdhsuj");
+      localStorage.setItem('prof_code',success.toString());
+      // this.prof_code=localStorage.getItem('prof_code');
+  }, err => console.log(err));
   }
 
   Logout(){

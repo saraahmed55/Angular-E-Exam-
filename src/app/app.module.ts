@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ReactiveFormsModule } from '@angular/forms';
+import { DefaultProfModule } from './professor/layouts/default-prof/default-prof.module';
+
 
 const appRoutes:Routes = [
   {path:'',component:StudentsComponent}
@@ -39,6 +41,8 @@ const appRoutes:Routes = [
 
 
 
+
+
   ],
   imports: [
     MatInputModule,
@@ -53,6 +57,7 @@ const appRoutes:Routes = [
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     ReactiveFormsModule,
+    DefaultProfModule,
 
 
 
