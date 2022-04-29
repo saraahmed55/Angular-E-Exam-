@@ -30,7 +30,7 @@ export interface PeriodicElement {
 export class DialogEditComponent implements OnInit {
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
-  userData:Students;
+  userData:any; //Students Was Error
   message:string;
   errorMsg:string;
   isEditMode:boolean;

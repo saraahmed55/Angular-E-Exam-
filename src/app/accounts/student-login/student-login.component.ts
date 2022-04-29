@@ -40,6 +40,7 @@ export class StudentLoginComponent implements OnInit {
       this.validateLoginModel();
       this.auth.StudentLogin(this.logmodel).subscribe(success => {
         const email = this.loginForm.value.email;
+        this.auth.installStudentStorage(email, success.student_code);
         this.route.navigate(['']).then(x=>{window.location.reload();});
       }, err => {
         console.log(err);

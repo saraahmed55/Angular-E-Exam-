@@ -6,7 +6,7 @@
             <mat-icon>menu</mat-icon>
         </button>
 
-     
+
 
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
@@ -15,21 +15,22 @@
                         <mat-icon>settings</mat-icon>
                     </button>
                 </li>
-               
+
                 <li>
                     <button mat-button [matMenuTriggerFor]="menu">
                         <mat-icon aria-hidden="false">person_outline</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item  routerLink="/logout">
+                      <!-- routerLink="/logout" -->
+                        <button mat-menu-item  (click)="logout()">
                             <mat-icon  >exit_to_app</mat-icon>
                             Log Out
                          </button>
                     </mat-menu>
 
                 </li>
-                
-            
+
+
             </ul>
         </div>
     </mat-toolbar-row>
