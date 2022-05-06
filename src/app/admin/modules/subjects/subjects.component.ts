@@ -7,6 +7,7 @@ import { Subjects } from 'src/app/Models/Subjects';
 import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
 import { Router } from '@angular/router';
+import { EditSubjectDialogComponent } from '../edit-subject-dialog/edit-subject-dialog.component';
 
 export interface PeriodicElement {
   id:string;
@@ -74,6 +75,12 @@ export class SubjectsComponent implements OnInit {
     },ex=>console.log(ex));
   }
 
-
+  editDialog(id:any) {
+    const dialogRef = this.dialog.open(EditSubjectDialogComponent , { width:'50%',
+    data: { Id:id,},});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }

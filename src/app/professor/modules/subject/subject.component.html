@@ -1,55 +1,41 @@
 <body>
-    <div class="background">
-        <div class="space"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col col-4" >
-                    <img  class="rotate" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQZ2Y-Z-ZWFOdBNhG1aQEeONu0vGQ3fcBbKg&usqp=CAU">
-                   
-                </div>
-                <div class="col col-8" id="info">
-                    
+  <div class="background">
+      <div class="space"></div>
+      <div class="container">
+          <div class="row">
+              <div class="col col-4" >
+                  <img  class="rotate" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQZ2Y-Z-ZWFOdBNhG1aQEeONu0vGQ3fcBbKg&usqp=CAU">
 
-                    <div class="mb-3">
-                        <button mat-raised-button (click)=" openDialog1()" >
-                       
-                         <mat-icon>check</mat-icon>
-                            Subject info</button>
-
-                    </div>
-                    <div class="mb-3">
-                        <button mat-raised-button routerLink="">
-                            <mat-icon>check</mat-icon>
-                           Exams         </button>
-
-                    </div>
-                    <div class="mb-3">
-                        <button mat-raised-button  (click)=" openDialog2()">
-                            <mat-icon>check</mat-icon>
-                           Create New Exam</button>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <button mat-raised-button routerLink="" >
-                            <mat-icon>check</mat-icon>
-                           students Results</button>
-
-                    </div>
-                    <div class="mb-3">
-                        <button mat-raised-button  routerLink="">
-                            <mat-icon>check</mat-icon>
-                          Questions Bank</button>
-
-                    </div>
+              </div>
+              <div class="col col-8" id="info">
 
 
+                  <div class="mb-3">
+                      <button mat-raised-button (click)=" opensSubjectInfoDialog()" >
+                       <mat-icon>check</mat-icon>
+                          Subject info</button>
 
+                  </div>
+                  <div class="mb-3">
+                      <button mat-raised-button  (click)=" openDialog2()">
+                          <mat-icon>check</mat-icon>
+                         Create New Exam</button>
+                  </div>
 
-                </div>
+                  <div class="mb-3">
+                      <button mat-raised-button routerLink="" >
+                          <mat-icon>check</mat-icon>
+                         students Results</button>
+
+                  </div>
+                  <div class="mb-3">
+                      <button mat-raised-button  routerLink="">
+                          <mat-icon>check</mat-icon>
+                        Questions Bank</button>
+                  </div>
+
             </div>
-        </div>
-
-
-    </div>
+          </div>
+      </div>
+  </div>
 </body>

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
 import { Departments } from 'src/app/Models/Departments';
 import { Router } from '@angular/router';
-
+import { EditDepartmentDialogComponent } from '../edit-department-dialog/edit-department-dialog.component';
 
 
 export interface PeriodicElement {
@@ -15,9 +15,6 @@ export interface PeriodicElement {
   name?:string;
 
 }
-
-
-
 
 @Component({
   selector: 'app-depatement',
@@ -75,4 +72,11 @@ export class DepatementComponent implements OnInit {
     },ex=>console.log(ex));
   }
 
+  editDialog(id:any) {
+    const dialogRef = this.dialog.open(EditDepartmentDialogComponent , { width:'50%',
+    data: { Id:id,},});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

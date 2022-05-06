@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Add new Chapter</h1>
+<mat-divider></mat-divider>
+
+<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
+  <span>{{this.message}}</span>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.message == null && this.errorMsg != null && this.errorMsg != ''">
+  <span>{{this.errorMsg}}</span>
+</div>
+
+<div mat-dialog-content>
+  <form class="row g-3" [formGroup]="chapterForm"(ngSubmit)="AddChapter()">
+
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label>Chapter Number</mat-label>
+          <input matInput placeholder="Chapter Number"name="chapter_number" formControlName="chapter_number">
+        </mat-form-field>
+    </div>
+    <div class="container">
+        <mat-form-field appearance="fill">
+            <mat-label>Chapter Name</mat-label>
+            <input matInput placeholder="Chapter Name"name="chapter_name" formControlName="chapter_name">
+          </mat-form-field>
+    </div>
+
+
+    <div class="container">
+          <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" >Save</button>
+          </div>
+    </div>
+  </form>
+</div>
+
+

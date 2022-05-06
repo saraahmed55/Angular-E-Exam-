@@ -62,16 +62,15 @@ export class ProfsComponent implements OnInit {
     });
   }
 
- editDialog() {
-    const dialogRef = this.dialog.open(EditProfDialogComponent, { width:'30%'});
-
+ editDialog(prof_code:any,id:any) {
+    const dialogRef = this.dialog.open(EditProfDialogComponent, { width:'30%',
+    data: { ProfessorCode: prof_code,
+      Id:id,
+    },});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-
-
-
 
   getProfessors() {
     this.service.GetAllprofessors().subscribe(list=>{

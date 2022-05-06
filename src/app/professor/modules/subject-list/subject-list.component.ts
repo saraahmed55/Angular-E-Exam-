@@ -6,21 +6,12 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { Subjects } from 'src/app/Models/Subjects';
-import { professors } from 'src/app/Models/professors';
 import { AuthService } from 'src/app/services/auth.service';
 
 export interface PeriodicElement {
   id:string;
   name?:string;
-
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id:'1' , name:'Mid'},
-  {id:'2' , name:'Final' },
-
-
-];
 
 
 @Component({
@@ -31,7 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class SubjectListComponent implements OnInit {
 
   subjects:Subjects[]=[];
-
+  prof_code:any;
 
   displayedColumns: string[]=['id', 'name' , "action" ]
   dataSource = new MatTableDataSource<PeriodicElement>(this.subjects);
@@ -54,12 +45,18 @@ export class SubjectListComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
-    this.getProfessorSubjects(this.auth.prof_code);
+    this.prof_code=localStorage.getItem("prof_code")
+    console.log(this.prof_code)
+    this.getProfessorSubjects(this.prof_code);
   }
 
+  ShowIdSubject(id:any){
+    this.service.installsubjectStorage(id);
+  }
 
   getProfessorSubjects(profcode:any) {
     this.service.getProfessorSubjects(profcode).subscribe(list=>{
+      console.log("in function")
       this.subjects=list;
       console.log(this.subjects);
 

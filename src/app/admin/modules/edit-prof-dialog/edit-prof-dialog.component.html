@@ -1,39 +1,63 @@
-<h1 mat-dialog-title>Edit Professer Information</h1>
+<h1 mat-dialog-title>Edit Professor Information</h1>
 <mat-divider></mat-divider>
 
-<div mat-dialog-content>
-    
+<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
+  <span>{{this.message}}</span>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.message == null && this.errorMsg != null && this.errorMsg != ''">
+  <span>{{this.errorMsg}}</span>
+</div>
+
+<div mat-dialog-content >
+
+  <form class="row g-3"[formGroup]="professorForm"(ngSubmit)="AddUser()" >
     <div class="container">
-        <mat-form-field appearance="fill">
-          <mat-label> Name</mat-label>
-          <input matInput placeholder="Placeholder">
+
+        <mat-form-field  appearance="fill">
+          <mat-label >First Name</mat-label>
+          <input matInput placeholder="Placeholder" name="first_name"formControlName="first_name">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Code</mat-label>
-            <input matInput placeholder="Placeholder">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Placeholder" name="last_name" formControlName="last_name">
           </mat-form-field>
+    </div>
+
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label> Academic Id</mat-label>
+          <input matInput placeholder="#####"  name="prof_code"formControlName="prof_code">
+        </mat-form-field>
+    </div>
+
+    <div class="container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" name="email" formControlName="email"  >
+        </mat-form-field>
+    </div>
+
+    <div class="container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your Password</mat-label>
+        <input matInput placeholder="********"  name="password" formControlName="password"  >
+      </mat-form-field>
+  </div>
+
+    <div class="container">
 
           <mat-form-field appearance="fill">
-            <mat-label>Enter Professer email</mat-label>
-            <input matInput placeholder="pat@example.com" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-label>Select Professor Role</mat-label>
+            <mat-select formControlName="roles_id" name="roles_id">
+              <mat-option *ngFor="let role of roles" [value]="role.id" >{{role.name}}</mat-option>
+            </mat-select>
           </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Enter Professer password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-     </div>
-
-       
-     </div>
-
-     <div mat-dialog-actions [align]="'end'">
-      <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
-      <button mat-raised-button color="primary" >Edit</button>
+          <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" >Edit</button>
+          </div>
       </div>
+  </form>
+</div>
 

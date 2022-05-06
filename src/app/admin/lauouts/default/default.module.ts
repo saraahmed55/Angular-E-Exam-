@@ -45,6 +45,8 @@ import { ProfessorListComponent } from '../../modules/professor-list/professor-l
 import { ExamsListComponent } from '../../modules/exams-list/exams-list.component';
 import { AddToAdminComponent } from '../../modules/add-to-admin/add-to-admin.component';
 import { AddToProfessorRoleComponent } from '../../modules/add-to-professor-role/add-to-professor-role.component';
+import { EditSubjectDialogComponent} from '../../modules/edit-subject-dialog/edit-subject-dialog.component';
+import { EditDepartmentDialogComponent } from '../../modules/edit-department-dialog/edit-department-dialog.component';
 
 
 
@@ -76,6 +78,8 @@ import { AddToProfessorRoleComponent } from '../../modules/add-to-professor-role
     ExamsListComponent,
     AddToAdminComponent,
     AddToProfessorRoleComponent,
+    EditSubjectDialogComponent,
+    EditDepartmentDialogComponent,
 
   ],
   imports: [

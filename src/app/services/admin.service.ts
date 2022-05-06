@@ -15,6 +15,11 @@ import { AdminResults } from '../Models/AdminResults';
 import { AdminExams } from '../Models/AdminExams';
 import { SimpleProfessor } from '../Models/SimpleProfessor';
 import { EditStudentModel } from '../Models/EditStudentModel';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EditProfessorModel } from '../Models/EditProfessorModel';
+import { RolesModel } from '../Models/RolesModel';
+import { EditSubjectModel } from '../Models/EditSubjectModel';
+import { EditDepartmentModel } from '../Models/EditDepartmentModel';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +27,16 @@ import { EditStudentModel } from '../Models/EditStudentModel';
 export class AdminService {
 
   constructor(private httpClient: HttpClient) { }
+
+  form:FormGroup=new FormGroup({
+    $key:new FormControl(null),
+    student_code:new FormControl('',Validators.required),
+    first_name:new FormControl(''),
+    last_name:new FormControl(''),
+    level:new FormControl(''),
+    email:new FormControl('',Validators.required),
+
+  })
 
   baseUrl= 'http://127.0.0.1:8000/api/admin/';
   headers = {
@@ -41,6 +56,10 @@ export class AdminService {
 
   GetDepartments(): Observable<Departments[]> {
     return this.httpClient.get<Departments[]>(this.baseUrl + 'departments').pipe();
+  }
+
+  GetRoles(): Observable<RolesModel[]> {
+    return this.httpClient.get<RolesModel[]>(this.baseUrl + 'roles').pipe();
   }
 
   GetStudent(code:any){
@@ -81,6 +100,26 @@ export class AdminService {
 
   GetAllprofessors(): Observable<ProfessorsModel[]> {
     return this.httpClient.get<ProfessorsModel[]>(this.baseUrl+'professors').pipe();
+  }
+
+  GetProfessor(code:any){
+    return this.httpClient.get(this.baseUrl+'professors/'+code).pipe();
+  }
+  GetSubject(code:any){
+    return this.httpClient.get(this.baseUrl+'subjects/'+code).pipe();
+  }
+  GetDepartment(code:any){
+    return this.httpClient.get(this.baseUrl+'departments/'+code).pipe();
+  }
+
+  EditProfessor(model:EditProfessorModel,id:any): Observable<professors> {
+    return this.httpClient.put<professors>(this.baseUrl + 'editprofessor/'+id,model).pipe();
+  }
+  EditSubject(model:EditSubjectModel,id:any): Observable<Subjects> {
+    return this.httpClient.put<Subjects>(this.baseUrl + 'editsubject/'+id,model).pipe();
+  }
+  EditDepartment(model:EditDepartmentModel,id:any): Observable<Departments> {
+    return this.httpClient.put<Departments>(this.baseUrl + 'editdepartment/'+id,model).pipe();
   }
 
   AddNewProfessor(model:ProfessorsModel):Observable<ProfessorsModel[]>{
@@ -137,4 +176,8 @@ export class AdminService {
     return this.httpClient.get(this.baseUrl+'user_roles/toprofessor/' + id).pipe();
   }
 
+
+  populateForm(student:any){
+    this.form.setValue(student);
+  }
 }

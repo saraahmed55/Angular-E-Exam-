@@ -25,6 +25,13 @@ import { DefaultProfComponent } from './professor/layouts/default-prof/default-p
 import { ExamsComponent } from './professor/modules/exams/exams.component';
 import { SubjectComponent } from './professor/modules/subject/subject.component';
 import { SubjectListComponent } from './professor/modules/subject-list/subject-list.component';
+import { SubjectExamsListComponent } from './professor/modules/subject-exams-list/subject-exams-list.component';
+import { SubjectStudentsListComponent } from './professor/modules/subject-students-list/subject-students-list.component';
+import { SubjectChaptersListComponent } from './professor/modules/subject-chapters-list/subject-chapters-list.component';
+import { ChaptersQuestionsComponent } from './professor/modules/chapters-questions/chapters-questions.component';
+import { QbankComponent } from './professor/modules/qbank/qbank.component';
+import { ChaptersQuestionsMcqComponent } from './professor/modules/chapters-questions-mcq/chapters-questions-mcq.component';
+import { ChaptersQuestionsTorFComponent } from './professor/modules/chapters-questions-tor-f/chapters-questions-tor-f.component';
 
 
 const routes: Routes = [
@@ -115,6 +122,34 @@ const routes: Routes = [
   {
     path:'professorSujects',
     component:SubjectListComponent
+  },
+  {
+    path:'professorSubjectsExams',
+    component:SubjectExamsListComponent
+  },
+  {
+    path:'professorSubjectsStudnets',
+    component:SubjectStudentsListComponent
+  },
+  {
+    path:'professorSubjectsChapters',
+    component:SubjectChaptersListComponent
+  },
+  {
+    path:'subjectsDashProfessor',
+    component:SubjectComponent
+  },
+  {
+    path:'chaptersQuestionslist',
+    component:ChaptersQuestionsComponent
+  },
+  {
+    path:'chaptersQuestionslistMCQ',
+    component:ChaptersQuestionsMcqComponent
+  },
+  {
+    path:'chaptersQuestionslistTorF',
+    component:ChaptersQuestionsTorFComponent
   },
 
 

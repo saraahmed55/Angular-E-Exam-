@@ -84,13 +84,10 @@ export class StudentsComponent implements OnInit {
     data: { StudentCode: student_code,
             Id:id,
     },});
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-
-
 
   DeleteConfirm(id:any){
     console.log(id);

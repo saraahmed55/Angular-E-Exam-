@@ -31,6 +31,15 @@ import { AddQComponent } from '../../modules/add-q/add-q.component';
 import { EditQComponent } from '../../modules/edit-q/edit-q.component';
 import { StudentsResultsComponent } from '../../modules/students-results/students-results.component';
 import { SubjectListComponent } from '../../modules/subject-list/subject-list.component';
+import { SubjectExamsListComponent } from '../../modules/subject-exams-list/subject-exams-list.component';
+import { SubjectStudentsListComponent } from '../../modules/subject-students-list/subject-students-list.component';
+import { SubjectChaptersListComponent } from '../../modules/subject-chapters-list/subject-chapters-list.component';
+import { SubjectAddChaptersDialogComponent } from '../../modules/subject-add-chapters-dialog/subject-add-chapters-dialog.component';
+import { ChaptersQuestionsComponent } from '../../modules/chapters-questions/chapters-questions.component';
+import { ChaptersQuestionsMcqComponent } from '../../modules/chapters-questions-mcq/chapters-questions-mcq.component';
+import { ChaptersQuestionsTorFComponent } from '../../modules/chapters-questions-tor-f/chapters-questions-tor-f.component';
+import { ChaptersAddMcqQuestionsDialogComponent } from '../../modules/chapters-add-mcq-questions-dialog/chapters-add-mcq-questions-dialog.component';
+import { ChaptersAddTorFQuestionsDialogComponent } from '../../modules/chapters-add-tor-f-questions-dialog/chapters-add-tor-f-questions-dialog.component';
 
 
 
@@ -47,6 +56,18 @@ import { SubjectListComponent } from '../../modules/subject-list/subject-list.co
     EditQComponent,
     StudentsResultsComponent,
     SubjectListComponent,
+    SubjectExamsListComponent,
+    SubjectStudentsListComponent,
+    SubjectChaptersListComponent,
+    SubjectAddChaptersDialogComponent,
+    ChaptersQuestionsComponent,
+    ChaptersQuestionsMcqComponent,
+    ChaptersQuestionsTorFComponent,
+    ChaptersAddMcqQuestionsDialogComponent,
+    ChaptersAddTorFQuestionsDialogComponent,
+
+
+
 
   ],
   imports: [

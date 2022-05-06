@@ -38,13 +38,14 @@ export class AuthService {
     return this.httpClient.get<professors>(this.baseUrl + 'professors/'+email).pipe();
   }
 
-prof_code: any = '';
+  public prof_code: any = '';
   public installProfessorStorage(email:string, prof_code:string, role_name:string){
     localStorage.setItem('email',email);
     localStorage.setItem('prof_code',prof_code);
     localStorage.setItem('role_name',role_name);
     this.prof_code = localStorage.getItem('prof_code');
   }
+
 
   student_code: any = '';
   public installStudentStorage(email:string, student_code:string){

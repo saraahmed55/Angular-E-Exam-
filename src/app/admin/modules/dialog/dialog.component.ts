@@ -90,9 +90,7 @@ export class DialogComponent implements OnInit {
     this.students.password=this.studentForm.value.password;
     this.students.department_id=this.studentForm.value.department_id;
 
-}
-
-
+  }
 
   AddStudent(){
     this.validateRegisterModel();
@@ -105,6 +103,6 @@ export class DialogComponent implements OnInit {
 
     });
 
-   }
+  }
 
 }
