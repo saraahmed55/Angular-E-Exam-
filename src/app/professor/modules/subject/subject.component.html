@@ -17,19 +17,20 @@
 
                   </div>
                   <div class="mb-3">
-                      <button mat-raised-button  (click)=" openDialog2()">
+                      <button mat-raised-button  routerLink="/CreateNewExam"(click)="ShowIdSubject(subject_id)">
                           <mat-icon>check</mat-icon>
                          Create New Exam</button>
                   </div>
 
                   <div class="mb-3">
-                      <button mat-raised-button routerLink="" >
+                      <button mat-raised-button routerLink="/StudentsResult" (click)="ShowIdSubject(subject_id)">
                           <mat-icon>check</mat-icon>
                          students Results</button>
 
                   </div>
+
                   <div class="mb-3">
-                      <button mat-raised-button  routerLink="">
+                      <button mat-raised-button  routerLink="/professorSubjectsChapters" (click)="ShowIdSubject(subject_id)">
                           <mat-icon>check</mat-icon>
                         Questions Bank</button>
                   </div>

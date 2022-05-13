@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { Chapters } from 'src/app/Models/Chapters';
 import { SubjectAddChaptersDialogComponent } from '../subject-add-chapters-dialog/subject-add-chapters-dialog.component';
+import { EditChaptersDialogComponent } from '../edit-chapters-dialog/edit-chapters-dialog.component';
 
 
 export interface PeriodicElement {
@@ -66,23 +67,19 @@ export class SubjectChaptersListComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(SubjectAddChaptersDialogComponent , { width:'50%'});
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
 
-  editDialog(student_code:any,id:any) {
-    console.log(student_code,id);
-    // const dialogRef = this.dialog.open(DialogEditComponent , { width:'50%',
-    // data: { StudentCode: student_code,
-    //         Id:id,
-    // },});
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+  editDialog(id:any) {
+    console.log(id);
+    const dialogRef = this.dialog.open(EditChaptersDialogComponent , { width:'50%',
+    data: {  Id:id,},});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   DeleteConfirm(id:any){

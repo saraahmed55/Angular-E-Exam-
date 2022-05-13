@@ -39,6 +39,9 @@ import { StudentGuard } from './guards/Student.guard';
 import { SubjectDetailsComponent } from './student-component/subject-details/subject-details.component';
 import { ExamComponent } from './student-component/exam/exam.component';
 import { SubmitComponent } from './student-component/submit/submit.component';
+import { CreateNewExamComponent } from './professor/modules/create-new-exam/create-new-exam.component';
+import { StudentsResultsComponent } from './professor/modules/students-results/students-results.component';
+import { ExamsResultComponent } from './professor/modules/exams-result/exams-result.component';
 
 
 const routes: Routes = [
@@ -59,16 +62,9 @@ const routes: Routes = [
   {
     path:'admin',
     component:DefaultComponent,
-    canActivate:[AdminGuard],
     children:[{
       path:'dashboard' ,
-      component:DashboardComponent
-    },
-
-  {
-    path:'students',
-    component:StudentsComponent
-  },
+      component:DashboardComponent},
 
   {
     path:'departments',
@@ -165,7 +161,18 @@ const routes: Routes = [
     path:'chaptersQuestionslistTorF',
     component:ChaptersQuestionsTorFComponent
   },
-
+  {
+    path:'CreateNewExam',
+    component:CreateNewExamComponent
+  },
+  {
+    path:'StudentsResult',
+    component:StudentsResultsComponent
+  },
+  {
+    path:'ExamsResult',
+    component:ExamsResultComponent
+  },
 
 ]
   },

@@ -9,6 +9,7 @@ import { DeficultyEnum } from 'src/app/Models/DeficultyEnum';
 import { CorrectTorFEnum } from 'src/app/Models/CorrectTorFEnum';
 import { TrueOrFalse } from 'src/app/Models/TrueOrFalse';
 import { ChaptersAddTorFQuestionsDialogComponent } from '../chapters-add-tor-f-questions-dialog/chapters-add-tor-f-questions-dialog.component';
+import { EditQuestionTorFComponent } from '../edit-question-tor-f/edit-question-tor-f.component';
 
 export interface PeriodicElement {
   id:any;
@@ -68,16 +69,14 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
     });
   }
 
-  editDialog(student_code:any,id:any) {
-    console.log(student_code,id);
-    // const dialogRef = this.dialog.open(DialogEditComponent , { width:'50%',
-    // data: { StudentCode: student_code,
-    //         Id:id,
-    // },});
+  editDialog(id:any) {
+    console.log(id);
+    const dialogRef = this.dialog.open(EditQuestionTorFComponent , { width:'50%',
+    data: {  Id:id,},});
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   DeleteConfirm(id:any){

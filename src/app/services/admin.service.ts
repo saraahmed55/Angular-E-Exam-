@@ -115,9 +115,11 @@ export class AdminService {
   EditProfessor(model:EditProfessorModel,id:any): Observable<professors> {
     return this.httpClient.put<professors>(this.baseUrl + 'editprofessor/'+id,model, {headers: this.headers}).pipe();
   }
+
   EditSubject(model:EditSubjectModel,id:any): Observable<Subjects> {
     return this.httpClient.put<Subjects>(this.baseUrl + 'editsubject/'+id,model, {headers: this.headers}).pipe();
   }
+  
   EditDepartment(model:EditDepartmentModel,id:any): Observable<Departments> {
     return this.httpClient.put<Departments>(this.baseUrl + 'editdepartment/'+id,model, {headers: this.headers}).pipe();
   }

@@ -39,11 +39,7 @@
                               <mat-icon color="warn">school</mat-icon>
                             </button>
 
-                            <button mat-mini-fab color="light" title="Chapters" class="icon"routerLink="/professorSubjectsChapters"(click)="ShowIdSubject(element.id)">
-                              <mat-icon color="secondary">list</mat-icon>
-                            </button>
-
-                            <button mat-raised-button color="primary"  routerLink="/subjectsDashProfessor">
+                            <button mat-raised-button color="primary"  routerLink="/subjectsDashProfessor"(click)="ShowIdSubject(element.id)">
                               <mat-icon >check</mat-icon>
                               Details
                             </button>

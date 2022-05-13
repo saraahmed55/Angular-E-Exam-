@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Edit Chapter Information</h1>
+<mat-divider></mat-divider>
+
+<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
+  <span>{{this.message}}</span>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.message == null && this.errorMsg != null && this.errorMsg != ''">
+  <span>{{this.errorMsg}}</span>
+</div>
+
+<div mat-dialog-content >
+
+  <form class="row g-3"[formGroup]="TorFForm"(ngSubmit)="AddChapter()" >
+
+
+
+    <div class="container">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Difficulty</mat-label>
+        <mat-select  formControlName="difficulty">
+          <mat-option name="difficulty" *ngFor="let element of this.Deficultykeys" [value]="element">
+            {{element}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+
+  <div class="container">
+      <mat-form-field appearance="fill">
+          <mat-label>Question Text</mat-label>
+          <input matInput placeholder="Question Text"name="question_text" formControlName="question_text">
+        </mat-form-field>
+  </div>
+
+  <div class="container">
+    <mat-form-field appearance="fill">
+        <mat-label>Correct Answer</mat-label>
+        <mat-select formControlName="CorrectAnswer">
+          <mat-option name="CorrectAnswer"  *ngFor="let element of this.CorrectTorFkeys" [value]="element">
+            {{element}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+
+    <div class="container">
+          <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" >Edit</button>
+          </div>
+      </div>
+  </form>
+</div>
+
+
+

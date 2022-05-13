@@ -47,6 +47,11 @@ export class AuthService {
     this.prof_code = localStorage.getItem('prof_code');
   }
 
+  public installProfessorName(FirstName:string,LastName:string){
+    localStorage.setItem('FirstName',FirstName);
+    localStorage.setItem('LastName',LastName);
+    this.prof_code = localStorage.getItem('prof_code');
+  }
 
   student_code: any = '';
   public installStudentStorage(email:string, student_code:string, token:string){

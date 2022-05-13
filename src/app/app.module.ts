@@ -35,6 +35,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
+import { DatePipe } from '@angular/common';
 
 
 const appRoutes:Routes = [
@@ -93,8 +94,9 @@ const appRoutes:Routes = [
 
 
 
+
   ],
-  providers: [],
+  providers: [DatePipe,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
