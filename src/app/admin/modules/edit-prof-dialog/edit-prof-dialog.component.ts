@@ -104,7 +104,7 @@ export class EditProfDialogComponent implements OnInit {
 
       this.service.EditProfessor(this.editUserData,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";
-        this.route.navigate(['profs']).then(x=>{window.location.reload();});
+        this.route.navigate(['professors']).then(x=>{window.location.reload();});
       },ex=>console.log(ex));
     }
   }

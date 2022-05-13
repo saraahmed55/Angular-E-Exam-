@@ -46,7 +46,7 @@ export class AddToAdminComponent implements OnInit {
       this.service.ChangeToAdmin(this.professorForm.value.prof).subscribe(success=>{
         this.ngOnInit();
         this.message="Professor was Added Sucessfully";
-        this.route.navigate(['Admin_list']).then(x=>{window.location.reload();});
+        this.route.navigate(['AdminsList']).then(x=>{window.location.reload();});
       },ex=>this.errorMsg='Can Not Change the Role');
     }
     else{

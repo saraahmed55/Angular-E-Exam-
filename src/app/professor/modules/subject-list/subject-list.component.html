@@ -31,15 +31,15 @@
                         <th mat-header-cell *matHeaderCellDef> Actions</th>
                         <td mat-cell *matCellDef="let element" >
 
-                            <button mat-mini-fab color="light"title="Exams" class="icon"routerLink="/professorSubjectsExams"(click)="ShowIdSubject(element.id)">
+                            <button mat-mini-fab color="light"title="Exams" class="icon"routerLink="/SubjectsExams"(click)="ShowIdSubject(element.id)">
                               <mat-icon color="primary">event</mat-icon>
                             </button>
 
-                            <button mat-mini-fab color="light"title="Students" class="icon"routerLink="/professorSubjectsStudnets"(click)="ShowIdSubject(element.id)">
+                            <button mat-mini-fab color="light"title="Students" class="icon"routerLink="/SubjectsStudnets"(click)="ShowIdSubject(element.id)">
                               <mat-icon color="warn">school</mat-icon>
                             </button>
 
-                            <button mat-raised-button color="primary"  routerLink="/subjectsDashProfessor"(click)="ShowIdSubject(element.id)">
+                            <button mat-raised-button color="primary"  routerLink="/SubjectsDashBoard"(click)="ShowIdSubject(element.id)">
                               <mat-icon >check</mat-icon>
                               Details
                             </button>

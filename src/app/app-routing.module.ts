@@ -62,9 +62,11 @@ const routes: Routes = [
   {
     path:'admin',
     component:DefaultComponent,
-    children:[{
-      path:'dashboard' ,
-      component:DashboardComponent},
+    children:[
+  {
+    path:'dashboard' ,
+    component:DashboardComponent
+  },
 
   {
     path:'departments',
@@ -79,6 +81,11 @@ const routes: Routes = [
   {
     path:'subjects',
     component:SubjectsComponent
+  },
+
+  {
+    path:'students',
+    component:StudentsComponent
   },
 
   {
@@ -105,48 +112,52 @@ const routes: Routes = [
     component:QuestionTrueOrfalseComponent
   },
   {
-    path:'professor_roles',
+    path:'ProfessorsRoles',
     component:RolesListComponent
   },
   {
-    path:'admins_list',
+    path:'AdminsList',
     component:AdminListComponent
   },
   {
-    path:'professors_list',
+    path:'ProfessorsList',
     component:ProfessorListComponent
   },
   {
-    path:'exams_list',
+    path:'ExamsList',
     component:ExamsListComponent
   },
 
-  {
-    path:'professor_defalt',
-    component:DefaultProfComponent
+]
   },
+
   {
-    path:'professorExams',
+    path:'professor',
+    component:DefaultProfComponent,
+    canActivate:[ProfessorGuard],
+    children:[
+  {
+    path:'exams',
     component:ExamsComponent
   },
   {
-    path:'professorSujects',
+    path:'subjects',
     component:SubjectListComponent
   },
   {
-    path:'professorSubjectsExams',
+    path:'SubjectsExams',
     component:SubjectExamsListComponent
   },
   {
-    path:'professorSubjectsStudnets',
+    path:'SubjectsStudnets',
     component:SubjectStudentsListComponent
   },
   {
-    path:'professorSubjectsChapters',
+    path:'SubjectsChapters',
     component:SubjectChaptersListComponent
   },
   {
-    path:'subjectsDashProfessor',
+    path:'SubjectsDashBoard',
     component:SubjectComponent
   },
   {
@@ -173,53 +184,6 @@ const routes: Routes = [
     path:'ExamsResult',
     component:ExamsResultComponent
   },
-
-]
-  },
-
-  {
-    path:'professor',
-    component:DefaultProfComponent,
-    canActivate:[ProfessorGuard],
-    children:[
-  {
-    path:'professorExams',
-    component:ExamsComponent
-  },
-  {
-    path:'professorSujects',
-    component:SubjectListComponent
-  },
-  {
-    path:'professorSubjectsExams',
-    component:SubjectExamsListComponent
-  },
-  {
-    path:'professorSubjectsStudnets',
-    component:SubjectStudentsListComponent
-  },
-  {
-    path:'professorSubjectsChapters',
-    component:SubjectChaptersListComponent
-  },
-  {
-    path:'subjectsDashProfessor',
-    component:SubjectComponent
-  },
-  {
-    path:'chaptersQuestionslist',
-    component:ChaptersQuestionsComponent
-  },
-  {
-    path:'chaptersQuestionslistMCQ',
-    component:ChaptersQuestionsMcqComponent
-  },
-  {
-    path:'chaptersQuestionslistTorF',
-    component:ChaptersQuestionsTorFComponent
-  },
-
-
 ]
   }
 ];

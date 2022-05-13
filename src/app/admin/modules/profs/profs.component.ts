@@ -84,7 +84,7 @@ export class ProfsComponent implements OnInit {
     this.service.DeleteProfessor(id).subscribe(s=>{
      console.log('success');
      this.getProfessors();
-     this.route.navigate(['profs']).then(x=>{window.location.reload();});
+     this.route.navigate(['professors']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 

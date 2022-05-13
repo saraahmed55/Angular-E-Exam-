@@ -84,7 +84,7 @@ export class SubjectChaptersListComponent implements OnInit {
 
   DeleteConfirm(id:any){
     this.service.DeleteChapter(id,this.prof_code,this.subject_id).subscribe(s=>{
-      this.route.navigate(['professorSubjectsChapters']).then(x=>{window.location.reload();});
+      this.route.navigate(['SubjectsChapters']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 

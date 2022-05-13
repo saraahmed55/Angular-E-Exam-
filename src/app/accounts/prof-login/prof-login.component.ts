@@ -45,7 +45,7 @@ export class ProfLoginComponent implements OnInit {
 
         this.auth.installProfessorStorage(email, success.prof_code, success.role_name, success.token);
         this.auth.installProfessorName(success.first_name,success.last_name)
-        this.route.navigate(['/admin/professor_defalt']).then(x=>{window.location.reload();});
+        this.route.navigate(['/professor']).then(x=>{window.location.reload();});
       }, err => {
         console.log(err);
         this.dangerMessage = 'Cannot login. Please, try again';

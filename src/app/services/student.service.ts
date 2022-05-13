@@ -57,5 +57,3 @@ export class StudentService {
   }
 
 }
-// Route::get('/students/{studentcode}/getexam/{examid}', [StudentController::class,'getExamQuestions']);
-// Route::post('/students/{studentcode}/saveresult', [StudentController::class,'PostExam']);

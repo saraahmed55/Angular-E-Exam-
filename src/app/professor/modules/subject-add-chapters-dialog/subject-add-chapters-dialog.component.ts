@@ -57,7 +57,7 @@ export class SubjectAddChaptersDialogComponent implements OnInit {
     this.service.AddNewChapter(this.chapters,this.prof_code,this.id).subscribe(list=>{
       this.ngOnInit();
       this.message="Added chapter Sucessfully";
-      this.route.navigate(['professorSubjectsChapters']).then(x=>{window.location.reload();});
+      this.route.navigate(['SubjectsChapters']).then(x=>{window.location.reload();});
     },ex=>{
       this.errorMsg="please fill all fields correctly"
 

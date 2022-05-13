@@ -54,7 +54,7 @@ export class DialogDepartComponent implements OnInit {
     this.service.AddNewdepartment(this.departments).subscribe(list=>{
       this.ngOnInit();
       this.message="Added Departents Sucessfully";
-      this.route.navigate(['departs']).then(x=>{window.location.reload();});
+      this.route.navigate(['departments']).then(x=>{window.location.reload();});
     },ex=>this.errorMsg=ex);
 
    }

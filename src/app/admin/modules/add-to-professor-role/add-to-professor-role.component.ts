@@ -47,7 +47,7 @@ export class AddToProfessorRoleComponent implements OnInit {
       this.service.ChangeToProfessor(this.professorForm.value.prof).subscribe(success=>{
         this.ngOnInit();
         this.message="Professor was Added Sucessfully";
-        this.route.navigate(['professor_list']).then(x=>{window.location.reload();});
+        this.route.navigate(['ProfessorsList']).then(x=>{window.location.reload();});
       },ex=>this.errorMsg='Can Not Change the Role');
     }
     else{

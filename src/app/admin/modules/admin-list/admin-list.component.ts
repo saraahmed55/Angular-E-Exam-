@@ -73,7 +73,7 @@ export class AdminListComponent implements OnInit {
     console.log(id);
     this.service.DeleteProfessor(id).subscribe(s=>{
      console.log('success');
-     this.route.navigate(['Admin_list']).then(x=>{window.location.reload();});
+     this.route.navigate(['AdminsList']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 
