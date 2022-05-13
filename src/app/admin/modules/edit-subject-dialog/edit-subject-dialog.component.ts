@@ -68,7 +68,7 @@ export class EditSubjectDialogComponent implements OnInit {
 
       this.service.EditSubject(this.editData,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";
-        this.route.navigate(['subjects']).then(x=>{window.location.reload();});
+        this.route.navigate(['/admin/subjects']).then(x=>{window.location.reload();});
       },ex=>console.log(ex));
     }
   }

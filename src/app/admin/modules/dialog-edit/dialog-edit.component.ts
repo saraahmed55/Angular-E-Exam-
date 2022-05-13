@@ -118,7 +118,7 @@ export class DialogEditComponent implements OnInit {
 
       this.service.EditStudent(this.editUserData,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";
-        this.route.navigate(['students']).then(x=>{window.location.reload();});
+        this.route.navigate(['/admin/students']).then(x=>{window.location.reload();});
       },ex=>console.log(ex));
     }
   }

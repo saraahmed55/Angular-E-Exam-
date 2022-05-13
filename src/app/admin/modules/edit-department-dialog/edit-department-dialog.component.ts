@@ -71,7 +71,7 @@ export class EditDepartmentDialogComponent implements OnInit {
 
       this.service.EditDepartment(this.editData,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";
-        this.route.navigate(['departments']).then(x=>{window.location.reload();});
+        this.route.navigate(['/admin/departments']).then(x=>{window.location.reload();});
       },ex=>console.log(ex));
     }
   }

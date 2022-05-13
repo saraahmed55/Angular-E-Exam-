@@ -95,7 +95,7 @@ export class DialogComponent implements OnInit {
     this.service.AddNewStudent(this.students).subscribe(list=>{
       this.ngOnInit();
       this.message="Added Student Sucessfully";
-      this.route.navigate(['students']).then(x=>{window.location.reload();});
+      this.route.navigate(['/admin/students']).then(x=>{window.location.reload();});
     },ex=>{
       this.errorMsg="please fill all fields correctly"
 

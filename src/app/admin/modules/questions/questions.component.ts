@@ -66,7 +66,7 @@ export class QuestionsComponent implements OnInit {
       this.getQuestions();
      console.log('success');
      this.getQuestions();
-     this.route.navigate(['question-mcq']).then(x=>{window.location.reload();});
+     this.route.navigate(['/admin/question-mcq']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 

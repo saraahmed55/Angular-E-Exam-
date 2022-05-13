@@ -71,7 +71,7 @@ export class SubjectsComponent implements OnInit {
     this.service.DeleteSubject(id).subscribe(s=>{
      console.log('success');
      this.getsubjects();
-     this.route.navigate(['subjects']).then(x=>{window.location.reload();});
+     this.route.navigate(['/admin/subjects']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 

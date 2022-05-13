@@ -81,7 +81,7 @@ export class NewProfDialogComponent implements OnInit {
     this.service.AddNewProfessor(this.professor).subscribe(list=>{
       this.ngOnInit();
       this.message="Added Professor Sucessfully";
-      this.route.navigate(['professors']).then(x=>{window.location.reload();});
+      this.route.navigate(['/admin/professors']).then(x=>{window.location.reload();});
     },ex=>this.errorMsg='please, fill all fields correctly');
 
    };

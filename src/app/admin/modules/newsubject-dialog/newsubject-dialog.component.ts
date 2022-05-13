@@ -50,7 +50,7 @@ export class NewsubjectDialogComponent implements OnInit {
     this.service.AddNewSubject(this.subjects).subscribe(list=>{
       this.ngOnInit();
       this.message="Added Subject Sucessfully";
-      this.route.navigate(['subjects']).then(x=>{window.location.reload();});
+      this.route.navigate(['/admin/subjects']).then(x=>{window.location.reload();});
     },ex=>this.errorMsg=ex);
 
   }

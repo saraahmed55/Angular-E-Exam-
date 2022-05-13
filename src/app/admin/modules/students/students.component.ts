@@ -94,7 +94,7 @@ export class StudentsComponent implements OnInit {
     this.service.DeleteStudent(id).subscribe(s=>{
      console.log('success');
      this.getStudents();
-     this.route.navigate(['students']).then(x=>{window.location.reload();});
+     this.route.navigate(['/admin/students']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 

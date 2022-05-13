@@ -68,7 +68,7 @@ export class DepatementComponent implements OnInit {
     this.service.DeleteDepartment(id).subscribe(s=>{
      console.log('success');
      this.getDepartments();
-     this.route.navigate(['departments']).then(x=>{window.location.reload();});
+     this.route.navigate(['/admin/departments']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 

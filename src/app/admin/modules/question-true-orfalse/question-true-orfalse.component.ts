@@ -64,7 +64,7 @@ export class QuestionTrueOrfalseComponent implements OnInit {
     this.service.DeleteTorFQuestion(id).subscribe(s=>{
      console.log('success');
      this.getQuestions();
-     this.route.navigate(['question-TorF']).then(x=>{window.location.reload();});
+     this.route.navigate(['/admin/question-TorF']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 
