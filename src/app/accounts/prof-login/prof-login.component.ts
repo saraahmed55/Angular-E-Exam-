@@ -41,6 +41,7 @@ export class ProfLoginComponent implements OnInit {
       this.auth.ProfessorLogin(this.logmodel).subscribe(success => {
         const email = this.loginForm.value.email;
         this.auth.installProfessorStorage(email, success.prof_code, success.role_name);
+        this.auth.installProfessorName(success.first_name,success.last_name)
         this.route.navigate(['/professor_defalt']).then(x=>{window.location.reload();});
       }, err => {
         console.log(err);

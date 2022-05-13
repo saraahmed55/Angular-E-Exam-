@@ -23,6 +23,7 @@ export class SubjectListComponent implements OnInit {
 
   subjects:Subjects[]=[];
   prof_code:any;
+  subject_id:any;
 
   displayedColumns: string[]=['id', 'name' , "action" ]
   dataSource = new MatTableDataSource<PeriodicElement>(this.subjects);
@@ -59,7 +60,6 @@ export class SubjectListComponent implements OnInit {
       console.log("in function")
       this.subjects=list;
       console.log(this.subjects);
-
    });
   }
 }

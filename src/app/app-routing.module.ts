@@ -32,6 +32,9 @@ import { ChaptersQuestionsComponent } from './professor/modules/chapters-questio
 import { QbankComponent } from './professor/modules/qbank/qbank.component';
 import { ChaptersQuestionsMcqComponent } from './professor/modules/chapters-questions-mcq/chapters-questions-mcq.component';
 import { ChaptersQuestionsTorFComponent } from './professor/modules/chapters-questions-tor-f/chapters-questions-tor-f.component';
+import { CreateNewExamComponent } from './professor/modules/create-new-exam/create-new-exam.component';
+import { StudentsResultsComponent } from './professor/modules/students-results/students-results.component';
+import { ExamsResultComponent } from './professor/modules/exams-result/exams-result.component';
 
 
 const routes: Routes = [
@@ -46,11 +49,11 @@ const routes: Routes = [
   {
     path:'',
     component:DefaultComponent,
-    children:[{
-      path:'' ,
+    children:[
+    {
+      path:'',
       component:DashboardComponent
     },
-
   {
     path:'students',
     component:StudentsComponent
@@ -151,7 +154,18 @@ const routes: Routes = [
     path:'chaptersQuestionslistTorF',
     component:ChaptersQuestionsTorFComponent
   },
-
+  {
+    path:'CreateNewExam',
+    component:CreateNewExamComponent
+  },
+  {
+    path:'StudentsResult',
+    component:StudentsResultsComponent
+  },
+  {
+    path:'ExamsResult',
+    component:ExamsResultComponent
+  },
 
 ]
   }

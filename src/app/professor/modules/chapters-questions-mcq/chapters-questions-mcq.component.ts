@@ -10,6 +10,7 @@ import { Mcqs } from 'src/app/Models/Mcqs';
 import { DeficultyEnum } from 'src/app/Models/DeficultyEnum';
 import { CorrectMcqEnum } from 'src/app/Models/CorrectMcqEnum';
 import { ChaptersAddMcqQuestionsDialogComponent } from '../chapters-add-mcq-questions-dialog/chapters-add-mcq-questions-dialog.component';
+import { EditQuestionMcqComponent } from '../edit-question-mcq/edit-question-mcq.component';
 
 
 export interface PeriodicElement {
@@ -76,16 +77,14 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
     });
   }
 
-  editDialog(student_code:any,id:any) {
-    console.log(student_code,id);
-    // const dialogRef = this.dialog.open(DialogEditComponent , { width:'50%',
-    // data: { StudentCode: student_code,
-    //         Id:id,
-    // },});
+  editDialog(id:any) {
+    console.log(id);
+    const dialogRef = this.dialog.open(EditQuestionMcqComponent , { width:'50%',
+    data: {  Id:id, },});
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   DeleteConfirm(id:any){

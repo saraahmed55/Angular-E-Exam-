@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultProfModule } from './professor/layouts/default-prof/default-prof.module';
+import { DatePipe } from '@angular/common';
 
 
 const appRoutes:Routes = [
@@ -65,8 +66,9 @@ const appRoutes:Routes = [
 
 
 
+
   ],
-  providers: [],
+  providers: [DatePipe,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

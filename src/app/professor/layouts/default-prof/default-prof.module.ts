@@ -40,6 +40,15 @@ import { ChaptersQuestionsMcqComponent } from '../../modules/chapters-questions-
 import { ChaptersQuestionsTorFComponent } from '../../modules/chapters-questions-tor-f/chapters-questions-tor-f.component';
 import { ChaptersAddMcqQuestionsDialogComponent } from '../../modules/chapters-add-mcq-questions-dialog/chapters-add-mcq-questions-dialog.component';
 import { ChaptersAddTorFQuestionsDialogComponent } from '../../modules/chapters-add-tor-f-questions-dialog/chapters-add-tor-f-questions-dialog.component';
+import { EditChaptersDialogComponent } from '../../modules/edit-chapters-dialog/edit-chapters-dialog.component';
+import { EditQuestionMcqComponent } from '../../modules/edit-question-mcq/edit-question-mcq.component';
+import { EditQuestionTorFComponent } from '../../modules/edit-question-tor-f/edit-question-tor-f.component';
+import { AddNewExamComponent } from '../../modules/add-new-exam/add-new-exam.component';
+import { QuestionBankExamChaptersComponent } from '../../modules/question-bank-exam-chapters/question-bank-exam-chapters.component';
+import { QuestionBankExamQuestionsComponent } from '../../modules/question-bank-exam-questions/question-bank-exam-questions.component';
+import { QuestionBankExamAllQuestionsComponent } from '../../modules/question-bank-exam-all-questions/question-bank-exam-all-questions.component';
+import { ExamsResultComponent } from '../../modules/exams-result/exams-result.component';
+import { ExamsInformationDialogComponent } from '../../modules/exams-information-dialog/exams-information-dialog.component';
 
 
 
@@ -65,6 +74,22 @@ import { ChaptersAddTorFQuestionsDialogComponent } from '../../modules/chapters-
     ChaptersQuestionsTorFComponent,
     ChaptersAddMcqQuestionsDialogComponent,
     ChaptersAddTorFQuestionsDialogComponent,
+    EditChaptersDialogComponent,
+    EditQuestionMcqComponent,
+    EditQuestionTorFComponent,
+    AddNewExamComponent,
+    QuestionBankExamChaptersComponent,
+    QuestionBankExamQuestionsComponent,
+    QuestionBankExamAllQuestionsComponent,
+    ExamsResultComponent,
+    ExamsInformationDialogComponent,
+
+
+
+
+
+
+
 
 
 

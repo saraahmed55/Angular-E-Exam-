@@ -1,0 +1,56 @@
+<body>
+  <div class="background">
+      <div class="space"></div>
+       <div class="container">
+          <div class="add ">
+              <h1>All Exams </h1>
+          </div>
+          <mat-form-field appearance="standard">
+              <mat-label>Filter</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+          <div class="mat-elevation-z8">
+
+              <table mat-table [dataSource]="exams">
+                <ng-container matColumnDef="mcq_easy_questionsNumber">
+                      <th mat-header-cell *matHeaderCellDef> mcq_easy_questionsNumber </th>
+                      <td mat-cell *matCellDef="let element"> {{element.mcq_easy_questionsNumber}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mcq_medium_questionsNumber">
+                      <th mat-header-cell *matHeaderCellDef>mcq_medium_questionsNumber </th>
+                      <td mat-cell *matCellDef="let element"> {{element.mcq_medium_questionsNumber}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mcq_hard_questionsNumber">
+                      <th mat-header-cell *matHeaderCellDef> mcq_hard_questionsNumber </th>
+                      <td mat-cell *matCellDef="let element"> {{element.mcq_hard_questionsNumber}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedMcqColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedMcqColumns;"></tr>
+               </table>
+
+               <table mat-table [dataSource]="exams">
+                  <ng-container matColumnDef="tf_easy_questionsNumber">
+                    <th mat-header-cell *matHeaderCellDef> tf_easy_questionsNumber </th>
+                    <td mat-cell *matCellDef="let element"> {{element.tf_easy_questionsNumber}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="tf_medium_questionsNumber">
+                    <th mat-header-cell *matHeaderCellDef> tf_medium_questionsNumber </th>
+                    <td mat-cell *matCellDef="let element"> {{element.tf_medium_questionsNumber}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="tf_hard_questionsNumber">
+                    <th mat-header-cell *matHeaderCellDef> tf_hard_questionsNumber </th>
+                    <td mat-cell *matCellDef="let element"> {{element.tf_hard_questionsNumber}}</td>
+                  </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedTFColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedTFColumns;"></tr>
+              </table>
+          </div>
+       </div>
+  </div>
+</body>
+

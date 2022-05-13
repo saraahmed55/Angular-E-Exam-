@@ -49,7 +49,6 @@ export class SubjectStudentsListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.id=localStorage.getItem("id")
-    console.log(this.id+"  "+this.prof_code)
     this.getStudentsOfSubjects(this.prof_code,this.id)
   }
 
@@ -59,4 +58,9 @@ export class SubjectStudentsListComponent implements OnInit {
       console.log(this.students);
    });
   }
+
+  ShowIdstudent(student_code:any){
+    this.service.installstudentStorage(student_code);
+  }
+
 }

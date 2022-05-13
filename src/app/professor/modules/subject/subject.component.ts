@@ -20,15 +20,17 @@ export interface PeriodicElement {
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent implements OnInit {
+  subject_id:any;
 
   constructor(
     public dialog: MatDialog,
     private http:HttpClient,
     private route: Router,
-    private service:ProfessorService,) { }
+    private service:ProfessorService,
+    ) { }
 
     opensSubjectInfoDialog() {
-    const dialogRef = this.dialog.open(InfoDialogComponent, { width:'15%'});
+    const dialogRef = this.dialog.open(InfoDialogComponent, { width:'25%'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -43,8 +45,12 @@ export class SubjectComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
+    this.subject_id=localStorage.getItem('id');
+  }
+
+  ShowIdSubject(id:any){
+    this.service.installsubjectStorage(id);
   }
 
 }

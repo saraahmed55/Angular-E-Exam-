@@ -1,4 +1,9 @@
-<h1>Subject name</h1>
-<h4>Departement: SE</h4>
-<h4>Level: Third</h4>
-<h4>Number of Enrollment Stedents:445</h4>
+<div class="info">
+  <div >
+    <div class="title">
+      <h1 *ngFor="let element of subjectName">{{element.name}}</h1>
+    </div>
+    <h4 *ngFor="let element of departmentName"> <strong> Departement:</strong> {{element.name}}</h4>
+    <h4><strong>Number of Enrollment Students: </strong> {{studentCount}}</h4>
+  </div>
+</div>
