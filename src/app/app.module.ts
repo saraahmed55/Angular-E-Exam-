@@ -9,7 +9,6 @@ import { ProfLoginComponent } from './accounts/prof-login/prof-login.component';
 import { LogoutComponent } from './accounts/logout/logout.component';
 import { StudentHomeComponent } from './student-component/student-home/student-home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StudentAccountComponent } from './student-component/student-account/student-account.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './admin/lauouts/default/default.module';
@@ -21,6 +20,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultProfModule } from './professor/layouts/default-prof/default-prof.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StudentExamsComponent } from './student-component/student-exams/student-exams.component';
+import { SubjectDetailsComponent } from './student-component/subject-details/subject-details.component';
+import { ExamComponent } from './student-component/exam/exam.component';
+import { SubmitComponent } from './student-component/submit/submit.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCardModule} from '@angular/material/card';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 const appRoutes:Routes = [
@@ -38,6 +52,10 @@ const appRoutes:Routes = [
     StudentHomeComponent,
     NotFoundComponent,
     StudentAccountComponent,
+    StudentExamsComponent,
+    SubjectDetailsComponent,
+    ExamComponent,
+    SubmitComponent
 
 
 
@@ -60,8 +78,18 @@ const appRoutes:Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     MatTableModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatIconModule,
     ReactiveFormsModule,
     DefaultProfModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatCardModule,
+    MatBadgeModule
 
 
 

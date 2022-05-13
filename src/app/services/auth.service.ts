@@ -39,18 +39,21 @@ export class AuthService {
   }
 
   public prof_code: any = '';
-  public installProfessorStorage(email:string, prof_code:string, role_name:string){
+  public installProfessorStorage(email:string, prof_code:string, role_name:string, token:string){
     localStorage.setItem('email',email);
     localStorage.setItem('prof_code',prof_code);
     localStorage.setItem('role_name',role_name);
+    localStorage.setItem('token', token)
     this.prof_code = localStorage.getItem('prof_code');
   }
 
 
   student_code: any = '';
-  public installStudentStorage(email:string, student_code:string){
+  public installStudentStorage(email:string, student_code:string, token:string){
     localStorage.setItem('email',email);
     localStorage.setItem('student_code',student_code);
+    localStorage.setItem('role_name','student');
+    localStorage.setItem('token', token)
     this.student_code = localStorage.getItem('student_code');
   }
 

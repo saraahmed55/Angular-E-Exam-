@@ -1,0 +1,141 @@
+<body>
+    <div class="background">
+
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <!-- we will add logo later-->
+                <a class="navbar-brand" href="#">
+                 <img src="/assets/images/EExams-removebg-preview.png" width="80" height="60"></a>
+                <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" (click)="toggleNav()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- will change from database-->
+                 <span> {{student.first_name}}  </span>
+                </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [class.show]="isOpen">
+                  <a class="dropdown-item" routerLink="/student/home">Home</a>
+                  <a class="dropdown-item" routerLink="/student/account">Account</a>
+
+                  <a class="dropdown-item" routerLink="/logout">Log Out</a>
+                </div>
+             </div>
+            </div>
+        </nav>
+
+        <div class="space"></div>
+
+        <div class="container" id="con2">
+            <div class="space"></div>
+
+
+            <mat-card class="example-result-card">
+                <mat-card-content class="details">
+
+
+                    <h2> <mat-icon color="primary">book</mat-icon>
+                        {{subject.name}}</h2>
+                    <span> By DR: {{subject.prof_first_name}} {{subject.prof_last_name}}</span>
+
+
+                </mat-card-content>
+
+                <mat-card-content class="progerss">
+
+                    <h2>Your progress in this Subject</h2>
+
+
+                    <div class="example-label-container" >
+                      <label id="example-name-label" class="example-name-label">your score:    </label>
+                      <label class="example-value-label">{{value}} %</label>
+                    </div>
+                    <!--  let progress bar eqal value-->
+                    <mat-slider color="primary" ></mat-slider>
+
+
+                </mat-card-content>
+              </mat-card>
+
+              <div class="space"></div>
+
+              <h1 >See Your Exams</h1>
+
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
+                            <!-- id Column -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> ID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef=" examName">
+                        <th mat-header-cell *matHeaderCellDef> Exam Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element. examName}} </td>
+                      </ng-container>
+
+
+
+
+
+
+
+                         <ng-container matColumnDef=" qCount">
+                            <th mat-header-cell *matHeaderCellDef> Question count  </th>
+                            <td mat-cell *matCellDef="let element"> {{element. qCount}} </td>
+                          </ng-container>
+
+
+
+                         <ng-container matColumnDef="grad">
+                            <th mat-header-cell *matHeaderCellDef>  grade </th>
+                            <td mat-cell *matCellDef="let element"> {{element.grad}} </td>
+                          </ng-container>
+
+
+
+                         <ng-container matColumnDef="duration">
+                            <th mat-header-cell *matHeaderCellDef>  duration(minutes) </th>
+                            <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+                          </ng-container>
+
+
+
+                         <ng-container matColumnDef="sDate">
+                            <th mat-header-cell *matHeaderCellDef>  Start Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.sDate}} </td>
+                          </ng-container>
+
+
+
+                         <ng-container matColumnDef="eDate">
+                            <th mat-header-cell *matHeaderCellDef> End Date </th>
+                            <td mat-cell *matCellDef="let element"> {{element.eDate}} </td>
+                          </ng-container>
+
+                                            <!-- Actions -->
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef> Actions</th>
+                            <td mat-cell *matCellDef="let element" >
+                              <button mat-raised-button color="primary" routerLink="student/exam">reset</button>
+
+                                 <button mat-raised-button disabled>Disabled</button>
+
+
+                            </td>
+                        </ng-container>
+
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                 </table>
+
+                 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+</body>

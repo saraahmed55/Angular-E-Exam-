@@ -1,0 +1,79 @@
+<body>
+    <div class="background">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <!-- we will add logo later-->
+                <a class="navbar-brand" href="#">  <img src="/assets/images/EExams-removebg-preview.png" width="80" height="60"></a>
+
+              <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" (click)="toggleNav()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- will change from database-->
+                 <span> {{student.first_name}}   </span>
+                </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [class.show]="isOpen">
+                  <a class="dropdown-item" routerLink="/student/account">Account</a>
+                  <a class="dropdown-item" routerLink="/logout">Log Out</a>
+                </div>
+             </div>
+            </div>
+        </nav>
+        <div class="space"></div>
+
+        <div class="container">
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="exams">
+                        <!-- id Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.exam_id}} </td>
+                  </ng-container>
+
+
+
+                  <ng-container matColumnDef="subject">
+                    <th mat-header-cell *matHeaderCellDef>subject </th>
+                    <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
+                  </ng-container>
+
+
+                     <ng-container matColumnDef="duration">
+                        <th mat-header-cell *matHeaderCellDef>  duration(minutes) </th>
+                        <td mat-cell *matCellDef="let element"> {{element.duration_minutes}} </td>
+                      </ng-container>
+
+
+
+                     <ng-container matColumnDef="sDate">
+                        <th mat-header-cell *matHeaderCellDef>  Start Time </th>
+                        <td mat-cell *matCellDef="let element"> {{element.start_time}} </td>
+                      </ng-container>
+
+
+
+                     <ng-container matColumnDef="eDate">
+                        <th mat-header-cell *matHeaderCellDef> End Time </th>
+                        <td mat-cell *matCellDef="let element"> {{element.end_time}} </td>
+                      </ng-container>
+
+                                        <!-- Actions -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Actions</th>
+                        <td mat-cell *matCellDef="let element" >
+                          <button mat-raised-button color="primary" [routerLink]="['/student/exam', element.exam_id]" *ngIf="this.start(element)">Start Exam</button>
+                        </td>
+                    </ng-container>
+
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+             </table>
+
+             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+        </div>
+        </div>
+
+
+    </div>
+</body>

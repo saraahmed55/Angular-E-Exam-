@@ -1,29 +1,35 @@
 <body>
     <div class="background">
+
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <!-- we will add logo later-->
-                <a class="navbar-brand" href="#">  <img src="/assets/images/EExams-removebg-preview.png" width="80" height="60"></a>
-                <div class="dropdown">
+              <a class="navbar-brand" href="#">  <img src="/assets/images/EExams-removebg-preview.png" width="80" height="60"></a>
+              <div class="dropdown">
                 <button class="btn btn-light dropdown-toggle" (click)="toggleNav()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <!-- will change from database-->
-                 <span> {{student.first_name}}  </span>
+                 <span> Sabreen  </span>
                 </button>
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [class.show]="isOpen">
+                  <a class="dropdown-item" routerLink="/student/home">Home</a>
                   <a class="dropdown-item" routerLink="/student/account">Account</a>
+
                   <a class="dropdown-item" routerLink="/logout">Log Out</a>
+
                 </div>
              </div>
             </div>
         </nav>
+
         <div class="space"></div>
-            <div class="container" id="con2">
-                <div class="welcome">
-                    <p>
-                        <span><fa-icon [icon]="faSmile"></fa-icon></span> Hi dear, {{student.first_name}} {{student.last_name}}! You are Welcome!
-                    </p>
-                </div>
-                <button class="btn btn-success " routerLink="/student/exams"> <span><fa-icon [icon]="faBook"></fa-icon> </span>  Your Exams</button>
+
+        <div class="container p-3" id="con2" >
+            <div class="welcome">
+                <p>
+                    <span><fa-icon [icon]="faSmile"></fa-icon></span> Thanks  dear, Sabreen Hassan! Your Response has been submitted!
+                </p>
+                <span class="result">Your Result  <button mat-raised-button color="accent">18/20</button></span>
             </div>
-    </div>
-</body>
+        </div>
+        </div>
+    </body>

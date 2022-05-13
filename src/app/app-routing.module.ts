@@ -32,22 +32,36 @@ import { ChaptersQuestionsComponent } from './professor/modules/chapters-questio
 import { QbankComponent } from './professor/modules/qbank/qbank.component';
 import { ChaptersQuestionsMcqComponent } from './professor/modules/chapters-questions-mcq/chapters-questions-mcq.component';
 import { ChaptersQuestionsTorFComponent } from './professor/modules/chapters-questions-tor-f/chapters-questions-tor-f.component';
+import { AdminGuard } from './guards/Admin.guard';
+import { StudentExamsComponent } from './student-component/student-exams/student-exams.component';
+import { ProfessorGuard } from './guards/Professor.guard';
+import { StudentGuard } from './guards/Student.guard';
+import { SubjectDetailsComponent } from './student-component/subject-details/subject-details.component';
+import { ExamComponent } from './student-component/exam/exam.component';
+import { SubmitComponent } from './student-component/submit/submit.component';
 
 
 const routes: Routes = [
-  {path:'first' , component: FirstComponent},
-  {path:'studentLogin' , component:StudentLoginComponent},
-  {path:'profLogin', component:ProfLoginComponent},
+  {path:'' , component: FirstComponent},
+  {path:'studentlogin' , component:StudentLoginComponent},
+  {path:'professorlogin', component:ProfLoginComponent},
   {path:'logout' , component:LogoutComponent},
-  {path:'studentHome' , component:StudentHomeComponent},
   {path:'notFound' , component:NotFoundComponent},
-  {path:'studentAccount' , component:StudentAccountComponent},
+
+  //Student Routes
+  {path:'student/home' , component:StudentHomeComponent, canActivate:[StudentGuard]},
+  {path:'student/account' , component:StudentAccountComponent, canActivate:[StudentGuard]},
+  {path:'student/exams' , component:StudentExamsComponent, canActivate:[StudentGuard]},
+  {path:'student/subject/:id' , component:SubjectDetailsComponent, canActivate:[StudentGuard]},
+  {path:'student/exam/:id' , component:ExamComponent, canActivate:[StudentGuard]},
+  {path:'student/exam/submit' , component:SubmitComponent, canActivate:[StudentGuard]},
 
   {
-    path:'',
+    path:'admin',
     component:DefaultComponent,
+    canActivate:[AdminGuard],
     children:[{
-      path:'' ,
+      path:'dashboard' ,
       component:DashboardComponent
     },
 
@@ -57,12 +71,12 @@ const routes: Routes = [
   },
 
   {
-    path:'departs',
+    path:'departments',
     component:DepatementComponent
   },
 
   {
-    path:'profs',
+    path:'professors',
     component:ProfsComponent
   },
 
@@ -99,11 +113,11 @@ const routes: Routes = [
     component:RolesListComponent
   },
   {
-    path:'Admin_list',
+    path:'admins_list',
     component:AdminListComponent
   },
   {
-    path:'professor_list',
+    path:'professors_list',
     component:ProfessorListComponent
   },
   {
@@ -115,6 +129,52 @@ const routes: Routes = [
     path:'professor_defalt',
     component:DefaultProfComponent
   },
+  {
+    path:'professorExams',
+    component:ExamsComponent
+  },
+  {
+    path:'professorSujects',
+    component:SubjectListComponent
+  },
+  {
+    path:'professorSubjectsExams',
+    component:SubjectExamsListComponent
+  },
+  {
+    path:'professorSubjectsStudnets',
+    component:SubjectStudentsListComponent
+  },
+  {
+    path:'professorSubjectsChapters',
+    component:SubjectChaptersListComponent
+  },
+  {
+    path:'subjectsDashProfessor',
+    component:SubjectComponent
+  },
+  {
+    path:'chaptersQuestionslist',
+    component:ChaptersQuestionsComponent
+  },
+  {
+    path:'chaptersQuestionslistMCQ',
+    component:ChaptersQuestionsMcqComponent
+  },
+  {
+    path:'chaptersQuestionslistTorF',
+    component:ChaptersQuestionsTorFComponent
+  },
+
+
+]
+  },
+
+  {
+    path:'professor',
+    component:DefaultProfComponent,
+    canActivate:[ProfessorGuard],
+    children:[
   {
     path:'professorExams',
     component:ExamsComponent

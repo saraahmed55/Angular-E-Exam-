@@ -1,11 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { AdminExams } from '../Models/AdminExams';
 import { Exams } from '../Models/Exams';
 import { SaveResults } from '../Models/SaveResults';
 import { StudentInfo } from '../Models/StudentInfo';
 import { Students } from '../Models/Students';
 import { StudentSubjectResults } from '../Models/StudentSubjectResults';
+import { SubjectDetails } from '../Models/SubjectDetails';
 import { Subjects } from '../Models/Subjects';
 
 @Injectable({
@@ -30,12 +32,20 @@ export class StudentService {
     return this.httpClient.get<Subjects[]>(this.baseUrl + studentcode + '/subjects').pipe();
   }
 
+  GetSubjectDetails(id: any): Observable<SubjectDetails> {
+    return this.httpClient.get<SubjectDetails>(this.baseUrl + 'subjects/' + id).pipe();
+  }
+
   GetStudentSubjectResults(studentcode: any, subjectid: any): Observable<StudentSubjectResults[]> {
     return this.httpClient.get<StudentSubjectResults[]>(this.baseUrl + studentcode + '/subject/' + subjectid + '/results').pipe();
   }
 
-  GetStudentSubjectExams(studentcode: any, subjectid: any): Observable<Exams[]> {
-    return this.httpClient.get<Exams[]>(this.baseUrl + studentcode + '/subject/' + subjectid + '/exams').pipe();
+  GetStudentSubjectExams(studentcode: any, subjectid: any): Observable<AdminExams[]> {
+    return this.httpClient.get<AdminExams[]>(this.baseUrl + studentcode + '/subject/' + subjectid + '/exams').pipe();
+  }
+
+  GetStudentExams(studentcode: any): Observable<AdminExams[]> {
+    return this.httpClient.get<AdminExams[]>(this.baseUrl + studentcode + '/exams').pipe();
   }
 
   GetExamQuestions(studentcode: any, examid: any) {

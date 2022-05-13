@@ -23,6 +23,8 @@ export class StudentLoginComponent implements OnInit {
 
   ngOnInit(): void {
 
+    localStorage.clear();
+
     this.dangerMessage = '';
 
     this.logmodel = {
@@ -40,8 +42,8 @@ export class StudentLoginComponent implements OnInit {
       this.validateLoginModel();
       this.auth.StudentLogin(this.logmodel).subscribe(success => {
         const email = this.loginForm.value.email;
-        this.auth.installStudentStorage(email, success.student_code);
-        this.route.navigate(['']).then(x=>{window.location.reload();});
+        this.auth.installStudentStorage(email, success.student_code, success.token);
+        this.route.navigate(['/student/home']).then(x=>{window.location.reload();});
       }, err => {
         console.log(err);
         this.dangerMessage = 'Cannot login. Please, try again';

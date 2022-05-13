@@ -3,4 +3,5 @@ export class AfterProfLogin {
   prof_code:string;
   email:string;
   role_name:any;
+  token:any;
 }

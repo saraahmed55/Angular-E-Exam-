@@ -23,6 +23,7 @@ export class ProfLoginComponent implements OnInit {
 
   ngOnInit(): void {
 
+    localStorage.clear();
     this.dangerMessage = '';
 
     this.logmodel = {
@@ -39,9 +40,10 @@ export class ProfLoginComponent implements OnInit {
     if (this.loginForm.valid){
       this.validateLoginModel();
       this.auth.ProfessorLogin(this.logmodel).subscribe(success => {
+        console.log(success)
         const email = this.loginForm.value.email;
-        this.auth.installProfessorStorage(email, success.prof_code, success.role_name);
-        this.route.navigate(['/professor_defalt']).then(x=>{window.location.reload();});
+        this.auth.installProfessorStorage(email, success.prof_code, success.role_name, success.token);
+        this.route.navigate(['/admin/professor_defalt']).then(x=>{window.location.reload();});
       }, err => {
         console.log(err);
         this.dangerMessage = 'Cannot login. Please, try again';
