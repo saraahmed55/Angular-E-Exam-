@@ -4,6 +4,7 @@ import { faBookMedical } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
+import { StudentResults } from 'src/app/Models/StudentResults';
 import { Subjects } from 'src/app/Models/Subjects';
 import { StudentService } from 'src/app/services/student.service';
 
@@ -25,13 +26,16 @@ export class StudentAccountComponent implements OnInit {
 
   student: StudentInfo;
   subjects: Subjects[];
+  results:StudentResults[];
   constructor(private studentservice: StudentService) { }
 
   ngOnInit(): void {
     this.student = new StudentInfo();
     this.subjects = [];
+    this.results=[];
     this.getInfo();
     this.getSubjects();
+    this.getResults();
 
   }
   toggleNav(){
@@ -53,6 +57,16 @@ export class StudentAccountComponent implements OnInit {
     if(studentcode != null){
       this.studentservice.GetStudentSubjects(studentcode).subscribe(success=>{
         this.subjects=success;}, err =>{
+          console.log(err);
+        });
+    }
+  }
+
+  getResults() {
+    const studentcode = localStorage.getItem('student_code');
+    if(studentcode != null){
+      this.studentservice.GetStudentResults(studentcode).subscribe(success=>{
+        this.results=success;}, err =>{
           console.log(err);
         });
     }

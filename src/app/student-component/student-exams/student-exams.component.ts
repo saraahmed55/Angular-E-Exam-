@@ -37,7 +37,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class StudentExamsComponent implements OnInit {
   isOpen:boolean=false;
 
-  displayedColumns: string[]=['id' , 'subject' , 'duration' ,'sDate' ,'eDate' , "action"]
+  displayedColumns: string[]=['id' , 'subject' , 'examName', 'duration' ,'sDate' ,'eDate' , "action"]
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true })
@@ -51,7 +51,7 @@ export class StudentExamsComponent implements OnInit {
   constructor(private studentservice:StudentService) { }
 
   ngOnInit(): void {
-
+    this.timenow = new Date();
     this.dataSource.paginator = this.paginator;
     this.student = new StudentInfo();
     this.exams = [];
@@ -67,7 +67,6 @@ export class StudentExamsComponent implements OnInit {
   }
 
   getInfo(){
-    this.timenow = new Date();
     const studentcode = localStorage.getItem('student_code');
     if(studentcode != null){
       this.studentservice.GetStudentInfo(studentcode).subscribe(success=>{

@@ -6,7 +6,7 @@ body{
     background-image: linear-gradient(to right, rgb(120, 182, 223), rgb(29, 29, 114));
     background-size: cover;
     background-repeat: no-repeat;
-    height: 130vh;  
+    height: 130vh;
 }
 
 .space{
@@ -37,7 +37,7 @@ mat-card{
 table {
     width: 100%;
   }
-  
+
   .mat-form-field {
     font-size: 14px;
     width: 100%;
@@ -51,7 +51,7 @@ table {
      margin-left: 3px;
  }
  h1{
-    
+    padding-top: 10px;
      text-align: center;
  }
 

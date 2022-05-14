@@ -50,7 +50,7 @@
 
 
                         <mat-tab label="Results">
-                            <h2>Exam Name <span ><button mat-button color="primary">Total: 20/30</button></span></h2>
+                            <h2 *ngFor="let result of results">{{result.subject}} - {{result.exams_name}}<span ><button mat-button color="primary">Total: {{result.result}} %</button></span></h2>
 
 
 

@@ -35,8 +35,6 @@ import { QuestionsComponent } from '../../modules/questions/questions.component'
 import { NewQuestionDialogComponent } from '../../modules/new-question-dialog/new-question-dialog.component';
 import { EditQuesDialogComponent } from '../../modules/edit-ques-dialog/edit-ques-dialog.component';
 import { ResultsComponent } from '../../modules/results/results.component';
-import { NewResultDialogComponent } from '../../modules/new-result-dialog/new-result-dialog.component';
-import { EditResultDialogComponent } from '../../modules/edit-result-dialog/edit-result-dialog.component';
 import { QuestionLayoutComponent } from '../../modules/question-layout/question-layout.component';
 import { QuestionTrueOrfalseComponent } from '../../modules/question-true-orfalse/question-true-orfalse.component';
 import { RolesListComponent } from '../../modules/roles-list/roles-list.component';
@@ -68,8 +66,6 @@ import { EditDepartmentDialogComponent } from '../../modules/edit-department-dia
     QuestionsComponent,
     NewQuestionDialogComponent,
     EditQuesDialogComponent,
-    NewResultDialogComponent,
-    EditResultDialogComponent,
     QuestionLayoutComponent,
     QuestionTrueOrfalseComponent,
     RolesListComponent,

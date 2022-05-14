@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { SubjectDetails } from 'src/app/Models/SubjectDetails';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
+import { AdminExams } from 'src/app/Models/AdminExams';
+import { StudentSubjectResults } from 'src/app/Models/StudentSubjectResults';
 
 export interface PeriodicElement {
   id:string;
@@ -38,8 +40,12 @@ export class SubjectDetailsComponent implements OnInit {
   id = this.activatedroute.snapshot.paramMap.get("id");
   subject: SubjectDetails;
   student:StudentInfo;
+  exams:AdminExams[];
+  results:StudentSubjectResults[];
+  timenow:Date;
 
-  displayedColumns: string[]=['id', ' examName'  ,  ' qCount' , 'grad' , 'duration' ,'sDate' ,'eDate' , "action"]
+  displayedColumns: string[]=['id' ,'examName', 'duration' ,'sDate' ,'eDate' , "action"]
+  resultDisplayedColumns: string[]=['id' ,'examName', 'result']
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true })
@@ -53,12 +59,16 @@ export class SubjectDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
+    this.timenow = new Date();
     this.dataSource.paginator = this.paginator;
     this.subject = new SubjectDetails();
-    this.student = new StudentInfo()
+    this.student = new StudentInfo();
+    this.exams = [];
+    this.results = [];
     this.getInfo();
     this.getSubjectDetails(this.id)
+    this.getExams();
+    this.getResults();
   }
 
   toggleNav(){
@@ -80,5 +90,32 @@ export class SubjectDetailsComponent implements OnInit {
           console.log(err);
         });
     }
+  }
+
+  getExams() {
+    const studentcode = localStorage.getItem('student_code');
+    if(studentcode != null){
+      this.studentservice.GetStudentSubjectExams(studentcode, this.id).subscribe(success=>{
+        this.exams=success;}, err =>{
+          console.log(err);
+        });
+    }
+  }
+
+  getResults() {
+    const studentcode = localStorage.getItem('student_code');
+    if(studentcode != null){
+      this.studentservice.GetStudentSubjectResults(studentcode, this.id).subscribe(success=>{
+        this.results=success;}, err =>{
+          console.log(err);
+        });
+    }
+  }
+
+  start(exam: AdminExams):boolean {
+    if(new Date(exam.start_time).getTime() <= this.timenow.getTime() ){
+      return true;
+    }
+    return false;
   }
 }

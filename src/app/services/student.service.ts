@@ -5,6 +5,7 @@ import { AdminExams } from '../Models/AdminExams';
 import { Exams } from '../Models/Exams';
 import { SaveResults } from '../Models/SaveResults';
 import { StudentInfo } from '../Models/StudentInfo';
+import { StudentResults } from '../Models/StudentResults';
 import { Students } from '../Models/Students';
 import { StudentSubjectResults } from '../Models/StudentSubjectResults';
 import { SubjectDetails } from '../Models/SubjectDetails';
@@ -38,6 +39,10 @@ export class StudentService {
 
   GetStudentSubjectResults(studentcode: any, subjectid: any): Observable<StudentSubjectResults[]> {
     return this.httpClient.get<StudentSubjectResults[]>(this.baseUrl + studentcode + '/subject/' + subjectid + '/results').pipe();
+  }
+
+  GetStudentResults(studentcode: any): Observable<StudentResults[]> {
+    return this.httpClient.get<StudentResults[]>(this.baseUrl + studentcode + '/results').pipe();
   }
 
   GetStudentSubjectExams(studentcode: any, subjectid: any): Observable<AdminExams[]> {
