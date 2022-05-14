@@ -89,7 +89,7 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
 
   DeleteConfirm(id:any){
     this.service.Deletemcq(this.prof_code,this.subject_id,this.chapter_id,id).subscribe(s=>{
-     this.route.navigate(['chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
+     this.route.navigate(['professor/chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 }

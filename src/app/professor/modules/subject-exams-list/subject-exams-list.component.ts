@@ -16,8 +16,6 @@ export interface PeriodicElement {
   duration_minutes:any;
 }
 
-
-
 @Component({
   selector: 'app-subject-exams-list',
   templateUrl: './subject-exams-list.component.html',
@@ -29,7 +27,7 @@ export class SubjectExamsListComponent implements OnInit {
   prof_code:any;
   id:any;
 
-  displayedColumns: string[]=['id', 'start_time' , 'end_time' ,'duration_minutes' ,"action" ]
+  displayedColumns: string[]=['id','name', 'start_time' , 'end_time' ,'duration_minutes' ,"action" ]
   dataSource = new MatTableDataSource<PeriodicElement>(this.exams);
 
   @ViewChild(MatPaginator, { static: true })
@@ -45,7 +43,6 @@ export class SubjectExamsListComponent implements OnInit {
     private http:HttpClient,
     private route: Router,
     private service:ProfessorService,
-    private auth:AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -57,15 +54,13 @@ export class SubjectExamsListComponent implements OnInit {
 
   getProfessorSubjectExams(profcode:any, subjectid:any){
     this.service.getProfessorSubjectExams(profcode,subjectid).subscribe(list=>{
-      console.log("in exams function")
       this.exams=list;
       console.log(this.exams);
    });
   }
 
-
   openInformationDialog(exam_id:any){
-    const dialogRef = this.dialog.open(ExamsInformationDialogComponent , { width:'80%',data: {  Id:exam_id,}});
+    const dialogRef = this.dialog.open(ExamsInformationDialogComponent , { width:'50%',data: {  Id:exam_id,}});
     console.log(exam_id)
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

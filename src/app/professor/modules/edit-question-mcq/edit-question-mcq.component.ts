@@ -114,7 +114,7 @@ export class EditQuestionMcqComponent implements OnInit {
 
       this.service.EditMcq(this.editData,this.prof_code,this.subject_id,this.chapter_id,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";
-        this.route.navigate(['chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
+        this.route.navigate(['professor/chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
       },ex=>console.log(ex));
     }
   }

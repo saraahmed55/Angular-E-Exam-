@@ -1,5 +1,6 @@
 export class AdminExams {
   exam_id:any;
+  name:any;
   exam_name: string;
   subject:any;
   start_time:any;

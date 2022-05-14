@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
+  isAdmin:any;
 
   constructor(
     private auth:AuthService,
@@ -26,6 +27,14 @@ export class HeaderComponent implements OnInit {
         new Event('resize')
       );
     }, 300);
+  }
+
+  IsAdmin(){
+    this.isAdmin=localStorage.getItem('role_name')
+      if( this.isAdmin.toLowerCase() == 'admin'){
+        return true;
+      }
+    return false;
   }
 
   logout(){

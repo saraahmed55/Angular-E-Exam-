@@ -9,6 +9,7 @@ import { AdminService } from 'src/app/services/admin.service';
 import { Exams } from 'src/app/Models/Exams';
 import { Subjects } from 'src/app/Models/Subjects';
 import { AdminExams } from 'src/app/Models/AdminExams';
+import { ExamsInformationDialogComponent } from 'src/app/professor/modules/exams-information-dialog/exams-information-dialog.component';
 
 @Component({
   selector: 'app-exams-list',
@@ -20,7 +21,7 @@ export class ExamsListComponent implements OnInit {
   exams:AdminExams[]=[];
   id:any;
 
-  displayedColumns: string[]=['exam_id', 'subject_name' ,'start_time' , 'end_time'  , 'duration_minutes' ]
+  displayedColumns: string[]=['exam_id','name', 'subject_name' ,'start_time' , 'end_time'  , 'duration_minutes' ,'action']
   dataSource = new MatTableDataSource<AdminExams>(this.exams);
 
   @ViewChild(MatPaginator, { static: true })
@@ -66,5 +67,12 @@ export class ExamsListComponent implements OnInit {
    });
   }
 
+  openInformationDialog(exam_id:any){
+    const dialogRef = this.dialog.open(ExamsInformationDialogComponent , { width:'50%',data: {  Id:exam_id,}});
+    console.log(exam_id)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }

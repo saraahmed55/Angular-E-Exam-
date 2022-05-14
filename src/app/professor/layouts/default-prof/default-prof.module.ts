@@ -49,6 +49,7 @@ import { QuestionBankExamQuestionsComponent } from '../../modules/question-bank-
 import { QuestionBankExamAllQuestionsComponent } from '../../modules/question-bank-exam-all-questions/question-bank-exam-all-questions.component';
 import { ExamsResultComponent } from '../../modules/exams-result/exams-result.component';
 import { ExamsInformationDialogComponent } from '../../modules/exams-information-dialog/exams-information-dialog.component';
+import { MainExamsInformationDialogComponent } from '../../modules/main-exams-information-dialog/main-exams-information-dialog.component';
 
 
 
@@ -83,6 +84,8 @@ import { ExamsInformationDialogComponent } from '../../modules/exams-information
     QuestionBankExamAllQuestionsComponent,
     ExamsResultComponent,
     ExamsInformationDialogComponent,
+    MainExamsInformationDialogComponent,
+
 
 
 

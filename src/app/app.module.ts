@@ -56,7 +56,7 @@ const appRoutes:Routes = [
     StudentExamsComponent,
     SubjectDetailsComponent,
     ExamComponent,
-    SubmitComponent
+    SubmitComponent,
 
 
 

@@ -93,7 +93,7 @@ export class EditQuestionTorFComponent implements OnInit {
 
       this.service.EditTorF(this.editData,this.prof_code,this.subject_id,this.chapter_id,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";
-        this.route.navigate(['chaptersQuestionslistTorF']).then(x=>{window.location.reload();});
+        this.route.navigate(['professor/chaptersQuestionslistTorF']).then(x=>{window.location.reload();});
       },ex=>console.log(ex));
     }
   }

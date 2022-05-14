@@ -11,8 +11,8 @@
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
                 <li>
-                    <button mat-icon-button>
-                        <mat-icon>settings</mat-icon>
+                    <button mat-icon-button *ngIf="IsAdmin()" routerLink="/admin">
+                        <mat-icon>assignment_ind</mat-icon>
                     </button>
                 </li>
 
@@ -26,10 +26,7 @@
                             Log Out
                          </button>
                     </mat-menu>
-
                 </li>
-
-
             </ul>
         </div>
     </mat-toolbar-row>

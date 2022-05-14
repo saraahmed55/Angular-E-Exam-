@@ -81,7 +81,7 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
 
   DeleteConfirm(id:any){
     this.service.DeleteTf(this.prof_code,this.subject_id,this.chapter_id,id).subscribe(s=>{
-     this.route.navigate(['chaptersQuestionslistTorF']).then(x=>{window.location.reload();});
+     this.route.navigate(['professor/chaptersQuestionslistTorF']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 
