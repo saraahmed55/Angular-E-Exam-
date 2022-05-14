@@ -1,6 +1,7 @@
 import { Component, OnInit,  Output , EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import {MatSnackBar,MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private auth:AuthService,
     private route: Router,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,13 @@ export class HeaderComponent implements OnInit {
         return true;
       }
     return false;
+  }
+
+  openSnackBar() {
+    this.snackBar.open("Admin Panel!!", "OK",  {
+      duration: 2000,
+      panelClass: ['blue-snackbar']
+    });
   }
 
   logout(){
