@@ -19,16 +19,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDatepickerModule } from '@angular/material/datepicker';
-
 import { InfoDialogComponent } from '../../modules/info-dialog/info-dialog.component';
 import { CreateNewExamComponent } from '../../modules/create-new-exam/create-new-exam.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ExamsComponent } from '../../modules/exams/exams.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { QbankComponent } from '../../modules/qbank/qbank.component';
-import { AddQComponent } from '../../modules/add-q/add-q.component';
-import { EditQComponent } from '../../modules/edit-q/edit-q.component';
 import { StudentsResultsComponent } from '../../modules/students-results/students-results.component';
 import { SubjectListComponent } from '../../modules/subject-list/subject-list.component';
 import { SubjectExamsListComponent } from '../../modules/subject-exams-list/subject-exams-list.component';
@@ -43,7 +39,6 @@ import { ChaptersAddTorFQuestionsDialogComponent } from '../../modules/chapters-
 import { EditChaptersDialogComponent } from '../../modules/edit-chapters-dialog/edit-chapters-dialog.component';
 import { EditQuestionMcqComponent } from '../../modules/edit-question-mcq/edit-question-mcq.component';
 import { EditQuestionTorFComponent } from '../../modules/edit-question-tor-f/edit-question-tor-f.component';
-import { AddNewExamComponent } from '../../modules/add-new-exam/add-new-exam.component';
 import { QuestionBankExamChaptersComponent } from '../../modules/question-bank-exam-chapters/question-bank-exam-chapters.component';
 import { QuestionBankExamQuestionsComponent } from '../../modules/question-bank-exam-questions/question-bank-exam-questions.component';
 import { QuestionBankExamAllQuestionsComponent } from '../../modules/question-bank-exam-all-questions/question-bank-exam-all-questions.component';
@@ -61,9 +56,6 @@ import { MainExamsInformationDialogComponent } from '../../modules/main-exams-in
     InfoDialogComponent,
     CreateNewExamComponent,
     ExamsComponent,
-    QbankComponent,
-    AddQComponent,
-    EditQComponent,
     StudentsResultsComponent,
     SubjectListComponent,
     SubjectExamsListComponent,
@@ -78,7 +70,6 @@ import { MainExamsInformationDialogComponent } from '../../modules/main-exams-in
     EditChaptersDialogComponent,
     EditQuestionMcqComponent,
     EditQuestionTorFComponent,
-    AddNewExamComponent,
     QuestionBankExamChaptersComponent,
     QuestionBankExamQuestionsComponent,
     QuestionBankExamAllQuestionsComponent,
