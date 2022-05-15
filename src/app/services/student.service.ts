@@ -49,6 +49,10 @@ export class StudentService {
     return this.httpClient.get<AdminExams[]>(this.baseUrl + studentcode + '/subject/' + subjectid + '/exams').pipe();
   }
 
+  GetExamInfo(studentcode: any, examid: any): Observable<AdminExams> {
+    return this.httpClient.get<AdminExams>(this.baseUrl + studentcode  +'/getexaminfo/' + examid).pipe();
+  }
+
   GetStudentExams(studentcode: any): Observable<AdminExams[]> {
     return this.httpClient.get<AdminExams[]>(this.baseUrl + studentcode + '/exams').pipe();
   }

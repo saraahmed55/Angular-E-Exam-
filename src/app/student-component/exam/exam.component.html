@@ -9,7 +9,7 @@
               <div class="dropdown">
                 <button class="btn btn-light dropdown-toggle" (click)="toggleNav()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <!-- will change from database-->
-                 <span> Sabreen  </span>
+                 <span> {{student.first_name}} </span>
                 </button>
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [class.show]="isOpen">
                   <a class="dropdown-item" routerLink="/student/home">Home</a>
@@ -28,34 +28,53 @@
                         <img src="https://icon-library.com/images/assessment-icon-png/assessment-icon-png-23.jpg" width="90" height="90">
                     </div>
                     <div class="exam-header">
-                        <h2 style="font-family: cursive;">Exam Name</h2>
-                        <span style="font-style: italic;">Welcome (student name)</span>
+                        <h2 style="font-family: cursive;">{{exam.subject}} - {{exam.exam_name}}</h2>
+                        <span style="font-style: italic;">Welcome {{student.first_name}}</span>
                     </div>
                 </div>
 
                 <mat-divider></mat-divider>
                 <div class="d-flex justify-content-around py-3">
-                    <div class="grade"> <h4> 20 points </h4></div>
-                    <div class="Q-count"><span style="font-style: italic;">Question {{currentQuestion}} of 9 </span></div>
-                    <div class="timer"> <mat-icon aria-hidden="false" >timer </mat-icon>  10 min </div>
+                    <!-- <div class="grade"> <h4> 20 points </h4></div> -->
+                    <div class="Q-count"><span style="font-style: italic;">Question {{currentQuestion}} of {{numberOfQuestions}} </span></div>
+                    <div class="timer"> <mat-icon aria-hidden="false" >timer  </mat-icon> <span #minutes></span> : <span #seconds></span></div>
                 </div>
                 <mat-divider></mat-divider>
             </div>
 
             <div class="card p-3">
-                <h2 id="example-radio-group-label">{{questionList[currentQuestion]?.questionText}}</h2>
-                    <mat-radio-group
+                <h2 id="example-radio-group-label">{{questionList[currentQuestion -1]?.question_text}}</h2>
+                    <!-- <mat-radio-group
                     aria-labelledby="example-radio-group-label"
-                    class="example-radio-group" >
+                    class="example-radio-group" > -->
 
-                    <mat-radio-button class="example-radio-button" *ngFor="let options of questionList [currentQuestion]?.options" [value]="options">
+                    <!-- <mat-radio-button class="example-radio-button" *ngFor="let options of questionList [currentQuestion -1]?.options" [value]="options">
                         {{options.text}}
-                    </mat-radio-button>
-                    </mat-radio-group>
+                    </mat-radio-button> -->
+<!--
+                        <mat-radio-button class="example-radio-button" name="[currentQuestion -1]">
+                            {{questionList[currentQuestion -1]?.answer1}}
+                        </mat-radio-button>
+                        <mat-radio-button class="example-radio-button" name="[currentQuestion -1]">
+                          {{questionList[currentQuestion -1]?.answer2}}
+                        </mat-radio-button>
+                        <mat-radio-button class="example-radio-button" name="[currentQuestion -1]" *ngIf="questionList[currentQuestion -1]?.type == 'mcq'">
+                          {{questionList[currentQuestion -1]?.answer3}}
+                        </mat-radio-button>
+                        <mat-radio-button class="example-radio-button" name="[currentQuestion -1]" *ngIf="questionList[currentQuestion -1]?.type == 'mcq'">
+                          {{questionList[currentQuestion -1]?.answer4}}
+                        </mat-radio-button>
+                    </mat-radio-group> -->
+                    <mat-radio-group aria-label="question-answers">
+                        <mat-radio-button value="answer1">{{questionList[currentQuestion -1]?.answer1}}</mat-radio-button>
+                        <mat-radio-button value="answer2">{{questionList[currentQuestion -1]?.answer2}}</mat-radio-button>
+                        <mat-radio-button value="answer3" *ngIf="questionList[currentQuestion -1]?.type == 'mcq'">{{questionList[currentQuestion -1]?.answer3}}</mat-radio-button>
+                        <mat-radio-button value="answer4" *ngIf="questionList[currentQuestion -1]?.type == 'mcq'">{{questionList[currentQuestion -1]?.answer4}}</mat-radio-button>
+                      </mat-radio-group>
             </div>
 
             <div class="d-flex justify-content-between p-5">
-                <button mat-mini-fab color="accent" >
+                <button mat-mini-fab color="accent" [disabled]="currentQuestion == 1">
                     <mat-icon (click)="previousQuestion()">arrow_left</mat-icon>
                   </button>
 
@@ -63,14 +82,14 @@
                     <mat-icon>refresh</mat-icon>
                   </button>
 
-                  <button mat-mini-fab color="accent" >
-                    <mat-icon (click)="nextQuestion()">arrow_right</mat-icon>
+                  <button mat-mini-fab color="accent" [disabled]="currentQuestion == numberOfQuestions">
+                    <mat-icon (click)="nextQuestion()" >arrow_right</mat-icon>
                   </button>
 
 
             </div>
 
-            <button class="submit" mat-raised-button color="primary" routerLink="student/exam/submit" >Submit </button>
+            <button class="submit" mat-raised-button color="primary" (click)="submitexam()" >Submit </button>
 
         </div>
     </div>

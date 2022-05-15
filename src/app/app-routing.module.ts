@@ -57,7 +57,7 @@ const routes: Routes = [
   {path:'student/exams' , component:StudentExamsComponent, canActivate:[StudentGuard]},
   {path:'student/subject/:id' , component:SubjectDetailsComponent, canActivate:[StudentGuard]},
   {path:'student/exam/:id' , component:ExamComponent, canActivate:[StudentGuard]},
-  {path:'student/exam/submit' , component:SubmitComponent, canActivate:[StudentGuard]},
+  {path:'student/submit' , component:SubmitComponent, canActivate:[StudentGuard]},
 
   {
     path:'admin',
