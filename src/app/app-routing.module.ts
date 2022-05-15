@@ -29,6 +29,7 @@ import { SubjectExamsListComponent } from './professor/modules/subject-exams-lis
 import { SubjectStudentsListComponent } from './professor/modules/subject-students-list/subject-students-list.component';
 import { SubjectChaptersListComponent } from './professor/modules/subject-chapters-list/subject-chapters-list.component';
 import { ChaptersQuestionsComponent } from './professor/modules/chapters-questions/chapters-questions.component';
+import { QbankComponent } from './professor/modules/qbank/qbank.component';
 import { ChaptersQuestionsMcqComponent } from './professor/modules/chapters-questions-mcq/chapters-questions-mcq.component';
 import { ChaptersQuestionsTorFComponent } from './professor/modules/chapters-questions-tor-f/chapters-questions-tor-f.component';
 import { AdminGuard } from './guards/Admin.guard';
