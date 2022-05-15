@@ -61,6 +61,7 @@ const routes: Routes = [
   {
     path:'admin',
     component:DefaultComponent,
+    canActivate:[AdminGuard],
     children:[
   {
     path:'dashboard' ,

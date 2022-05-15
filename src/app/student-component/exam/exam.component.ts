@@ -5,6 +5,8 @@ import { AdminExams } from 'src/app/Models/AdminExams';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
 import { StudentService } from 'src/app/services/student.service';
 import { interval } from 'rxjs';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { SaveResults } from 'src/app/Models/SaveResults';
 
 @Component({
   selector: 'app-exam',
@@ -16,7 +18,11 @@ export class ExamComponent implements OnInit {
   @ViewChild("seconds") seconds: ElementRef
   isOpen:boolean=false;
   student: StudentInfo;
+  examForm: FormGroup;
   exam:AdminExams;
+  answers: any =[];
+  numberOfCorrectAnswers = 0;
+  saveResult: SaveResults
   public questionList: any =[];
   public currentQuestion: number=1;
   public numberOfQuestions:number =0;
@@ -25,11 +31,15 @@ export class ExamComponent implements OnInit {
   constructor(
     private service:StudentService,
     private route: Router,
-    private activatedroute:ActivatedRoute
+    private activatedroute:ActivatedRoute,
+    private formBuilder: FormBuilder
     ) { }
 
   ngOnInit(): void {
+    this.examForm = this.formBuilder.group({
+    });
     this.exam = new AdminExams();
+    this.saveResult = new SaveResults();
     this.student = new StudentInfo();
     this.getInfo();
     this.getExamInfo();
@@ -41,12 +51,20 @@ export class ExamComponent implements OnInit {
     this.isOpen= !this.isOpen
   }
 
+  createExamForm(questionsNumber: number){
+
+    for (let i = 0; i < questionsNumber; i++){
+      this.examForm.addControl('question' + i.toString(), new FormControl('') )
+    }
+  }
+
   getAllQuestions(){
     const studentcode = localStorage.getItem('student_code');
     if(studentcode != null){
       this.service.GetExamQuestions(studentcode, this.id).subscribe(success=>{
         this.questionList= success;
         this.numberOfQuestions = this.questionList.length;
+        this.createExamForm(this.numberOfQuestions);
       }, err=>console.log(err));
     }
   }
@@ -106,7 +124,31 @@ export class ExamComponent implements OnInit {
   }
 
   submitexam(){
-    this.route.navigate(['/student/submit'])
+    for(let i = 0; i < this.numberOfQuestions; i++){
+      if(this.questionList[i].type == 'mcq'){
+        if(this.questionList[i].CorrectAnswer == this.examForm.get('question' + i.toString())?.value){
+          this.numberOfCorrectAnswers++;
+        }
+      } else if(this.questionList[i].type == 'true or false') {
+        if(this.questionList[i].CorrectAnswer == 'true' &&  this.examForm.get('question' + i.toString())?.value == 'answer1'){
+          this.numberOfCorrectAnswers++;
+        } else if(this.questionList[i].CorrectAnswer == 'false' &&  this.examForm.get('question' + i.toString())?.value == 'answer2'){
+          this.numberOfCorrectAnswers++;
+        }
+
+      }
+    }
+    const result = Math.ceil((this.numberOfCorrectAnswers / this.numberOfQuestions) * 100);
+
+    this.saveResult.exams_id = this.id;
+    this.saveResult.result = result;
+    const studentcode = localStorage.getItem('student_code');
+    this.service.SaveExamResult(studentcode, this.saveResult).subscribe(success=>{
+      this.route.navigate(['/student/submit']);
+    }, err=> {console.log});
+
+    this.route.navigate([''])
+    this.route.navigateByUrl('/student/submit', { state: {result:result} });
   }
 
 }
