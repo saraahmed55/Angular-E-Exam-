@@ -20,6 +20,11 @@
                       <td mat-cell *matCellDef="let element"> {{element.exam_id}} </td>
                     </ng-container>
 
+                    <ng-container matColumnDef="exam_name">
+                      <th mat-header-cell *matHeaderCellDef>  exam_name </th>
+                      <td mat-cell *matCellDef="let element"> {{element.exam_name}} </td>
+                    </ng-container>
+
                     <ng-container matColumnDef="result">
                       <th mat-header-cell *matHeaderCellDef>  result </th>
                       <td mat-cell *matCellDef="let element"> {{element.result}} </td>

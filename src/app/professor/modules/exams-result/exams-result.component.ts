@@ -25,7 +25,7 @@ export class ExamsResultComponent implements OnInit {
   id:any;
   student_code:any;
 
-  displayedColumns: string[]=['exams_id','result']
+  displayedColumns: string[]=['exams_id','exam_name','result']
   dataSource = new MatTableDataSource<PeriodicElement>(this.studentsResults);
 
   @ViewChild(MatPaginator, { static: true })

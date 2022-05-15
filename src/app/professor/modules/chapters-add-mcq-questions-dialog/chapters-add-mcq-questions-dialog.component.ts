@@ -95,7 +95,7 @@ export class ChaptersAddMcqQuestionsDialogComponent implements OnInit {
     this.service.AddMCQQuestion(this.addData,this.prof_code,this.subject_id,this.chapter_id).subscribe(list=>{
       this.ngOnInit();
       this.message="Added Question Sucessfully";
-     this.route.navigate(['chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
+     this.route.navigate(['professor/chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
     },ex=>{
       this.errorMsg="please fill all fields correctly"
 

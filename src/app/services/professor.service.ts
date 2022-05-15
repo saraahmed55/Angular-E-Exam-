@@ -16,6 +16,7 @@ import { AddTorF } from '../Models/AddTorF';
 import { CreateExam } from '../Models/CreateExam';
 import { StudentSubjectResults } from '../Models/StudentSubjectResults';
 import { ExamInformation } from '../Models/ExamInformation';
+import { MainExamsInformation } from '../Models/MainExamsInformation';
 
 @Injectable({
   providedIn: 'root'
@@ -120,6 +121,12 @@ export class ProfessorService {
   }
   GetExamsInformation(prof_code:any, subjectid:any,examId:any): Observable<ExamInformation[]>{
     return this.httpClient.get<ExamInformation[]>(this.baseUrl + prof_code + '/subject/'+subjectid+'/exams/'+examId+'/information').pipe();
+  }
+  getProfessorExams(prof_code:any): Observable<Exams[]>{
+    return this.httpClient.get<Exams[]>(this.baseUrl + prof_code + '/exams').pipe();
+  }
+  GetMainExamsInformation(prof_code:any,examId:any): Observable<MainExamsInformation[]>{
+    return this.httpClient.get<MainExamsInformation[]>(this.baseUrl + prof_code + '/exams/'+examId+'/information').pipe();
   }
 
 

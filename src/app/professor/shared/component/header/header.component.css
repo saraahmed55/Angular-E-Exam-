@@ -1,8 +1,13 @@
 ul li {
     list-style: none;
-   
+
 }
 
 mat-toolbar{
     background-color: white;
+}
+
+.blue-snackbar {
+  background-color: #0b5b9d;
+  color: aliceblue;
 }

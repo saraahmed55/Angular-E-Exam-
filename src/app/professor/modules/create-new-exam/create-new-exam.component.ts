@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common'
 
 export interface PeriodicElement {
   subject_id:any;
+  name:any;
   start_time:any;
   end_time:any;
   duration_minutes:any;
@@ -44,8 +45,8 @@ export class CreateNewExamComponent implements OnInit {
   errorMsg:string;
   code:any;
   id:any;
- date: Date;
- latest_date: any;
+  date: Date;
+  latest_date: any;
 
   constructor(
     public dialog: MatDialog,
@@ -60,7 +61,6 @@ export class CreateNewExamComponent implements OnInit {
     this.latest_date =this.datepipe.transform(this.date, 'yyyy-MM-ddTHH-mm');
    }
 
-
   examForm:FormGroup;
   ngOnInit(): void {
     this.prof_code=localStorage.getItem("prof_code")
@@ -70,6 +70,7 @@ export class CreateNewExamComponent implements OnInit {
 
     this.addData = {
       subject_id:0,
+      name:'',
       start_time:'',
       end_time:'',
       duration_minutes:'',
@@ -83,6 +84,7 @@ export class CreateNewExamComponent implements OnInit {
 
     this.examForm=this.fb.group({
       start_time:[''],
+      name:[''],
       end_time:[''],
       duration_minutes:[''],
       mcq_easy_questionsNumber:[''],
@@ -97,6 +99,7 @@ export class CreateNewExamComponent implements OnInit {
 
   validateRegisterModel() {
     this.addData.subject_id=this.subject_id;
+    this.addData.name=this.examForm.value.name;
     this.addData.start_time=this.examForm.value.start_time;
     this.addData.end_time=this.examForm.value.end_time;
     this.addData.duration_minutes=this.examForm.value.duration_minutes;
@@ -113,7 +116,7 @@ export class CreateNewExamComponent implements OnInit {
     this.service.CreateExam(this.addData,this.prof_code,this.subject_id).subscribe(list=>{
       this.ngOnInit();
       this.message="Posted Sucessfully";
-     this.route.navigate(['chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
+     this.route.navigate(['professor/chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
     },ex=>{
       this.errorMsg="please fill all fields correctly"
     });
@@ -127,7 +130,6 @@ export class CreateNewExamComponent implements OnInit {
 
   openChaptersDialog() {
     const dialogRef = this.dialog.open(QuestionBankExamChaptersComponent, { width:'78%' });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

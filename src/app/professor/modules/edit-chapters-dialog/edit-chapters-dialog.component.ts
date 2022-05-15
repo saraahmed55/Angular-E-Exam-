@@ -77,7 +77,7 @@ export class EditChaptersDialogComponent implements OnInit {
 
       this.service.Editchapter(this.editData,this.prof_code,this.subject_id,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";
-        this.route.navigate(['SubjectsChapters']).then(x=>{window.location.reload();});
+        this.route.navigate(['professor/SubjectsChapters']).then(x=>{window.location.reload();});
       },ex=>console.log(ex));
     }
   }

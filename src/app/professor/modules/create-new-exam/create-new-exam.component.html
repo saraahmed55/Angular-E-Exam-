@@ -17,8 +17,17 @@
             </div>
 
           <form class="row g-3" [formGroup]="examForm"(ngSubmit)="CreateExam()">
+
+              <div class="container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Name </mat-label>
+                  <input matInput  placeholder="Ex:MidTerm" formControlName="name">
+                </mat-form-field>
+              </div>
+
              <div class="container" >
               <h1>MCQ Questions</h1>
+
                 <mat-form-field appearance="fill" class="Qtype">
                   <mat-label>Easy Question Count </mat-label>
                   <input matInput type="number" placeholder="Ex:12" formControlName="mcq_easy_questionsNumber">

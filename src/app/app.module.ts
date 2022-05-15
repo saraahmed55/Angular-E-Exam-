@@ -36,7 +36,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
 import { DatePipe } from '@angular/common';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const appRoutes:Routes = [
   {path:'',component:StudentsComponent}
@@ -56,13 +56,7 @@ const appRoutes:Routes = [
     StudentExamsComponent,
     SubjectDetailsComponent,
     ExamComponent,
-    SubmitComponent
-
-
-
-
-
-
+    SubmitComponent,
 
 
 
@@ -90,9 +84,8 @@ const appRoutes:Routes = [
     MatRadioModule,
     MatSliderModule,
     MatCardModule,
-    MatBadgeModule
-
-
+    MatBadgeModule,
+    MatSnackBarModule,
 
 
   ],
