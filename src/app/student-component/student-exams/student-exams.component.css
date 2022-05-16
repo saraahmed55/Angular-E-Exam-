@@ -1,35 +1,35 @@
-body{
-    padding: 0;
-    margin: 0;
+body {
+  padding: 0;
+  margin: 0;
 }
-.background{
-    background-image: linear-gradient(to right, rgb(126, 11, 120), rgb(29, 29, 114));
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;  
-}
-
-.dropdown{
-    float: right;
+.background {
+  background-image: linear-gradient(to right,rgb(126, 11, 120),rgb(29, 29, 114));
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
-.space{
-    height: 40px;
+.dropdown {
+  float: right;
+}
+
+.space {
+  height: 40px;
 }
 
 table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+  width: 100%;
+}
 
- .icon{
-     margin: 2px;
- }
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
 
- button{
-     margin-left: 3px;
- }
+.icon {
+  margin: 2px;
+}
+
+button {
+  margin-left: 3px;
+}

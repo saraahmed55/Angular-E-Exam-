@@ -1,12 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AdminExams } from 'src/app/Models/AdminExams';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
 import { StudentService } from 'src/app/services/student.service';
-import { interval } from 'rxjs';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { SaveResults } from 'src/app/Models/SaveResults';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-exam',
@@ -24,7 +23,6 @@ export class ExamComponent implements OnInit {
   numberOfCorrectAnswers = 0;
   saveResult: SaveResults
   public questionList: any =[];
-  public currentQuestion: number=1;
   public numberOfQuestions:number =0;
   id = this.activatedroute.snapshot.paramMap.get("id");
 
@@ -32,7 +30,8 @@ export class ExamComponent implements OnInit {
     private service:StudentService,
     private route: Router,
     private activatedroute:ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
     ) { }
 
   ngOnInit(): void {
@@ -52,7 +51,6 @@ export class ExamComponent implements OnInit {
   }
 
   createExamForm(questionsNumber: number){
-
     for (let i = 0; i < questionsNumber; i++){
       this.examForm.addControl('question' + i.toString(), new FormControl('') )
     }
@@ -113,15 +111,8 @@ export class ExamComponent implements OnInit {
           this.submitexam();
       }
     }, 1000)
-}
-
-  nextQuestion(){
-          this.currentQuestion++;
   }
 
-  previousQuestion(){
-        this.currentQuestion--;
-  }
 
   submitexam(){
     for(let i = 0; i < this.numberOfQuestions; i++){
@@ -147,8 +138,14 @@ export class ExamComponent implements OnInit {
       this.route.navigate(['/student/submit']);
     }, err=> {console.log});
 
-    this.route.navigate([''])
     this.route.navigateByUrl('/student/submit', { state: {result:result} });
+  }
+
+  logout(){
+    this.auth.Logout().subscribe(success=>{
+      localStorage.clear();
+      this.route.navigate(['/logout']);
+    }, err=>console.log(err) );
   }
 
 }

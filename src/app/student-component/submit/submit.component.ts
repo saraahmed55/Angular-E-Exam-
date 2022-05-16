@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 import { faSmile, fas } from '@fortawesome/free-solid-svg-icons';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
+import { AuthService } from 'src/app/services/auth.service';
 import { StudentService } from 'src/app/services/student.service';
 
 
@@ -20,7 +21,8 @@ export class SubmitComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: StudentService
+    private service: StudentService,
+    private auth: AuthService,
     ) { }
 
   ngOnInit(): void {
@@ -39,5 +41,11 @@ export class SubmitComponent implements OnInit {
           console.log(err);
         });
     }
+  }
+  logout(){
+    this.auth.Logout().subscribe(success=>{
+      localStorage.clear();
+      this.router.navigate(['/logout']);
+    }, err=>console.log(err) );
   }
 }

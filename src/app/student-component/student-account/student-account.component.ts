@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import { faBookMedical } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
@@ -6,11 +7,8 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
 import { StudentResults } from 'src/app/Models/StudentResults';
 import { Subjects } from 'src/app/Models/Subjects';
+import { AuthService } from 'src/app/services/auth.service';
 import { StudentService } from 'src/app/services/student.service';
-
-
-
-
 
 @Component({
   selector: 'app-student-account',
@@ -27,7 +25,11 @@ export class StudentAccountComponent implements OnInit {
   student: StudentInfo;
   subjects: Subjects[];
   results:StudentResults[];
-  constructor(private studentservice: StudentService) { }
+  constructor(
+    private studentservice: StudentService,
+    private auth: AuthService,
+    private route: Router,
+    ) { }
 
   ngOnInit(): void {
     this.student = new StudentInfo();
@@ -72,5 +74,10 @@ export class StudentAccountComponent implements OnInit {
     }
   }
 
-
+  logout(){
+    this.auth.Logout().subscribe(success=>{
+      localStorage.clear();
+      this.route.navigate(['/logout']);
+    }, err=>console.log(err) );
+  }
 }

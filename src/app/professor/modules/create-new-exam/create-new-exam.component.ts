@@ -18,7 +18,7 @@ export interface PeriodicElement {
   duration_minutes:any;
   mcq_easy_questionsNumber:any;
   mcq_medium_questionsNumber:any;
-  mcq_hard_questions:any;
+  mcq_hard_questionsNumber:any;
   tf_easy_questionsNumber:any;
   tf_medium_questionsNumber:any;
   tf_hard_questionsNumber:any;
@@ -76,7 +76,7 @@ export class CreateNewExamComponent implements OnInit {
       duration_minutes:'',
       mcq_easy_questionsNumber:'',
       mcq_medium_questionsNumber:'',
-      mcq_hard_questions:'',
+      mcq_hard_questionsNumber:'',
       tf_easy_questionsNumber:'',
       tf_medium_questionsNumber:'',
       tf_hard_questionsNumber:'',
@@ -89,7 +89,7 @@ export class CreateNewExamComponent implements OnInit {
       duration_minutes:[''],
       mcq_easy_questionsNumber:[''],
       mcq_medium_questionsNumber:[''],
-      mcq_hard_questions:[''],
+      mcq_hard_questionsNumber:[''],
       tf_easy_questionsNumber:[''],
       tf_medium_questionsNumber:[''],
       tf_hard_questionsNumber:[''],
@@ -105,7 +105,7 @@ export class CreateNewExamComponent implements OnInit {
     this.addData.duration_minutes=this.examForm.value.duration_minutes;
     this.addData.mcq_easy_questionsNumber=this.examForm.value.mcq_easy_questionsNumber;
     this.addData.mcq_medium_questionsNumber=this.examForm.value.mcq_medium_questionsNumber;
-    this.addData.mcq_hard_questions=this.examForm.value.mcq_hard_questions;
+    this.addData.mcq_hard_questionsNumber=this.examForm.value.mcq_hard_questionsNumber;
     this.addData.tf_easy_questionsNumber=this.examForm.value.tf_easy_questionsNumber;
     this.addData.tf_medium_questionsNumber=this.examForm.value.tf_medium_questionsNumber;
     this.addData.tf_hard_questionsNumber=this.examForm.value.tf_hard_questionsNumber;

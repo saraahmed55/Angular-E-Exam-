@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faSmile } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons'
 import { StudentInfo } from 'src/app/Models/StudentInfo';
+import { AuthService } from 'src/app/services/auth.service';
 import { StudentService } from 'src/app/services/student.service';
-
-
 
 @Component({
   selector: 'app-student-home',
@@ -19,7 +19,9 @@ export class StudentHomeComponent implements OnInit {
 
 
   constructor(
-    private studentservice:StudentService
+    private studentservice:StudentService,
+    private auth: AuthService,
+    private route: Router,
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,13 @@ export class StudentHomeComponent implements OnInit {
           console.log(err);
         });
     }
+  }
+
+  logout(){
+    this.auth.Logout().subscribe(success=>{
+      localStorage.clear();
+      this.route.navigate(['/logout']);
+    }, err=>console.log(err) );
   }
 
 }

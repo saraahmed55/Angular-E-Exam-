@@ -4,6 +4,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import { StudentService } from 'src/app/services/student.service';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
 import { AdminExams } from 'src/app/Models/AdminExams';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 
 export interface PeriodicElement {
@@ -48,7 +50,10 @@ export class StudentExamsComponent implements OnInit {
   exams:AdminExams[];
   timenow:Date;
 
-  constructor(private studentservice:StudentService) { }
+  constructor(
+    private studentservice:StudentService,
+    private auth: AuthService,
+    private route: Router,) { }
 
   ngOnInit(): void {
     this.timenow = new Date();
@@ -57,8 +62,6 @@ export class StudentExamsComponent implements OnInit {
     this.exams = [];
     this.getInfo();
     this.getExams();
-
-
   }
 
 
@@ -91,6 +94,13 @@ export class StudentExamsComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  logout(){
+    this.auth.Logout().subscribe(success=>{
+      localStorage.clear();
+      this.route.navigate(['/logout']);
+    }, err=>console.log(err) );
   }
 
 }

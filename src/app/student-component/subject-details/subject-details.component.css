@@ -55,5 +55,10 @@ table {
      text-align: center;
  }
 
+ :host ::ng-deep .mat-slider.mat-disabled{
+   background-color: black;
+   color: black;
+   opacity: 1 !important;
+ }
 
 

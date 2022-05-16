@@ -1,12 +1,13 @@
 import { Component, OnInit , ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { SubjectDetails } from 'src/app/Models/SubjectDetails';
 import { StudentInfo } from 'src/app/Models/StudentInfo';
 import { AdminExams } from 'src/app/Models/AdminExams';
 import { StudentSubjectResults } from 'src/app/Models/StudentSubjectResults';
+import { AuthService } from 'src/app/services/auth.service';
 
 export interface PeriodicElement {
   id:string;
@@ -17,16 +18,11 @@ export interface PeriodicElement {
   duration?:string;
   sDate?:string;
   eDate?:string;
-
-
-
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {id:'1' ,  examName:'midterm', subject:'VB' , qCount:'15' ,grad:'30' , duration:'15',sDate:'12/12/2022  9am' , eDate:'15/12/2022   9am' },
   {id:'2' ,  examName:'midterm' },
-
-
 ];
 
 @Component({
@@ -36,14 +32,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class SubjectDetailsComponent implements OnInit {
   isOpen:boolean=false;
-  value = 30;
   id = this.activatedroute.snapshot.paramMap.get("id");
   subject: SubjectDetails;
   student:StudentInfo;
   exams:AdminExams[];
   results:StudentSubjectResults[];
   timenow:Date;
-
+  avgResult = 0;
   displayedColumns: string[]=['id' ,'examName', 'duration' ,'sDate' ,'eDate' , "action"]
   resultDisplayedColumns: string[]=['id' ,'examName', 'result']
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
@@ -55,7 +50,9 @@ export class SubjectDetailsComponent implements OnInit {
 
   constructor(
     private activatedroute:ActivatedRoute,
-    private studentservice:StudentService
+    private studentservice:StudentService,
+    private auth: AuthService,
+    private route: Router,
     ) { }
 
   ngOnInit(): void {
@@ -106,7 +103,12 @@ export class SubjectDetailsComponent implements OnInit {
     const studentcode = localStorage.getItem('student_code');
     if(studentcode != null){
       this.studentservice.GetStudentSubjectResults(studentcode, this.id).subscribe(success=>{
-        this.results=success;}, err =>{
+        this.results=success;
+        for(let result of this.results){
+          this.avgResult += result.result;
+        }
+        this.avgResult = this.avgResult/this.results.length;
+      }, err =>{
           console.log(err);
         });
     }
@@ -117,5 +119,12 @@ export class SubjectDetailsComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  logout(){
+    this.auth.Logout().subscribe(success=>{
+      localStorage.clear();
+      this.route.navigate(['/logout']);
+    }, err=>console.log(err) );
   }
 }

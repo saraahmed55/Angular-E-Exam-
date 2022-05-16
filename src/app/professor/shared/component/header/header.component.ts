@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.auth.Logout().subscribe(success=>{
       localStorage.clear();
-      this.route.navigate(['/logout']).then(x=>{window.location.reload();});
+      this.route.navigate(['/logout']);
     }, err=>console.log(err) );
   }
 

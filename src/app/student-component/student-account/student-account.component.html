@@ -1,19 +1,16 @@
 <body>
     <div class="background">
-
         <nav class="navbar navbar-light bg-light">
             <div class="container">
-                <!-- we will add logo later-->
                 <a class="navbar-brand" href="#">
                  <img src="/assets/images/EExams-removebg-preview.png" width="80" height="60"></a>
                 <div class="dropdown">
                 <button class="btn btn-light dropdown-toggle" (click)="toggleNav()" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <!-- will change from database-->
                  <span> {{student.first_name}}  </span>
                 </button>
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" [class.show]="isOpen">
                   <a class="dropdown-item" routerLink="/student/home">Home</a>
-                  <a class="dropdown-item" routerLink="/logout">Log Out</a>
+                  <a class="dropdown-item" (click)="logout()">Log Out</a>
                 </div>
              </div>
             </div>
@@ -26,49 +23,31 @@
                 <div class="col col-4" id="subjects">
                     <img  class="rotate" src="../../../assets/images/download.png" width="200px" height="110px">
                     <h3> <span ><fa-icon [icon]="faBookMedical"></fa-icon></span> YOUR SUBJECTS</h3>
-
-                     <div class="sidebar">
+                    <div class="sidebar">
                         <a [routerLink]="['/student/subject', subject.id]" *ngFor="let subject of subjects"> <span><fa-icon [icon]="faLocationArrow"></fa-icon></span> {{subject.name}}</a>
-                      </div>
-
+                    </div>
                 </div>
 
                 <div class="col col-8" id="dash">
                     <h2>{{student.first_name}} {{student.last_name}}</h2>
                     <h4><span><fa-icon [icon]="faGraduationCap"></fa-icon></span> Student</h4>
-
                     <mat-tab-group animationDuration="0ms">
                         <mat-tab label="Information">
                             <h2>Student Code : <span class="info">{{student.student_code}}</span></h2>
                             <h2>Email:       <span class="info" >{{student.email}}</span></h2>
                             <h2>Level:       <span class="info">{{student.level}}</span></h2>
                             <h2>Department:  <span class="info">{{student.department_name}}</span></h2>
-
-
-                            </mat-tab>
-
-
-
+                        </mat-tab>
                         <mat-tab label="Results">
-                            <h2 *ngFor="let result of results">{{result.subject}} - {{result.exams_name}}<span ><button mat-button color="primary">Total: {{result.result}} %</button></span></h2>
-
-
-
+                            <h2 *ngFor="let result of results">{{result.subject}} - {{result.exams_name}}
+                              <span >
+                                <button mat-button color="primary">Total: {{result.result}} %</button>
+                              </span>
+                            </h2>
                         </mat-tab>
                       </mat-tab-group>
-
-
-
-
-
-
                 </div>
-
-
-           </div>
-
+            </div>
         </div>
-
-
     </div>
 </body>

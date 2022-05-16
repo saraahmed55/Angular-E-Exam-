@@ -1,6 +1,5 @@
 <body>
     <div class="background">
-
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <!-- we will add logo later-->
@@ -15,124 +14,92 @@
                   <a class="dropdown-item" routerLink="/student/home">Home</a>
                   <a class="dropdown-item" routerLink="/student/account">Account</a>
 
-                  <a class="dropdown-item" routerLink="/logout">Log Out</a>
+                  <a class="dropdown-item" (click)="logout()">Log Out</a>
                 </div>
              </div>
             </div>
         </nav>
-
         <div class="space"></div>
-
         <div class="container" id="con2">
             <div class="space"></div>
-
-
             <mat-card class="example-result-card">
                 <mat-card-content class="details">
-
-
-                    <h2> <mat-icon color="primary">book</mat-icon>
-                        {{subject.name}}</h2>
+                    <h2>
+                      <mat-icon color="primary">book</mat-icon>
+                      {{subject.name}}
+                    </h2>
                     <span> By DR: {{subject.prof_first_name}} {{subject.prof_last_name}}</span>
-
-
                 </mat-card-content>
-
                 <mat-card-content class="progerss">
-
                     <h2>Your progress in this Subject</h2>
-
-
                     <div class="example-label-container" >
-                      <label id="example-name-label" class="example-name-label">your score:    </label>
-                      <label class="example-value-label">{{value}} %</label>
+                      <label id="example-name-label" class="example-name-label">Your Average Score:    </label>
+                      <label class="example-value-label"> {{avgResult}} %</label>
                     </div>
-                    <!--  let progress bar eqal value-->
-                    <mat-slider color="primary" ></mat-slider>
-
-
+                    <mat-slider class="slider" color="primary" disabled="true" [value]="avgResult" ></mat-slider>
                 </mat-card-content>
-              </mat-card>
+            </mat-card>
+            <div class="space"></div>
 
-              <div class="space"></div>
+            <h1 >See Your Exams</h1>
 
-              <h1 >See Your Exams</h1>
-
-              <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="exams">
-                    <!-- id Column -->
-                    <ng-container matColumnDef="id">
-                      <th mat-header-cell *matHeaderCellDef> ID </th>
-                      <td mat-cell *matCellDef="let element"> {{element.exam_id}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="examName">
-                      <th mat-header-cell *matHeaderCellDef> Exam Name</th>
-                      <td mat-cell *matCellDef="let element"> {{element.exam_name}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="duration">
-                      <th mat-header-cell *matHeaderCellDef>  duration(minutes) </th>
-                      <td mat-cell *matCellDef="let element"> {{element.duration_minutes}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="sDate">
-                      <th mat-header-cell *matHeaderCellDef>  Start Time </th>
-                      <td mat-cell *matCellDef="let element"> {{element.start_time}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="eDate">
-                      <th mat-header-cell *matHeaderCellDef> End Time </th>
-                      <td mat-cell *matCellDef="let element"> {{element.end_time}} </td>
-                    </ng-container>
-
-                                        <!-- Actions -->
-                    <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef> Actions</th>
-                        <td mat-cell *matCellDef="let element" >
-                          <button mat-raised-button color="primary" [routerLink]="['/student/exam', element.exam_id]" *ngIf="this.start(element)">Start Exam</button>
-                        </td>
-                    </ng-container>
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                 </table>
-
-                 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
-              </div>
-
-
-            <h1 >See Your Results</h1>
             <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="results">
-                  <!-- id Column -->
+              <table mat-table [dataSource]="exams">
                   <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef> ID </th>
                     <td mat-cell *matCellDef="let element"> {{element.exam_id}} </td>
                   </ng-container>
-
                   <ng-container matColumnDef="examName">
                     <th mat-header-cell *matHeaderCellDef> Exam Name</th>
                     <td mat-cell *matCellDef="let element"> {{element.exam_name}} </td>
                   </ng-container>
+                  <ng-container matColumnDef="duration">
+                    <th mat-header-cell *matHeaderCellDef>  duration(minutes) </th>
+                    <td mat-cell *matCellDef="let element"> {{element.duration_minutes}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="sDate">
+                    <th mat-header-cell *matHeaderCellDef>  Start Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.start_time}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="eDate">
+                    <th mat-header-cell *matHeaderCellDef> End Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.end_time}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef> Actions</th>
+                      <td mat-cell *matCellDef="let element" >
+                        <button mat-raised-button color="primary" [routerLink]="['/student/exam', element.exam_id]" *ngIf="this.start(element)">Start Exam</button>
+                      </td>
+                  </ng-container>
 
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+            <div class="space"></div>
+
+            <h1 >See Your Results</h1>
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="results">
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.exam_id}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="examName">
+                    <th mat-header-cell *matHeaderCellDef> Exam Name</th>
+                    <td mat-cell *matCellDef="let element"> {{element.exam_name}} </td>
+                  </ng-container>
                   <ng-container matColumnDef="result">
                     <th mat-header-cell *matHeaderCellDef>  Result </th>
                     <td mat-cell *matCellDef="let element"> {{element.result}} </td>
                   </ng-container>
 
-
                   <tr mat-header-row *matHeaderRowDef="resultDisplayedColumns"></tr>
                   <tr mat-row *matRowDef="let row; columns: resultDisplayedColumns;"></tr>
-               </table>
-
+              </table>
                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
           </div>
         </div>
-
     </div>
-
-
 </body>

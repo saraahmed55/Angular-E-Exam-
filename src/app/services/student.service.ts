@@ -2,11 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { AdminExams } from '../Models/AdminExams';
-import { Exams } from '../Models/Exams';
 import { SaveResults } from '../Models/SaveResults';
 import { StudentInfo } from '../Models/StudentInfo';
 import { StudentResults } from '../Models/StudentResults';
-import { Students } from '../Models/Students';
 import { StudentSubjectResults } from '../Models/StudentSubjectResults';
 import { SubjectDetails } from '../Models/SubjectDetails';
 import { Subjects } from '../Models/Subjects';
@@ -18,12 +16,6 @@ export class StudentService {
 
   constructor(private httpClient: HttpClient) { }
   baseUrl= 'http://127.0.0.1:8000/api/students/';
-  headers = {
-    headers: new HttpHeaders({
-      "Content-Type": "application/json"
-    }),
-    withCredentials: true,
-  };
 
   GetStudentInfo(studentcode: any): Observable<StudentInfo> {
     return this.httpClient.get<StudentInfo>(this.baseUrl + studentcode + '/info').pipe();
