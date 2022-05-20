@@ -20,6 +20,7 @@ import { EditProfessorModel } from '../Models/EditProfessorModel';
 import { RolesModel } from '../Models/RolesModel';
 import { EditSubjectModel } from '../Models/EditSubjectModel';
 import { EditDepartmentModel } from '../Models/EditDepartmentModel';
+import { StudentResults } from '../Models/StudentResults';
 
 @Injectable({
   providedIn: 'root'
@@ -119,7 +120,7 @@ export class AdminService {
   EditSubject(model:EditSubjectModel,id:any): Observable<Subjects> {
     return this.httpClient.put<Subjects>(this.baseUrl + 'editsubject/'+id,model, {headers: this.headers}).pipe();
   }
-  
+
   EditDepartment(model:EditDepartmentModel,id:any): Observable<Departments> {
     return this.httpClient.put<Departments>(this.baseUrl + 'editdepartment/'+id,model, {headers: this.headers}).pipe();
   }
@@ -177,8 +178,9 @@ export class AdminService {
   ChangeToProfessor(id:any){
     return this.httpClient.get(this.baseUrl+'user_roles/toprofessor/' + id, {headers: this.headers}).pipe();
   }
-
-
+  GetStudentsResults(exam_id:any): Observable<StudentResults[]> {
+    return this.httpClient.get<StudentResults[]>(this.baseUrl+'exams/'+exam_id+'/students_results', {headers: this.headers}).pipe();
+  }
   populateForm(student:any){
     this.form.setValue(student);
   }

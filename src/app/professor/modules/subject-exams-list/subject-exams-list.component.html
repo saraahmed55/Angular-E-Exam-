@@ -12,6 +12,12 @@
 
           <div class="mat-elevation-z8">
               <table mat-table [dataSource]="exams">
+
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
+                      No Data Found
+                    </td>
+                  </tr>
                           <!-- id Column -->
                   <ng-container matColumnDef="id">
                       <th mat-header-cell *matHeaderCellDef> Exam ID </th>

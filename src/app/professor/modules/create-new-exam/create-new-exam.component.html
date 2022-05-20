@@ -2,7 +2,7 @@
     <div class="background">
         <div class="space"></div>
         <div class="container" id="con">
-            <h1>Create New Exam </h1>
+            <h1  *ngFor="let element of subjectName">Create New <span>{{element.name}} </span>Exam </h1>
             <mat-divider></mat-divider>
 
             <div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
@@ -10,10 +10,6 @@
             </div>
             <div class="alert alert-danger fade show" role="alert" *ngIf="this.message == null && this.errorMsg != null && this.errorMsg != ''">
               <span>{{this.errorMsg}}</span>
-            </div>
-
-            <div class="container">
-              <h2 style="color:blue;" *ngFor="let element of subjectName">Subject Name: {{element.name}} </h2>
             </div>
 
           <form class="row g-3" [formGroup]="examForm"(ngSubmit)="CreateExam()">
@@ -26,7 +22,7 @@
               </div>
 
              <div class="container" >
-              <h1>MCQ Questions</h1>
+              <h2>MCQ Questions</h2>
 
                 <mat-form-field appearance="fill" class="Qtype">
                   <mat-label>Easy Question Count </mat-label>
@@ -45,13 +41,13 @@
              </div>
 
              <div class="container" >
-              <h1>True and False Questions</h1>
+              <h2>True and False Questions</h2>
                 <mat-form-field appearance="fill" class="Qtype">
                   <mat-label>Easy Question Count </mat-label>
                   <input matInput type="number" placeholder="Ex:MidTerm "formControlName="tf_easy_questionsNumber">
                 </mat-form-field>
 
-                <mat-form-field appearance="fill" class="Qtype">
+                  <mat-form-field appearance="fill" class="Qtype">
                     <mat-label>Medium Question Count</mat-label>
                     <input matInput type="number" placeholder="Placeholder"formControlName="tf_medium_questionsNumber">
                   </mat-form-field>
@@ -73,24 +69,22 @@
                 <mat-form-field color="accent" appearance="fill">
                     <mat-label>Opening Date and Time</mat-label>
                     <input matInput   type="datetime-local"formControlName="start_time">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
                   </mat-form-field>
-                  <!-- [ngModel]="filterDateFrom | date:'yyyy-MM-ddTHH:mm'" [min]="minDate" -->
                   <mat-form-field color="accent" appearance="fill" >
                     <mat-label>Closing date and Time</mat-label>
                     <input matInput type="datetime-local" formControlName="end_time">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
                   </mat-form-field>
-
              </div>
 
              <div class="container">
                <button mat-raised-button color="primary" (click)="openChaptersDialog()">Question Bank</button>
              </div>
 
-             <div mat-dialog-actions [align]="'end'">
-              <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
-              <button mat-raised-button color="primary" >Save</button>
+             <div class="buttons">
+              <div mat-dialog-actions [align]="'end'">
+                <button mat-raised-button color="warn" mat-dialog-close>Cancle</button>
+                <button mat-raised-button color="primary" >Save</button>
+              </div>
             </div>
           </form>
         </div>

@@ -18,6 +18,11 @@
           <div class="mat-elevation-z8">
               <table mat-table [dataSource]="mcqs">
 
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
+                        No Data Found
+                      </td>
+                    </tr>
                     <ng-container matColumnDef="mcq_id">
                       <th mat-header-cell *matHeaderCellDef> ID </th>
                       <td mat-cell *matCellDef="let element"> {{element.mcq_id}} </td>
