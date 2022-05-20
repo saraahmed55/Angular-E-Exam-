@@ -74,7 +74,6 @@ export class StudentsComponent implements OnInit {
   }
 
   DeleteConfirm(id:any){
-    console.log(id);
     this.service.DeleteStudent(id).subscribe(s=>{
      console.log('success');
      this.getStudents();

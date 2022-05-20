@@ -1,15 +1,12 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
-import { DialogEditComponent } from '../dialog-edit/dialog-edit.component';
 import {MatPaginator} from '@angular/material/paginator';
 import { AdminService } from 'src/app/services/admin.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { StudentResults } from 'src/app/Models/StudentResults';
 
 export interface PeriodicElement {
+  id:any;
   student_code:any;
   first_name:any;
   last_name:any;
@@ -37,6 +34,7 @@ export class StudentsResultsDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
+    private route: Router,
     private service:AdminService
   ) { }
 
@@ -50,6 +48,14 @@ export class StudentsResultsDialogComponent implements OnInit {
     this.service.GetStudentsResults(exam_id).subscribe(list=>{
       this.results=list;
    });
+  }
+
+  DeleteConfirm(result_id:any){
+    this.service.DeleteStudentResult(result_id).subscribe(s=>{
+     console.log('success');
+     this.GetStudentsResults(this.exam_id);
+     this.route.navigate(['/admin/ExamsList']).then(x=>{window.location.reload();});
+    },ex=>console.log(ex));
   }
 
 }

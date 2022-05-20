@@ -181,6 +181,9 @@ export class AdminService {
   GetStudentsResults(exam_id:any): Observable<StudentResults[]> {
     return this.httpClient.get<StudentResults[]>(this.baseUrl+'exams/'+exam_id+'/students_results', {headers: this.headers}).pipe();
   }
+  DeleteStudentResult(result_id:any){
+    return this.httpClient.delete(this.baseUrl+'students_results/deleteResult/'+result_id, {headers: this.headers});
+  }
   populateForm(student:any){
     this.form.setValue(student);
   }
