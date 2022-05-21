@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ExamsInformationDialogComponent } from '../exams-information-dialog/exams-information-dialog.component';
+import { StudentsResultsDialogComponent } from 'src/app/admin/modules/students-results-dialog/students-results-dialog.component';
 
 export interface PeriodicElement {
   exam_id:any;
@@ -62,6 +63,12 @@ export class SubjectExamsListComponent implements OnInit {
   openInformationDialog(exam_id:any){
     const dialogRef = this.dialog.open(ExamsInformationDialogComponent , { width:'50%',data: {  Id:exam_id,}});
     console.log(exam_id)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  getStudentsResults(exam_id:any){
+    const dialogRef = this.dialog.open( StudentsResultsDialogComponent , { width:'50%',data: {  Id:exam_id,}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

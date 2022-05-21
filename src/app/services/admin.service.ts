@@ -170,11 +170,9 @@ export class AdminService {
   GetProfessorProfessors(): Observable<SimpleProfessor[]>{
     return this.httpClient.get<SimpleProfessor[]>(this.baseUrl+'user_roles/professors', {headers: this.headers}).pipe();
   }
-
   ChangeToAdmin(id: any){
     return this.httpClient.get(this.baseUrl+'user_roles/toadmin/' + id, {headers: this.headers}).pipe();
   }
-
   ChangeToProfessor(id:any){
     return this.httpClient.get(this.baseUrl+'user_roles/toprofessor/' + id, {headers: this.headers}).pipe();
   }
