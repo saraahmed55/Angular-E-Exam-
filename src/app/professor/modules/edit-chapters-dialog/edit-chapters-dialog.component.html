@@ -7,11 +7,8 @@
 <div class="alert alert-danger fade show" role="alert" *ngIf="this.message == null && this.errorMsg != null && this.errorMsg != ''">
   <span>{{this.errorMsg}}</span>
 </div>
-
 <div mat-dialog-content >
-
   <form class="row g-3"[formGroup]="chapterForm"(ngSubmit)="AddChapter()" >
-
     <div class="container">
         <mat-form-field appearance="fill">
           <mat-label> Chapter Number</mat-label>
@@ -23,8 +20,7 @@
         <mat-label> Chapter Name</mat-label>
         <input matInput placeholder="Chapter Name"  name="chapter_name" formControlName="chapter_name">
       </mat-form-field>
-  </div>
-
+    </div>
     <div class="container">
           <div mat-dialog-actions [align]="'end'">
             <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
