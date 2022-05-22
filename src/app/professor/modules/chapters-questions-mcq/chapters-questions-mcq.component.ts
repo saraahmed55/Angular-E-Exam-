@@ -67,8 +67,7 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
     this.service.getChapterMCQ(profcode,subjectid,chapterid).subscribe(list=>{
       this.mcqs=list;
       this.dataSource = new MatTableDataSource(this.mcqs);
-      this.dataSource.paginator = this.paginator;
-   });
+      this.dataSource.paginator = this.paginator;});
   }
 
   openDialog() {
