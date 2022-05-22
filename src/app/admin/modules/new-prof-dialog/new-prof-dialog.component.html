@@ -31,7 +31,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Enter Professer email</mat-label>
-            <input matInput placeholder="pat@example.com" name="email" formControlName="email" [formControl]="email" required>
+            <input matInput placeholder="pat@example.com" name="email" formControlName="email">
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
 

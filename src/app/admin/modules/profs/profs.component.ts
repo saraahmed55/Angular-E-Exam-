@@ -55,7 +55,7 @@ export class ProfsComponent implements OnInit {
 
 
   openDialog() {
-    const dialogRef = this.dialog.open(NewProfDialogComponent, { width:'30%'});
+    const dialogRef = this.dialog.open(NewProfDialogComponent, { width:'40%'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

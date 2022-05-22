@@ -93,7 +93,6 @@ export class DialogComponent implements OnInit {
   AddStudent(){
     this.validateRegisterModel();
     this.service.AddNewStudent(this.students).subscribe(list=>{
-      this.ngOnInit();
       this.message="Added Student Sucessfully";
       this.route.navigate(['/admin/students']).then(x=>{window.location.reload();});
     },ex=>{

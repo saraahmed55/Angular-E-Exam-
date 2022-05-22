@@ -16,8 +16,6 @@ import { Router } from '@angular/router';
 })
 export class NewProfDialogComponent implements OnInit {
   hide = true;
-
-
   email = new FormControl('', [Validators.required, Validators.email]);
   professor:ProfessorsModel;
   message:string;
@@ -79,7 +77,6 @@ export class NewProfDialogComponent implements OnInit {
     this.validateRegisterModel();
     console.log(this.professor);
     this.service.AddNewProfessor(this.professor).subscribe(list=>{
-      this.ngOnInit();
       this.message="Added Professor Sucessfully";
       this.route.navigate(['/admin/professors']).then(x=>{window.location.reload();});
     },ex=>this.errorMsg='please, fill all fields correctly');

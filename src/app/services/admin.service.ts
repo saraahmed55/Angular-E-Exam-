@@ -21,6 +21,7 @@ import { RolesModel } from '../Models/RolesModel';
 import { EditSubjectModel } from '../Models/EditSubjectModel';
 import { EditDepartmentModel } from '../Models/EditDepartmentModel';
 import { StudentResults } from '../Models/StudentResults';
+import { AverageResults } from '../Models/AverageResults';
 
 @Injectable({
   providedIn: 'root'
@@ -181,6 +182,12 @@ export class AdminService {
   }
   DeleteStudentResult(result_id:any){
     return this.httpClient.delete(this.baseUrl+'students_results/deleteResult/'+result_id, {headers: this.headers});
+  }
+  getResultsAverage(): Observable<AverageResults[]> {
+    return this.httpClient.get<AverageResults[]>(this.baseUrl+'results', {headers: this.headers}).pipe();
+  }
+  getAllExamsNames(): Observable<Exams[]> {
+    return this.httpClient.get<Exams[]>(this.baseUrl+'getExamsNames', {headers: this.headers}).pipe();
   }
   populateForm(student:any){
     this.form.setValue(student);
