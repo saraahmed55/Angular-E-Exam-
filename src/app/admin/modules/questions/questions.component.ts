@@ -29,7 +29,7 @@ export class QuestionsComponent implements OnInit {
   mcq:Mcqs[]=[];
 
   displayedColumns: string[]=['id', 'chapters_id' ,"difficulty","question_text","answer1","answer2" ,"answer3" ,"answer4" ,"CorrectAnswer", "action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.mcq);
+  dataSource: MatTableDataSource<Mcqs>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -49,13 +49,14 @@ export class QuestionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.getQuestions();
   }
 
   getQuestions() {
     this.service.GetAllMCQQuestions().subscribe(list=>{
       this.mcq=list;
+      this.dataSource = new MatTableDataSource(this.mcq);
+      this.dataSource.paginator = this.paginator;
       console.log(this.mcq);
    });
   }

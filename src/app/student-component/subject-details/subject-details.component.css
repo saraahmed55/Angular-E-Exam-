@@ -6,7 +6,7 @@ body{
     background-image: linear-gradient(to right, rgb(120, 182, 223), rgb(29, 29, 114));
     background-size: cover;
     background-repeat: no-repeat;
-    height: 130vh;
+    min-height: 130vh;
 }
 
 .space{
@@ -14,7 +14,7 @@ body{
 }
 
 #con2{
-    height: 700px;
+    min-height: 700px;
     background-color: white;
     box-shadow: 0px 8px 60px -10px rgba(238, 240, 240, 0.6);
     border-radius: 10px;

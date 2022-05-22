@@ -27,7 +27,7 @@ export class SubjectsComponent implements OnInit {
 
 
   displayedColumns: string[]=['id', 'name' , "action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.subjects);
+  dataSource:MatTableDataSource<Subjects>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -46,7 +46,6 @@ export class SubjectsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.getsubjects();
   }
 
@@ -61,7 +60,8 @@ export class SubjectsComponent implements OnInit {
   getsubjects() {
     this.service.GetAllSubjects().subscribe(list=>{
       this.subjects=list;
-      console.log(this.subjects);
+      this.dataSource = new MatTableDataSource(this.subjects);
+      this.dataSource.paginator = this.paginator;
    });
   }
 

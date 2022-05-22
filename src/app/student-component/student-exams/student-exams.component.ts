@@ -8,29 +8,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 
-export interface PeriodicElement {
-  id:string;
-  examName?:string;
-  subject?:string;
-  qCount?:string;
-  grad?:string;
-  duration?:string;
-  sDate?:string;
-  eDate?:string;
-
-
-
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id:'1' ,  examName:'midterm', subject:'VB' , qCount:'15' ,grad:'30' , duration:'15',sDate:'12/12/2022  9am' , eDate:'15/12/2022   9am' },
-  {id:'2' ,  examName:'midterm' },
-
-
-];
-
-
-
 @Component({
   selector: 'app-student-exams',
   templateUrl: './student-exams.component.html',
@@ -40,7 +17,7 @@ export class StudentExamsComponent implements OnInit {
   isOpen:boolean=false;
 
   displayedColumns: string[]=['id' , 'subject' , 'examName', 'duration' ,'sDate' ,'eDate' , "action"]
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource: MatTableDataSource<AdminExams>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -57,7 +34,6 @@ export class StudentExamsComponent implements OnInit {
 
   ngOnInit(): void {
     this.timenow = new Date();
-    this.dataSource.paginator = this.paginator;
     this.student = new StudentInfo();
     this.exams = [];
     this.getInfo();
@@ -83,7 +59,10 @@ export class StudentExamsComponent implements OnInit {
     const studentcode = localStorage.getItem('student_code');
     if(studentcode != null){
       this.studentservice.GetStudentExams(studentcode).subscribe(success=>{
-        this.exams=success;}, err =>{
+        this.exams=success;
+        this.dataSource = new MatTableDataSource(this.exams);
+        this.dataSource.paginator = this.paginator;
+      }, err =>{
           console.log(err);
         });
     }

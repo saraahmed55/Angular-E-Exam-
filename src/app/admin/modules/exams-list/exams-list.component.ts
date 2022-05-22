@@ -22,7 +22,7 @@ export class ExamsListComponent implements OnInit {
   id:any;
 
   displayedColumns: string[]=['exam_id','name', 'subject_name' ,'start_time' , 'end_time'  , 'duration_minutes' ,'action']
-  dataSource = new MatTableDataSource<AdminExams>(this.exams);
+  dataSource: MatTableDataSource<AdminExams>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -40,7 +40,6 @@ export class ExamsListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-      this.dataSource.paginator = this.paginator;
       this.getExams();
      }
 
@@ -64,6 +63,8 @@ export class ExamsListComponent implements OnInit {
   getExams() {
     this.service.GetExams().subscribe(list=>{
       this.exams=list;
+      this.dataSource = new MatTableDataSource(this.exams);
+      this.dataSource.paginator = this.paginator;
    });
   }
 

@@ -41,10 +41,12 @@ export class SubjectDetailsComponent implements OnInit {
   avgResult = 0;
   displayedColumns: string[]=['id' ,'examName', 'duration' ,'sDate' ,'eDate' , "action"]
   resultDisplayedColumns: string[]=['id' ,'examName', 'result']
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  examsDataSource: MatTableDataSource<AdminExams>;
+  resultsDataSource: MatTableDataSource<StudentSubjectResults>;
 
-  @ViewChild(MatPaginator, { static: true })
-  paginator!: MatPaginator;
+  @ViewChild('paginator',{ static: true }) paginator!: MatPaginator;
+
+  @ViewChild('resultspaginator',{ static: true }) resultspaginator!: MatPaginator;
 
 
 
@@ -57,7 +59,6 @@ export class SubjectDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.timenow = new Date();
-    this.dataSource.paginator = this.paginator;
     this.subject = new SubjectDetails();
     this.student = new StudentInfo();
     this.exams = [];
@@ -93,7 +94,10 @@ export class SubjectDetailsComponent implements OnInit {
     const studentcode = localStorage.getItem('student_code');
     if(studentcode != null){
       this.studentservice.GetStudentSubjectExams(studentcode, this.id).subscribe(success=>{
-        this.exams=success;}, err =>{
+        this.exams=success;
+        this.examsDataSource = new MatTableDataSource(this.exams);
+        this.examsDataSource.paginator = this.paginator;
+      }, err =>{
           console.log(err);
         });
     }
@@ -104,6 +108,8 @@ export class SubjectDetailsComponent implements OnInit {
     if(studentcode != null){
       this.studentservice.GetStudentSubjectResults(studentcode, this.id).subscribe(success=>{
         this.results=success;
+        this.resultsDataSource = new MatTableDataSource(this.results);
+        this.resultsDataSource.paginator = this.resultspaginator;
         for(let result of this.results){
           this.avgResult += result.result;
         }
