@@ -6,10 +6,9 @@ import { NewProfDialogComponent } from '../new-prof-dialog/new-prof-dialog.compo
 import { EditProfDialogComponent } from '../edit-prof-dialog/edit-prof-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
-import { Exams } from 'src/app/Models/Exams';
-import { Subjects } from 'src/app/Models/Subjects';
 import { AdminExams } from 'src/app/Models/AdminExams';
 import { ExamsInformationDialogComponent } from 'src/app/professor/modules/exams-information-dialog/exams-information-dialog.component';
+import { StudentsResultsDialogComponent } from '../students-results-dialog/students-results-dialog.component';
 
 @Component({
   selector: 'app-exams-list',
@@ -68,9 +67,15 @@ export class ExamsListComponent implements OnInit {
    });
   }
 
+  getStudentsResults(exam_id:any){
+    const dialogRef = this.dialog.open( StudentsResultsDialogComponent , { width:'50%',data: {  Id:exam_id,}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   openInformationDialog(exam_id:any){
     const dialogRef = this.dialog.open(ExamsInformationDialogComponent , { width:'50%',data: {  Id:exam_id,}});
-    console.log(exam_id)
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

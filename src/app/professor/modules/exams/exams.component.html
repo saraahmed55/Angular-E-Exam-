@@ -7,13 +7,19 @@
             </div>
             <mat-divider></mat-divider>
 
-            <mat-form-field appearance="standard">
+              <mat-form-field appearance="standard">
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
               </mat-form-field>
 
             <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="exams">
+
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
+                        No Data Found
+                      </td>
+                    </tr>
                       <!-- id Column -->
                     <ng-container matColumnDef="exam_id">
                         <th mat-header-cell *matHeaderCellDef> Exam ID </th>
@@ -33,6 +39,9 @@
                               <button mat-raised-button color="primary"(click)="openInformationDialog(element.exam_id)">
                                 Show Exam Information
                              </button>
+                             <button  mat-raised-button color="success"(click)="getStudentsResults(element.exam_id)">
+                              Students Results
+                            </button>
                           </td>
                       </ng-container>
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

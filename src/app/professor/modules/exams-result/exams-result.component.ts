@@ -54,7 +54,6 @@ export class ExamsResultComponent implements OnInit {
   getResultsOfStudents(profcode:any, subjectid:any,student_code:any){
     this.service.GetstudentResult(profcode,subjectid,student_code).subscribe(list=>{
       this.studentsResults=list;
-      console.log(this.studentsResults);
    });
   }
 

@@ -14,7 +14,11 @@
 
             <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="students">
-
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
+                        No Data Found
+                      </td>
+                    </tr>
                             <!-- id Column -->
                     <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -72,7 +76,6 @@
                         <ng-container matColumnDef="action">
                             <th mat-header-cell *matHeaderCellDef> Actions</th>
                             <td mat-cell *matCellDef="let element" >
-
                                 <button mat-mini-fab color="light" class="icon "(click)="DeleteConfirm(element.id)"data-toggle="modal" data-target="#modelId" >
                                     <mat-icon color="warn">delete</mat-icon>
                                  </button>
@@ -80,23 +83,13 @@
                                  <button mat-mini-fab color="light" class="icon" (click)="editDialog(element.student_code,element.id)">
                                     <mat-icon color="primary">edit</mat-icon>
                                  </button>
-
                             </td>
                         </ng-container>
-
-
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                  </table>
-
                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
             </div>
-
-
-
         </div>
-
     </div>
-
 </body>

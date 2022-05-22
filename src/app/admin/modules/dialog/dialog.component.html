@@ -14,12 +14,12 @@
     <div class="container">
         <mat-form-field appearance="fill">
           <mat-label>First Name</mat-label>
-          <input matInput placeholder="Placeholder"name="first_name" formControlName="first_name">
+          <input class="input-color" matInput placeholder="Placeholder"name="first_name" formControlName="first_name">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Placeholder"name="last_name" formControlName="last_name">
+            <input class="input-color" matInput placeholder="Placeholder"name="last_name" formControlName="last_name">
           </mat-form-field>
     </div>
 
@@ -27,20 +27,20 @@
 
       <mat-form-field appearance="fill">
         <mat-label> Academic Id</mat-label>
-        <input matInput placeholder="Placeholder"name="student_code"formControlName="student_code" required>
+        <input class="input-color" matInput placeholder="Placeholder"name="student_code"formControlName="student_code" required>
       </mat-form-field>
 
     </div>
     <div class="container">
         <mat-form-field appearance="fill">
           <mat-label>Enter Student email</mat-label>
-          <input matInput placeholder="pat@example.com" name="email" formControlName="email" [formControl]="email"required>
+          <input class="input-color"matInput placeholder="pat@example.com" name="email" formControlName="email" >
           <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Enter Student password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'"name="password" formControlName="password" >
+            <input class="input-color" matInput [type]="hide ? 'password' : 'text'"name="password" formControlName="password" >
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -50,7 +50,7 @@
     <div class="container">
           <mat-form-field appearance="fill">
             <mat-label>Select Student Level</mat-label>
-            <mat-select formControlName="level" name="level">
+            <mat-select class="input-color" formControlName="level" name="level">
               <mat-option value="1" >1</mat-option>
               <mat-option value="2" >2</mat-option>
               <mat-option value="3" >3</mat-option>
@@ -59,15 +59,20 @@
         </mat-form-field>
           <mat-form-field appearance="fill">
               <mat-label>Select Student Departement</mat-label>
-              <mat-select formControlName="department_id" name="department_id">
+              <mat-select class="input-color"formControlName="department_id" name="department_id">
                 <mat-option *ngFor="let department of departments" [value]="department.id" >{{department.name}}</mat-option>
               </mat-select>
           </mat-form-field>
           <div mat-dialog-actions [align]="'end'">
             <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
-            <button mat-raised-button color="primary" >Save</button>
+            <button mat-raised-button color="primary" class="color-btn" >Save</button>
           </div>
     </div>
   </form>
 </div>
+<script>
+  $('.color-btn').click(function() {
+  $('.input-color').css({'border-color': greenyellow});
+});
+</script>
 
