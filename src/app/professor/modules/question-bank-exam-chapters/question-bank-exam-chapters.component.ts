@@ -8,12 +8,6 @@ import { Chapters } from 'src/app/Models/Chapters';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { QuestionBankExamAllQuestionsComponent } from '../question-bank-exam-all-questions/question-bank-exam-all-questions.component';
 
-export interface PeriodicElement {
-  chapter_id:any;
-  chapter_number:any;
-  chapter_name:string;
-  subject_id:any;
-}
 
 @Component({
   selector: 'app-question-bank-exam-chapters',
@@ -27,7 +21,7 @@ export class QuestionBankExamChaptersComponent implements OnInit {
   subject_id:any;
 
   displayedColumns: string[]=['id', 'chapter_number'  , 'chapter_name'  , "action"]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.chapters);
+  dataSource: MatTableDataSource<Chapters>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -46,7 +40,6 @@ export class QuestionBankExamChaptersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.subject_id=localStorage.getItem("id")
     this.getProfessorSubjectChapters(this.prof_code,this.subject_id)
@@ -55,6 +48,8 @@ export class QuestionBankExamChaptersComponent implements OnInit {
   getProfessorSubjectChapters(profcode:any,subjectid:any){
     this.service.getProfessorSubjectChapters(profcode,subjectid).subscribe(list=>{
       this.chapters=list;
+      this.dataSource = new MatTableDataSource(this.chapters);
+      this.dataSource.paginator = this.paginator;
       console.log(this.chapters);
    });
   }

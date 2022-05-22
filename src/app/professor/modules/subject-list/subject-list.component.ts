@@ -8,11 +8,6 @@ import { ProfessorService } from 'src/app/services/professor.service';
 import { Subjects } from 'src/app/Models/Subjects';
 import { AuthService } from 'src/app/services/auth.service';
 
-export interface PeriodicElement {
-  id:string;
-  name?:string;
-}
-
 
 @Component({
   selector: 'app-subject-list',
@@ -26,7 +21,7 @@ export class SubjectListComponent implements OnInit {
   subject_id:any;
 
   displayedColumns: string[]=['id', 'name' , "action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.subjects);
+  dataSource:MatTableDataSource<Subjects>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -45,7 +40,6 @@ export class SubjectListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     console.log(this.prof_code)
     this.getProfessorSubjects(this.prof_code);
@@ -57,9 +51,9 @@ export class SubjectListComponent implements OnInit {
 
   getProfessorSubjects(profcode:any) {
     this.service.getProfessorSubjects(profcode).subscribe(list=>{
-      console.log("in function")
       this.subjects=list;
-      console.log(this.subjects);
+      this.dataSource = new MatTableDataSource(this.subjects);
+      this.dataSource.paginator = this.paginator;
    });
   }
 }

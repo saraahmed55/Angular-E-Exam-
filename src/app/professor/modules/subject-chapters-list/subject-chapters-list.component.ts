@@ -29,7 +29,7 @@ export class SubjectChaptersListComponent implements OnInit {
   subject_id:any;
 
   displayedColumns: string[]=['id', 'chapter_number'  , 'chapter_name'  , "action"]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.chapters);
+  dataSource: MatTableDataSource<Chapters>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -48,7 +48,6 @@ export class SubjectChaptersListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.subject_id=localStorage.getItem("id")
     this.getProfessorSubjectChapters(this.prof_code,this.subject_id)
@@ -57,6 +56,8 @@ export class SubjectChaptersListComponent implements OnInit {
   getProfessorSubjectChapters(profcode:any,subjectid:any){
     this.service.getProfessorSubjectChapters(profcode,subjectid).subscribe(list=>{
       this.chapters=list;
+      this.dataSource = new MatTableDataSource(this.chapters);
+      this.dataSource.paginator = this.paginator;
       console.log(this.chapters);
    });
   }

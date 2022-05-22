@@ -12,24 +12,6 @@ import { CorrectMcqEnum } from 'src/app/Models/CorrectMcqEnum';
 import { CorrectTorFEnum } from 'src/app/Models/CorrectTorFEnum';
 import { TrueOrFalse } from 'src/app/Models/TrueOrFalse';
 
-export interface McqPeriodicElement {
-  id:any;
-  chapter_id:number;
-  difficulty:DeficultyEnum;
-  question_text:string;
-  answer1:String;
-  answer2:String;
-  answer3:String;
-  answer4:String;
-  CorrectAnswer:CorrectMcqEnum;
-}
-export interface TFPeriodicElement {
-  id:any;
-  chapters_id:any;
-  difficulty:DeficultyEnum;
-  question_text:string;
-  CorrectAnswer:CorrectTorFEnum;
-}
 
 @Component({
   selector: 'app-question-bank-exam-all-questions',
@@ -45,18 +27,18 @@ export class QuestionBankExamAllQuestionsComponent implements OnInit {
   chapter_id:any;
 
   mcqdisplayedColumns: string[]=['mcq_id' ,'difficulty' ,'question_text' ,'answer1' , 'answer2' ,'answer3' ,'answer4','CorrectAnswer' ,"action" ]
-  mcqdataSource = new MatTableDataSource<McqPeriodicElement>(this.mcqs);
+  mcqsDataSource: MatTableDataSource<Mcqs>;
 
   TFdisplayedColumns: string[]=['tf_id' ,'difficulty' ,'question_text' ,'CorrectAnswer' ,"action" ]
-  TFdataSource = new MatTableDataSource<TFPeriodicElement>(this.TF);
+  TFDataSource: MatTableDataSource<TrueOrFalse>;
 
-  @ViewChild(MatPaginator, { static: true })
-  paginator!: MatPaginator;
+  @ViewChild('mcqspaginator',{ static: true }) mcqspaginator!: MatPaginator;
+  @ViewChild('TFpaginator',{ static: true }) TFpaginator!: MatPaginator;
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.TFdataSource.filter = filterValue.trim().toLowerCase();
-    this.mcqdataSource.filter = filterValue.trim().toLowerCase();
+    this.TFDataSource.filter = filterValue.trim().toLowerCase();
+    this.mcqsDataSource.filter = filterValue.trim().toLowerCase();
   }
 
   constructor(
@@ -67,8 +49,6 @@ export class QuestionBankExamAllQuestionsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.TFdataSource.paginator = this.paginator;
-    this.mcqdataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.subject_id=localStorage.getItem("id")
     this.chapter_id=localStorage.getItem("chapter_id")
@@ -79,12 +59,16 @@ export class QuestionBankExamAllQuestionsComponent implements OnInit {
   getChapterMCQ(profcode:any,subjectid:any,chapterid:any) {
     this.service.getChapterMCQ(profcode,subjectid,chapterid).subscribe(list=>{
       this.mcqs=list;
+      this.mcqsDataSource = new MatTableDataSource(this.mcqs);
+      this.mcqsDataSource.paginator = this.mcqspaginator;
    });
   }
 
   getChapterTF(profcode:any,subjectid:any,chapterid:any) {
     this.service.getChapterTF(profcode,subjectid,chapterid).subscribe(list=>{
       this.TF=list;
+      this.TFDataSource = new MatTableDataSource(this.TF);
+      this.TFDataSource.paginator = this.TFpaginator;
    });
   }
 

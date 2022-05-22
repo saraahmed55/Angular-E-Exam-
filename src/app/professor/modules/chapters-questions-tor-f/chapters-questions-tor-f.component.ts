@@ -32,7 +32,7 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
   chapter_id:any;
 
   displayedColumns: string[]=['tf_id' ,'difficulty' ,'question_text' ,'CorrectAnswer' ,"action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.TF);
+  dataSource: MatTableDataSource<TrueOrFalse>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -49,7 +49,6 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
     private service:ProfessorService,
   ) { }
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.subject_id=localStorage.getItem("id")
     this.chapter_id=localStorage.getItem("chapter_id")
@@ -59,6 +58,8 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
   getChapterTF(profcode:any,subjectid:any,chapterid:any) {
     this.service.getChapterTF(profcode,subjectid,chapterid).subscribe(list=>{
       this.TF=list;
+      this.dataSource = new MatTableDataSource(this.TF);
+      this.dataSource.paginator = this.paginator;
    });
   }
 

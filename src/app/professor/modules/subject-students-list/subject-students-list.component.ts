@@ -7,15 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { Students } from 'src/app/Models/Students';
 
-export interface PeriodicElement {
-  student_code:string;
-  first_name:string;
-  last_name:string;
-  email:string;
-  level:string;
-  department_id:any;
-}
-
 @Component({
   selector: 'app-subject-students-list',
   templateUrl: './subject-students-list.component.html',
@@ -28,7 +19,7 @@ export class SubjectStudentsListComponent implements OnInit {
   id:any;
 
   displayedColumns: string[]=['id', 'student_code' , 'first_name' ,'last_name' ,"action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.students);
+  dataSource:MatTableDataSource<Students>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -46,7 +37,6 @@ export class SubjectStudentsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.id=localStorage.getItem("id")
     this.getStudentsOfSubjects(this.prof_code,this.id)
@@ -55,6 +45,8 @@ export class SubjectStudentsListComponent implements OnInit {
   getStudentsOfSubjects(profcode:any, subjectid:any){
     this.service.getStudentsOfSubjects(profcode,subjectid).subscribe(list=>{
       this.students=list;
+      this.dataSource = new MatTableDataSource(this.students);
+      this.dataSource.paginator = this.paginator;
       console.log(this.students);
    });
   }

@@ -27,7 +27,7 @@ export class StudentsResultsComponent implements OnInit {
   student_code:any;
 
   displayedColumns: string[]=['exams_id','exam_name','result']
-  dataSource = new MatTableDataSource<PeriodicElement>(this.studentsResults);
+  dataSource:MatTableDataSource<StudentSubjectResults>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -45,7 +45,6 @@ export class StudentsResultsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.id=localStorage.getItem("id")
     this.student_code=localStorage.getItem("student_code")
@@ -55,6 +54,8 @@ export class StudentsResultsComponent implements OnInit {
   getResultsOfStudents(profcode:any, subjectid:any,student_code:any){
     this.service.GetstudentResult(profcode,subjectid,student_code).subscribe(list=>{
       this.studentsResults=list;
+      this.dataSource = new MatTableDataSource(this.studentsResults);
+      this.dataSource.paginator = this.paginator;
       console.log(this.studentsResults);
    });
   }

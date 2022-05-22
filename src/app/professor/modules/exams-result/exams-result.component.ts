@@ -7,12 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { StudentSubjectResults } from 'src/app/Models/StudentSubjectResults';
 
-export interface PeriodicElement {
-  exams_id: any;
-  result: any;
-
-}
-
 @Component({
   selector: 'app-exams-result',
   templateUrl: './exams-result.component.html',
@@ -26,7 +20,7 @@ export class ExamsResultComponent implements OnInit {
   student_code:any;
 
   displayedColumns: string[]=['exams_id','exam_name','result']
-  dataSource = new MatTableDataSource<PeriodicElement>(this.studentsResults);
+  dataSource:MatTableDataSource<StudentSubjectResults>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -44,7 +38,6 @@ export class ExamsResultComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.id=localStorage.getItem("id")
     this.student_code=localStorage.getItem("student_code")
@@ -54,6 +47,8 @@ export class ExamsResultComponent implements OnInit {
   getResultsOfStudents(profcode:any, subjectid:any,student_code:any){
     this.service.GetstudentResult(profcode,subjectid,student_code).subscribe(list=>{
       this.studentsResults=list;
+      this.dataSource = new MatTableDataSource(this.studentsResults);
+      this.dataSource.paginator = this.paginator;
    });
   }
 

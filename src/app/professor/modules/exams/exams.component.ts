@@ -10,14 +10,6 @@ import { Router } from '@angular/router';
 import { MainExamsInformationDialogComponent } from '../main-exams-information-dialog/main-exams-information-dialog.component';
 import { StudentsResultsDialogComponent } from 'src/app/admin/modules/students-results-dialog/students-results-dialog.component';
 
-export interface PeriodicElement {
-  exam_id:any;
-  name:any;
-  start_time:any;
-  end_time:any;
-  duration_minutes:any;
-}
-
 
 @Component({
   selector: 'app-exams',
@@ -30,7 +22,7 @@ export class ExamsComponent implements OnInit {
   prof_code:any;
 
   displayedColumns: string[]=['exam_id', 'name' , "action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.exams);
+  dataSource:MatTableDataSource<Exams>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -50,7 +42,6 @@ export class ExamsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.getProfessorExams(this.prof_code)
   }
@@ -58,6 +49,8 @@ export class ExamsComponent implements OnInit {
   getProfessorExams(profcode:any){
     this.service.getProfessorExams(profcode).subscribe(list=>{
       this.exams=list;
+      this.dataSource = new MatTableDataSource(this.exams);
+      this.dataSource.paginator = this.paginator;
       console.log(this.exams);
    });
   }
