@@ -28,7 +28,7 @@ export class QuestionTrueOrfalseComponent implements OnInit {
   trueOrFalse:TrueOrFalse[]=[];
 
   displayedColumns: string[]=['id', 'chapters_id' ,"difficulty","question_text","CorrectAnswer", "action" ]
-  dataSource = new MatTableDataSource<TrueOrFalse>(this.trueOrFalse);
+  dataSource: MatTableDataSource<TrueOrFalse>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -48,13 +48,14 @@ export class QuestionTrueOrfalseComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.getQuestions();
   }
 
   getQuestions() {
     this.service.GetAllTorFQuestions().subscribe(list=>{
       this.trueOrFalse=list;
+      this.dataSource = new MatTableDataSource(this.trueOrFalse);
+      this.dataSource.paginator = this.paginator;
       console.log(this.trueOrFalse);
    });
   }

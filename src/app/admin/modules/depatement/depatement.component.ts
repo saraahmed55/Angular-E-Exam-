@@ -26,7 +26,7 @@ export class DepatementComponent implements OnInit {
   department:Departments[]=[];
 
   displayedColumns: string[]=['id', 'name' , "action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.department);
+  dataSource: MatTableDataSource<Departments>;
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -52,13 +52,14 @@ export class DepatementComponent implements OnInit {
   paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.getDepartments();
   }
 
   getDepartments() {
     this.service.GetAllDepartments().subscribe(list=>{
       this.department=list;
+      this.dataSource = new MatTableDataSource(this.department);
+      this.dataSource.paginator = this.paginator;
       console.log(this.department);
    });
   }

@@ -13,13 +13,12 @@
               </mat-form-field>
 
             <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="students">
-                  <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
-                      No Data Found
-                    </td>
-                  </tr>
-
+                <table mat-table [dataSource]="dataSource">
+                    <tr class="mat-row" *matNoDataRow>
+                      <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
+                        No Data Found
+                      </td>
+                    </tr>
                             <!-- id Column -->
                     <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -97,11 +96,6 @@
                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
             </div>
-
-
-
         </div>
-
     </div>
-
 </body>

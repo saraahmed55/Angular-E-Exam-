@@ -11,7 +11,7 @@
             </mat-form-field>
 
           <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="trueOrFalse">
+              <table mat-table [dataSource]="dataSource">
                   <tr class="mat-row" *matNoDataRow>
                     <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
                       No Data Found
@@ -53,6 +53,7 @@
                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
           </div>
        </div>
+       <div class="space"></div>
   </div>
 </body>
 

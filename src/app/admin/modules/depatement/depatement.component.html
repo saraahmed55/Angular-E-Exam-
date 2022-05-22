@@ -13,7 +13,7 @@
               </mat-form-field>
 
             <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="department">
+                <table mat-table [dataSource]="dataSource">
 
                     <tr class="mat-row" *matNoDataRow>
                       <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
@@ -50,5 +50,6 @@
                  </table>
             </div>
          </div>
+         <div class="space"></div>
     </div>
 </body>

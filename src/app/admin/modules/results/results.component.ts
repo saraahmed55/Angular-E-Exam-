@@ -29,7 +29,7 @@ export class ResultsComponent implements OnInit {
   results:AdminResults[]=[];
 
   displayedColumns: string[]=['subject', 'exams_id', 'average_result']
-  dataSource = new MatTableDataSource<AdminResults>(this.results);
+  dataSource: MatTableDataSource<AdminResults>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -54,6 +54,9 @@ export class ResultsComponent implements OnInit {
   getResults() {
     this.service.GetAvgResults().subscribe(list=>{
       this.results=list;
+      this.dataSource = new MatTableDataSource(this.results);
+      this.dataSource.paginator = this.paginator;
+
    });
   }
 

@@ -30,7 +30,7 @@ export class StudentsComponent implements OnInit {
 
   students:any=[];
   displayedColumns: string[]=['id', 'student_code'  , 'first_name' , 'last_name' , 'level' , 'email' ,'department_id' ,'password' , "action"]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.students);
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -47,12 +47,13 @@ export class StudentsComponent implements OnInit {
     ) {
   }
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.getStudents();
   }
   getStudents() {
     this.service.GetAllStudents().subscribe(list=>{
       this.students=list;
+      this.dataSource = new MatTableDataSource(this.students);
+      this.dataSource.paginator = this.paginator;
    });
   }
   openDialog() {

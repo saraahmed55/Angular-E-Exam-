@@ -6,7 +6,7 @@ body {
   background-image: linear-gradient(to right,rgb(126, 11, 120),rgb(29, 29, 114));
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .dropdown {
