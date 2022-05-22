@@ -30,7 +30,7 @@ export class ProfsComponent implements OnInit {
 
 
   displayedColumns: string[]=['id', 'first_name' ,'last_name' , 'prof_code'  , 'email' ,'password' , "action"]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.professors);
+  dataSource: MatTableDataSource<ProfessorsModel>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -49,7 +49,6 @@ export class ProfsComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-      this.dataSource.paginator = this.paginator;
       this.getProfessors();
      }
 
@@ -75,6 +74,8 @@ export class ProfsComponent implements OnInit {
   getProfessors() {
     this.service.GetAllprofessors().subscribe(list=>{
       this.professors=list;
+      this.dataSource = new MatTableDataSource(this.professors);
+      this.dataSource.paginator = this.paginator;
       console.log(this.professors);
    });
   }
