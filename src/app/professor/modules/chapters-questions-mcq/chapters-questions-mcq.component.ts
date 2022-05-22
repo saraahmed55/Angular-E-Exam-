@@ -38,7 +38,7 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
   chapter_id:any;
 
   displayedColumns: string[]=['mcq_id' ,'difficulty' ,'question_text' ,'answer1' , 'answer2' ,'answer3' ,'answer4','CorrectAnswer' ,"action" ]
-  dataSource = new MatTableDataSource<PeriodicElement>(this.mcqs);
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -57,7 +57,6 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.prof_code=localStorage.getItem("prof_code")
     this.subject_id=localStorage.getItem("id")
     this.chapter_id=localStorage.getItem("chapter_id")
@@ -67,6 +66,9 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
   getChapterMCQ(profcode:any,subjectid:any,chapterid:any) {
     this.service.getChapterMCQ(profcode,subjectid,chapterid).subscribe(list=>{
       this.mcqs=list;
+      this.dataSource = new MatTableDataSource(this.mcqs);
+      this.dataSource.paginator = this.paginator;
+
    });
   }
 
