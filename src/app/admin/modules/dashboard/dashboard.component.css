@@ -7,9 +7,11 @@ body{
     background-image: linear-gradient(to right, rgb(216, 213, 216), rgb(250, 250, 250));
     background-size: cover;
     background-repeat: no-repeat;
-    height: 200vh;    
+    height: 200vh;
 }
-
+#container {
+  height: 400px;
+}
 .space{
     height: 100px;
 }
@@ -18,7 +20,7 @@ body{
 
     height: 500px;
     width:900px;
-    padding-top: 10px; 
+    padding-top: 10px;
     background-color: white;
     box-shadow: 0px 8px 60px -10px rgba(241, 244, 247, 0.6);
     border-radius: 10px;

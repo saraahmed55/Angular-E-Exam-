@@ -193,6 +193,12 @@ export class AdminService {
   AddSubjectToProfessor(model:levelSubjects):Observable<levelSubjects[]>{
     return this.httpClient.post<levelSubjects[]>(this.baseUrl+'addSubjectToProfessor/',model, {headers: this.headers}).pipe();
   }
+  getProfessorSubjects(prof_id: any): Observable<Subjects[]> {
+    return this.httpClient.get<Subjects[]>(this.baseUrl + prof_id + '/subjects').pipe();
+  }
+  DeletelevelSubject(subject_id:any){
+    return this.httpClient.delete(this.baseUrl+'deletelevelsubject/'+subject_id, {headers: this.headers});
+  }
   populateForm(student:any){
     this.form.setValue(student);
   }

@@ -13,9 +13,7 @@ import { ProfessorService } from 'src/app/services/professor.service';
 export interface PeriodicElement {
   id:string;
   name?:string;
-
 }
-
 
 @Component({
   selector: 'app-subjects',

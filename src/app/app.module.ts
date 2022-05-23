@@ -37,7 +37,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
 import { DatePipe } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { GetSubjectsofProfessorDialogComponent } from './admin/modules/get-subjectsof-professor-dialog/get-subjectsof-professor-dialog.component';
 
 const appRoutes:Routes = [
   {path:'',component:StudentsComponent}
@@ -58,7 +57,6 @@ const appRoutes:Routes = [
     SubjectDetailsComponent,
     ExamComponent,
     SubmitComponent,
-    GetSubjectsofProfessorDialogComponent,
 
 
 
