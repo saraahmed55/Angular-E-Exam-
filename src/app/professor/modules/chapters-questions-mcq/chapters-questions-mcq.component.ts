@@ -11,6 +11,7 @@ import { DeficultyEnum } from 'src/app/Models/DeficultyEnum';
 import { CorrectMcqEnum } from 'src/app/Models/CorrectMcqEnum';
 import { ChaptersAddMcqQuestionsDialogComponent } from '../chapters-add-mcq-questions-dialog/chapters-add-mcq-questions-dialog.component';
 import { EditQuestionMcqComponent } from '../edit-question-mcq/edit-question-mcq.component';
+import { ShowMCQQuestionsDialogComponent } from '../show-mcqquestions-dialog/show-mcqquestions-dialog.component';
 
 
 export interface PeriodicElement {
@@ -80,6 +81,15 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
   editDialog(id:any) {
     console.log(id);
     const dialogRef = this.dialog.open(EditQuestionMcqComponent , { width:'50%',
+    data: {  Id:id, },});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  ShowQuestionDialog(id:any) {
+    console.log(id);
+    const dialogRef = this.dialog.open(ShowMCQQuestionsDialogComponent , { width:'50%',
     data: {  Id:id, },});
 
     dialogRef.afterClosed().subscribe(result => {

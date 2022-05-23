@@ -55,7 +55,6 @@ export class SubjectAddChaptersDialogComponent implements OnInit {
     this.id=localStorage.getItem("id")
     this.validateRegisterModel();
     this.service.AddNewChapter(this.chapters,this.prof_code,this.id).subscribe(list=>{
-      this.ngOnInit();
       this.message="Added chapter Sucessfully";
       this.route.navigate(['professor/SubjectsChapters']).then(x=>{window.location.reload();});
     },ex=>{

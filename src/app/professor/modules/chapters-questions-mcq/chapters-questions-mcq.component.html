@@ -76,6 +76,10 @@
                             <mat-icon color="primary">edit</mat-icon>
                          </button>
 
+                         <button mat-mini-fab color="light" class="icon" (click)="ShowQuestionDialog(element.mcq_id)">
+                          <mat-icon color="green">remove_red_eye</mat-icon>
+                         </button>
+
                         </td>
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

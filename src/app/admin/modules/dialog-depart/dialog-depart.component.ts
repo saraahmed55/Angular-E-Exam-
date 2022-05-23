@@ -52,7 +52,6 @@ export class DialogDepartComponent implements OnInit {
     this.validateRegisterModel();
     console.log(this.departments);
     this.service.AddNewdepartment(this.departments).subscribe(list=>{
-      this.ngOnInit();
       this.message="Added Departents Sucessfully";
       this.route.navigate(['/admin/departments']).then(x=>{window.location.reload();});
     },ex=>this.errorMsg=ex);

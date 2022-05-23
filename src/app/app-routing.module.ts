@@ -127,6 +127,11 @@ const routes: Routes = [
     path:'ExamsList',
     component:ExamsListComponent
   },
+  {
+    path:'subjects/SubjectsChapters',
+    component:SubjectChaptersListComponent
+  },
+  
 
 ]
   },

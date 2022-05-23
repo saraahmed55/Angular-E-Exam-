@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup,FormBuilder, Validators} from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
-import { Students } from 'src/app/Models/Students';
 import { HttpClient } from '@angular/common/http';
 import { Departments } from 'src/app/Models/Departments';
 import { StudentsModel } from 'src/app/Models/StudentsModel';
@@ -87,7 +86,6 @@ export class DialogComponent implements OnInit {
     this.students.level=this.studentForm.value.level;
     this.students.password=this.studentForm.value.password;
     this.students.department_id=this.studentForm.value.department_id;
-
   }
 
   AddStudent(){

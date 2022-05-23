@@ -1,21 +1,8 @@
-<h1 mat-dialog-title>Edit MCQ Information</h1>
+<h1 mat-dialog-title>Show MCQ Question</h1>
 <mat-divider></mat-divider>
-
-<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
-  <span>{{this.message}}</span>
-</div>
-<div class="alert alert-danger fade show" role="alert" *ngIf="this.message == null && this.errorMsg != null && this.errorMsg != ''">
-  <span>{{this.errorMsg}}</span>
-</div>
-
 <div mat-dialog-content >
-
-  <form class="row g-3"[formGroup]="mcqsForm"(ngSubmit)="AddChapter()" >
-
-
-
+  <form class="row g-3"[formGroup]="mcqsForm" >
     <div class="container">
-
       <mat-form-field appearance="fill">
         <mat-label>Difficulty</mat-label>
         <mat-select  formControlName="difficulty">
@@ -29,31 +16,31 @@
   <div class="container">
       <mat-form-field appearance="fill">
           <mat-label>Question Text</mat-label>
-          <input matInput placeholder="Question Text"name="question_text" formControlName="question_text">
+          <input matInput placeholder="Question Text"name="question_text" formControlName="question_text"[readonly]="true">
         </mat-form-field>
   </div>
   <div class="container">
     <mat-form-field appearance="fill">
         <mat-label>Answer 1</mat-label>
-        <input matInput placeholder="answer1"name="answer1" formControlName="answer1">
+        <input matInput placeholder="answer1"name="answer1" formControlName="answer1"[readonly]="true">
       </mat-form-field>
   </div>
   <div class="container">
     <mat-form-field appearance="fill">
         <mat-label>Answer 2</mat-label>
-        <input matInput placeholder="answer2"name="answer2" formControlName="answer2">
+        <input matInput placeholder="answer2"name="answer2" formControlName="answer2"[readonly]="true">
       </mat-form-field>
   </div>
   <div class="container">
     <mat-form-field appearance="fill">
         <mat-label>Answer 3</mat-label>
-        <input matInput placeholder="answer3"name="answer3" formControlName="answer3">
+        <input matInput placeholder="answer3"name="answer3" formControlName="answer3"[readonly]="true">
       </mat-form-field>
   </div>
   <div class="container">
     <mat-form-field appearance="fill">
         <mat-label>Answer 4</mat-label>
-        <input matInput placeholder="answer4"name="answer4" formControlName="answer4">
+        <input matInput placeholder="answer4"name="answer4" formControlName="answer4"[readonly]="true">
       </mat-form-field>
   </div>
   <div class="container">
@@ -70,10 +57,10 @@
     <div class="container">
           <div mat-dialog-actions [align]="'end'">
             <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
-            <button mat-raised-button color="primary" >Edit</button>
           </div>
       </div>
   </form>
 </div>
+
 
 

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
 import  { ProfessorsModel }  from 'src/app/Models/ProfessorsModel';
 import { Router } from '@angular/router';
+import { AssignSubjectsToProfessorsDialogComponent } from '../assign-subjects-to-professors-dialog/assign-subjects-to-professors-dialog.component';
 
 
 export interface PeriodicElement {
@@ -55,14 +56,22 @@ export class ProfsComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(NewProfDialogComponent, { width:'40%'});
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
  editDialog(prof_code:any,id:any) {
-    const dialogRef = this.dialog.open(EditProfDialogComponent, { width:'30%',
+    const dialogRef = this.dialog.open(EditProfDialogComponent, { width:'50%',
+    data: { ProfessorCode: prof_code,
+      Id:id,
+    },});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  AsignSubjectsDialog(prof_code:any,id:any) {
+    const dialogRef = this.dialog.open(AssignSubjectsToProfessorsDialogComponent, { width:'50%',
     data: { ProfessorCode: prof_code,
       Id:id,
     },});

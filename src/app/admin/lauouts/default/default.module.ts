@@ -46,6 +46,7 @@ import { AddToProfessorRoleComponent } from '../../modules/add-to-professor-role
 import { EditSubjectDialogComponent} from '../../modules/edit-subject-dialog/edit-subject-dialog.component';
 import { EditDepartmentDialogComponent } from '../../modules/edit-department-dialog/edit-department-dialog.component';
 import { StudentsResultsDialogComponent } from '../../modules/students-results-dialog/students-results-dialog.component';
+import { AssignSubjectsToProfessorsDialogComponent } from '../../modules/assign-subjects-to-professors-dialog/assign-subjects-to-professors-dialog.component';
 
 
 
@@ -78,6 +79,7 @@ import { StudentsResultsDialogComponent } from '../../modules/students-results-d
     EditSubjectDialogComponent,
     EditDepartmentDialogComponent,
     StudentsResultsDialogComponent,
+    AssignSubjectsToProfessorsDialogComponent,
 
 
   ],

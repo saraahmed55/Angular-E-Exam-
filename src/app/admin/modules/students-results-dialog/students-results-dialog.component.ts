@@ -41,7 +41,6 @@ export class StudentsResultsDialogComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.exam_id=this.data.Id;
-    console.log(this.exam_id)
     this.GetStudentsResults(this.exam_id);
   }
   GetStudentsResults(exam_id:any) {
@@ -54,7 +53,7 @@ export class StudentsResultsDialogComponent implements OnInit {
     this.service.DeleteStudentResult(result_id).subscribe(s=>{
      console.log('success');
      this.GetStudentsResults(this.exam_id);
-     this.route.navigate(['/admin/ExamsList']).then(x=>{window.location.reload();});
+     this.route.navigate(['/professor/exams']).then(x=>{window.location.reload();});
     },ex=>console.log(ex));
   }
 

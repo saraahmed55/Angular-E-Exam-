@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
 import { Router } from '@angular/router';
 import { EditSubjectDialogComponent } from '../edit-subject-dialog/edit-subject-dialog.component';
+import { ProfessorService } from 'src/app/services/professor.service';
 
 export interface PeriodicElement {
   id:string;
@@ -42,7 +43,8 @@ export class SubjectsComponent implements OnInit {
     public dialog: MatDialog,
     private http:HttpClient,
     private route: Router,
-    private service:AdminService
+    private service:AdminService,
+    private ProfessorService:ProfessorService,
     ) { }
 
   ngOnInit(): void {
@@ -76,11 +78,13 @@ export class SubjectsComponent implements OnInit {
   }
 
   editDialog(id:any) {
-    const dialogRef = this.dialog.open(EditSubjectDialogComponent , { width:'50%',
+    const dialogRef = this.dialog.open(EditSubjectDialogComponent , { width:'30%',
     data: { Id:id,},});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-
+  ShowIdSubject(id:any){
+    this.ProfessorService.installsubjectStorage(id);
+  }
 }

@@ -45,6 +45,7 @@ import { QuestionBankExamAllQuestionsComponent } from '../../modules/question-ba
 import { ExamsResultComponent } from '../../modules/exams-result/exams-result.component';
 import { ExamsInformationDialogComponent } from '../../modules/exams-information-dialog/exams-information-dialog.component';
 import { MainExamsInformationDialogComponent } from '../../modules/main-exams-information-dialog/main-exams-information-dialog.component';
+import { ShowMCQQuestionsDialogComponent } from '../../modules/show-mcqquestions-dialog/show-mcqquestions-dialog.component';
 
 
 
@@ -76,6 +77,7 @@ import { MainExamsInformationDialogComponent } from '../../modules/main-exams-in
     ExamsResultComponent,
     ExamsInformationDialogComponent,
     MainExamsInformationDialogComponent,
+    ShowMCQQuestionsDialogComponent,
 
 
 

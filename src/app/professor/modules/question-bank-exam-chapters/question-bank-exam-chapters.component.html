@@ -11,7 +11,11 @@
 
           <div class="mat-elevation-z8">
               <table mat-table [dataSource]="dataSource">
-
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell alert alert-danger fade show" [attr.colspan]="displayedColumns.length">
+                    No Data Found
+                  </td>
+                </tr>
                   <ng-container matColumnDef="id">
                       <th mat-header-cell *matHeaderCellDef> ID </th>
                       <td mat-cell *matCellDef="let element"> {{element.chapter_id}} </td>

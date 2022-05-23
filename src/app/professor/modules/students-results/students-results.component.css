@@ -9,7 +9,14 @@ body{
     background-repeat: no-repeat;
     min-height: 200vh;
 }
-
+hr{
+  border: 10px solid ;
+  border-radius: 5px;
+}
+h2{
+  padding-left: 20px;
+  color: rgb(86, 85, 85);
+}
 .space{
     height: 20px;
 }

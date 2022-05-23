@@ -116,7 +116,7 @@ export class CreateNewExamComponent implements OnInit {
     this.service.CreateExam(this.addData,this.prof_code,this.subject_id).subscribe(list=>{
       this.ngOnInit();
       this.message="Posted Sucessfully";
-     this.route.navigate(['professor/chaptersQuestionslistMCQ']).then(x=>{window.location.reload();});
+     this.route.navigate(['professor/SubjectsExams']).then(x=>{window.location.reload();});
     },ex=>{
       this.errorMsg="please fill all fields correctly"
     });

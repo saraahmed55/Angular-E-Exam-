@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Assign Subjects to Professors</h1>
+<mat-divider></mat-divider>
+
+
+<div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
+  <span>{{this.message}}</span>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="this.errorMsg != null && this.errorMsg != ''">
+  <span>{{this.errorMsg}}</span>
+</div>
+
+<div mat-dialog-content>
+  <form class="row g-3" [formGroup]="subjectsForm">
+
+
+    <div class="container">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Student Level</mat-label>
+        <mat-select class="input-color" formControlName="level" name="level">
+          <mat-option value="1" >1</mat-option>
+          <mat-option value="2" >2</mat-option>
+          <mat-option value="3" >3</mat-option>
+          <mat-option value="4" >4</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Department</mat-label>
+        <mat-select formControlName="department_id" name="department_id">
+          <mat-option *ngFor="let department of departments" [value]="department.id" >{{department.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Subject</mat-label>
+        <mat-select formControlName="subject_id" name="subject_id">
+          <mat-option *ngFor="let subject of subjects" [value]="subject.id" >{{subject.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" (click)="AssignSubjects()">Save</button>
+      </div>
+      </div>
+    </form>
+  </div>
+

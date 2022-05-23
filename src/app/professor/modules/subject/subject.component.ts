@@ -44,11 +44,9 @@ export class SubjectComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-
   ngOnInit(): void {
     this.subject_id=localStorage.getItem('id');
   }
-
   ShowIdSubject(id:any){
     this.service.installsubjectStorage(id);
   }

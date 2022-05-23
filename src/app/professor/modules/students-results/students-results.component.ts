@@ -6,13 +6,16 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ProfessorService } from 'src/app/services/professor.service';
 import { StudentSubjectResults } from 'src/app/Models/StudentSubjectResults';
+import { AdminService } from 'src/app/services/admin.service';
 
 export interface PeriodicElement {
-  exams_id: any;
-  exam_name:string;
-  result: any;
-
+  id:any;
+  student_code:any;
+  first_name:any;
+  last_name:any;
+  result:any;
 }
+
 
 @Component({
   selector: 'app-students-results',
@@ -21,13 +24,14 @@ export interface PeriodicElement {
 })
 export class StudentsResultsComponent implements OnInit {
 
+  results:any=[];
   studentsResults:StudentSubjectResults[]=[];
+  examsNames:any[]=[];
   prof_code:any;
   id:any;
   student_code:any;
-
-  displayedColumns: string[]=['exams_id','exam_name','result']
-  dataSource:MatTableDataSource<StudentSubjectResults>;
+  displayedColumns: string[]=['student_code', 'first_name' , 'last_name'  ,'results' ]
+  dataSource:MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -39,25 +43,42 @@ export class StudentsResultsComponent implements OnInit {
   }
   constructor(
     public dialog: MatDialog,
-    private http:HttpClient,
-    private route: Router,
     private service:ProfessorService,
+    private AdminService:AdminService,
   ) { }
 
   ngOnInit(): void {
     this.prof_code=localStorage.getItem("prof_code")
-    this.id=localStorage.getItem("id")
-    this.student_code=localStorage.getItem("student_code")
-    this.getResultsOfStudents(this.prof_code,this.id,this.student_code)
+    this.getProfessorExams(this.prof_code)
+  }
 
+  getProfessorExams(prof_code:any){
+    this.service.getProfessorExams(prof_code).subscribe(list=>{
+          this.examsNames=list;
+            for (let index = 0; index < this.examsNames.length; index++) {
+              const element = this.examsNames[index];
+              this.id=element.exam_id
+              this.GetStudentsResults(this.id)
+            }
+          this.dataSource = new MatTableDataSource(this.examsNames);
+          this.dataSource.paginator = this.paginator;
+       });
   }
-  getResultsOfStudents(profcode:any, subjectid:any,student_code:any){
-    this.service.GetstudentResult(profcode,subjectid,student_code).subscribe(list=>{
-      this.studentsResults=list;
-      this.dataSource = new MatTableDataSource(this.studentsResults);
-      this.dataSource.paginator = this.paginator;
-      console.log(this.studentsResults);
-   });
+  GetStudentsResults(exam_id:any){
+    this.AdminService.GetStudentsResults(exam_id).subscribe(list=>{
+          this.results=list;
+          console.log(this.results)
+          this.dataSource = new MatTableDataSource(this.results);
+          this.dataSource.paginator = this.paginator;
+       });
   }
+  // getResultsOfStudents(profcode:any, subjectid:any,student_code:any){
+  //   this.service.GetstudentResult(profcode,subjectid,student_code).subscribe(list=>{
+  //     this.studentsResults=list;
+  //     this.dataSource = new MatTableDataSource(this.studentsResults);
+  //     this.dataSource.paginator = this.paginator;
+  //     console.log(this.studentsResults);
+  //  });
+  // }
 
 }

@@ -73,7 +73,6 @@ export class ChaptersAddTorFQuestionsDialogComponent implements OnInit {
   AddQuestion(){
     this.validateRegisterModel();
     this.service.AddNewTorF(this.addData,this.prof_code,this.subject_id,this.chapter_id).subscribe(list=>{
-      this.ngOnInit();
       this.message="Added Question Sucessfully";
       this.route.navigate(['professor/chaptersQuestionslistTorF']).then(x=>{window.location.reload();});
     },ex=>{

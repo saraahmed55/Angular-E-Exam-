@@ -22,6 +22,7 @@ import { EditSubjectModel } from '../Models/EditSubjectModel';
 import { EditDepartmentModel } from '../Models/EditDepartmentModel';
 import { StudentResults } from '../Models/StudentResults';
 import { AverageResults } from '../Models/AverageResults';
+import { levelSubjects } from '../Models/levelSubjects';
 
 @Injectable({
   providedIn: 'root'
@@ -188,6 +189,9 @@ export class AdminService {
   }
   getAllExamsNames(): Observable<Exams[]> {
     return this.httpClient.get<Exams[]>(this.baseUrl+'getExamsNames', {headers: this.headers}).pipe();
+  }
+  AddSubjectToProfessor(model:levelSubjects):Observable<levelSubjects[]>{
+    return this.httpClient.post<levelSubjects[]>(this.baseUrl+'addSubjectToProfessor/',model, {headers: this.headers}).pipe();
   }
   populateForm(student:any){
     this.form.setValue(student);

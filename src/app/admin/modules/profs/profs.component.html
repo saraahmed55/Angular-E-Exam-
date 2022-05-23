@@ -6,7 +6,6 @@
                 <button mat-raised-button color="primary"(click)=" openDialog()" >Add New Professer</button>
             </div>
             <mat-divider></mat-divider>
-
             <mat-form-field appearance="standard">
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
@@ -41,24 +40,16 @@
                             <th mat-header-cell *matHeaderCellDef>  code  </th>
                             <td mat-cell *matCellDef="let element"> {{element.prof_code}} </td>
                           </ng-container>
-
-
                                                <!--email Column -->
-
                          <ng-container matColumnDef="email">
                             <th mat-header-cell *matHeaderCellDef>  Email </th>
                             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
                           </ng-container>
-
                                                <!--password Column -->
-
                          <ng-container matColumnDef="password">
                             <th mat-header-cell *matHeaderCellDef>  PassWord </th>
                             <td mat-cell *matCellDef="let element"> {{element.password}} </td>
                           </ng-container>
-
-
-
                                             <!-- Actions -->
                         <ng-container matColumnDef="action">
                             <th mat-header-cell *matHeaderCellDef> Actions</th>
@@ -66,28 +57,23 @@
                                 <button mat-mini-fab color="light" class="icon"(click)="DeleteConfirm(element.id)" >
                                     <mat-icon color="warn">delete</mat-icon>
                                  </button>
-
-                                 <button mat-mini-fab color="light" class="icon" (click)="editDialog(element.prof_code,element.id)" >
+                                 <button mat-mini-fab color="light" title="Edit" class="icon" (click)="editDialog(element.prof_code,element.id)" >
                                     <mat-icon color="primary">edit</mat-icon>
                                  </button>
-
+                                 <button mat-mini-fab color="light" title="Assign Subjects" class="icon" (click)="AsignSubjectsDialog(element.prof_code,element.id)" >
+                                  <mat-icon color="primary">add_to_queue</mat-icon>
+                                 </button>
+                                 <button mat-mini-fab color="light" title="Assign Subjects" class="icon" (click)="getSubjectsofProfessorDialog(element.prof_code,element.id)" >
+                                  <mat-icon color="primary">remove_red_eye</mat-icon>
+                                 </button>
                             </td>
                         </ng-container>
-
-
                       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                  </table>
-
                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
             </div>
-
-
-
         </div>
-
     </div>
-
 </body>
 
