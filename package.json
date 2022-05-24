@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.1.0",
     "bootstrap": "^4.3.1",
+    "chart.js": "^3.7.1",
     "highcharts": "^10.0.0",
     "highcharts-angular": "^3.0.0",
     "rxjs": "~7.5.0",
