@@ -1,12 +1,46 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js'></script>
 <body>
-  <canvas id="bar-chart" width="800" height="450"></canvas>
-  <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
     <div class="background">
         <div class="space"></div>
-        <div id="container">
+        <div class="container">
 
+          <div class="row">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-danger card-img-holder text-white">
+                <div class="card-body">
+                  <img src="../../../assets/images/circle.svg" class="card-img-absolute" alt="circle-image" />
+                  <h4 class="font-weight-normal mb-3">Number Of Students <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                  </h4>
+                  <h2 class="mb-5">{{this.countStudent}}</h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-info card-img-holder text-white">
+                <div class="card-body">
+                  <img src="../../../assets/images/circle.svg" class="card-img-absolute" alt="circle-image" />
+                  <h4 class="font-weight-normal mb-3">Number of Professors <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                  </h4>
+                  <h2 class="mb-5">{{this.countProfessor}}</h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-success card-img-holder text-white">
+                <div class="card-body">
+                  <img src="../../../assets/images/circle.svg" class="card-img-absolute" alt="circle-image" />
+                  <h4 class="font-weight-normal mb-3">Number of Exams<i class="mdi mdi-diamond mdi-24px float-right"></i>
+                  </h4>
+                  <h2 class="mb-5">{{this.countExams}}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <highcharts-chart
+            [Highcharts]="Highcharts"
+            [options]="chartOptions"
+            style="width: 100%; height: 400px; display: block;"
+          ></highcharts-chart>
         </div>
     </div>
 </body>

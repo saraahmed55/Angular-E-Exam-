@@ -199,6 +199,15 @@ export class AdminService {
   DeletelevelSubject(subject_id:any){
     return this.httpClient.delete(this.baseUrl+'deletelevelsubject/'+subject_id, {headers: this.headers});
   }
+  getcountStudent(){
+    return this.httpClient.get(this.baseUrl+'StudentCount').pipe();
+  }
+  getcountProfessor(){
+    return this.httpClient.get(this.baseUrl+'professorCount' ).pipe();
+  }
+  getcountExams(){
+    return this.httpClient.get(this.baseUrl+'examsCount' ).pipe();
+  }
   populateForm(student:any){
     this.form.setValue(student);
   }
