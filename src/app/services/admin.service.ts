@@ -208,6 +208,9 @@ export class AdminService {
   getcountExams(){
     return this.httpClient.get(this.baseUrl+'examsCount' ).pipe();
   }
+  getcountQuestions(){
+    return this.httpClient.get(this.baseUrl+'questionsCount' ).pipe();
+  }
   populateForm(student:any){
     this.form.setValue(student);
   }
