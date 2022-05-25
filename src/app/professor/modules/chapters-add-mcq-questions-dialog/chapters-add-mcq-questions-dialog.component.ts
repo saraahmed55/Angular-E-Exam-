@@ -15,6 +15,7 @@ export interface PeriodicElement {
   answer2:String;
   answer3:String;
   answer4:String;
+  grade:any;
   CorrectAnswer:CorrectMcqEnum;
 }
 
@@ -44,7 +45,6 @@ export class ChaptersAddMcqQuestionsDialogComponent implements OnInit {
 
   constructor(
     private service:ProfessorService,
-    private http:HttpClient,
     private route: Router,
     private fb:FormBuilder,
   ) {}
@@ -64,6 +64,7 @@ export class ChaptersAddMcqQuestionsDialogComponent implements OnInit {
       answer2:'',
       answer3:'',
       answer4:'',
+      grade:'',
       CorrectAnswer:this.CorrectMcqEnum.answer1,
     };
     this.mcqForm=this.fb.group({
@@ -73,6 +74,7 @@ export class ChaptersAddMcqQuestionsDialogComponent implements OnInit {
       answer2:[''],
       answer3:[''],
       answer4:[''],
+      grade:[''],
       CorrectAnswer:[''],
 
     })
@@ -87,6 +89,7 @@ export class ChaptersAddMcqQuestionsDialogComponent implements OnInit {
     this.addData.answer2=this.mcqForm.value.answer2;
     this.addData.answer3=this.mcqForm.value.answer3;
     this.addData.answer4=this.mcqForm.value.answer4;
+    this.addData.grade=this.mcqForm.value.grade;
     this.addData.CorrectAnswer=this.mcqForm.value.CorrectAnswer;
   }
 

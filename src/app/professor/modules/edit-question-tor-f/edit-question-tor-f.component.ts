@@ -12,6 +12,7 @@ import { EditTorF } from 'src/app/Models/EditTorF';
 export interface PeriodicElement {
   difficulty:DeficultyEnum;
   question_text:string;
+  grade:any;
   CorrectAnswer:CorrectTorFEnum;
 }
 
@@ -44,7 +45,6 @@ export class EditQuestionTorFComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private service:ProfessorService,
-    private http:HttpClient,
     private route: Router,
     private fb:FormBuilder,
   ) {}
@@ -59,11 +59,13 @@ export class EditQuestionTorFComponent implements OnInit {
     this.TorFForm=this.fb.group({
       difficulty:[''],
       question_text:[''],
+      grade:[''],
       CorrectAnswer:[''],
     });
     this.editData={
       difficulty:this.DeficultyEnum.easy,
       question_text:'',
+      grade:'',
       CorrectAnswer:this.CorrectTorFEnum.true,
     }
     this.service.GetTorF(this.prof_code,this.subject_id,this.chapter_id,this.id).subscribe(x=>{
@@ -79,6 +81,7 @@ export class EditQuestionTorFComponent implements OnInit {
     this.TorFForm.patchValue({
       difficulty:this.Data.difficulty,
       question_text:this.Data.question_text,
+      grade:this.Data.grade,
       CorrectAnswer:this.Data.CorrectAnswer,
     })
    }
@@ -90,6 +93,7 @@ export class EditQuestionTorFComponent implements OnInit {
       this.editData.difficulty=this.TorFForm.value.difficulty;
       this.editData.question_text=this.TorFForm.value.question_text;
       this.editData.CorrectAnswer=this.TorFForm.value.CorrectAnswer;
+      this.editData.grade=this.TorFForm.value.grade;
 
       this.service.EditTorF(this.editData,this.prof_code,this.subject_id,this.chapter_id,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";

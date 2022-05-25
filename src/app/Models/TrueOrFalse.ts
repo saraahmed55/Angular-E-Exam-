@@ -6,5 +6,6 @@ export class TrueOrFalse {
   chapters_id:any;
   difficulty:DeficultyEnum;
   question_text:string;
+  grade:any;
   CorrectAnswer:CorrectTorFEnum;
 }

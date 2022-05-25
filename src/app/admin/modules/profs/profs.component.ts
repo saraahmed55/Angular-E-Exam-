@@ -4,12 +4,11 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import { NewProfDialogComponent } from '../new-prof-dialog/new-prof-dialog.component';
 import { EditProfDialogComponent } from '../edit-prof-dialog/edit-prof-dialog.component';
-import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/services/admin.service';
-import  { ProfessorsModel }  from 'src/app/Models/ProfessorsModel';
 import { Router } from '@angular/router';
 import { AssignSubjectsToProfessorsDialogComponent } from '../assign-subjects-to-professors-dialog/assign-subjects-to-professors-dialog.component';
 import { GetSubjectsofProfessorDialogComponent } from '../get-subjectsof-professor-dialog/get-subjectsof-professor-dialog.component';
+import { ProfessorsForAdmin } from 'src/app/Models/ProfessorsForAdmin';
 
 
 export interface PeriodicElement {
@@ -28,11 +27,11 @@ export interface PeriodicElement {
 })
 export class ProfsComponent implements OnInit {
 
-  professors:ProfessorsModel[]=[];
+  professors:ProfessorsForAdmin[]=[];
 
 
-  displayedColumns: string[]=['id', 'first_name' ,'last_name' , 'prof_code'  , 'email' ,'password' , "action"]
-  dataSource: MatTableDataSource<ProfessorsModel>;
+  displayedColumns: string[]=['id', 'first_name' ,'last_name' , 'prof_code'  , 'email' ,'department','password' , "action"]
+  dataSource: MatTableDataSource<ProfessorsForAdmin>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;

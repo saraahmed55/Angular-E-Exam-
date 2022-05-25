@@ -16,6 +16,7 @@ export interface PeriodicElement {
   answer2:String;
   answer3:String;
   answer4:String;
+  garde:any;
   CorrectAnswer:CorrectMcqEnum;
 }
 
@@ -45,8 +46,6 @@ export class ShowMCQQuestionsDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private service:ProfessorService,
-    private http:HttpClient,
-    private route: Router,
     private fb:FormBuilder,
   ) { }
 
@@ -64,6 +63,7 @@ export class ShowMCQQuestionsDialogComponent implements OnInit {
       answer2:[''],
       answer3:[''],
       answer4:[''],
+      grade:[''],
       CorrectAnswer:[''],
     });
     this.editData={
@@ -73,6 +73,7 @@ export class ShowMCQQuestionsDialogComponent implements OnInit {
       answer2:'',
       answer3:'',
       answer4:'',
+      grade:'',
       CorrectAnswer:this.CorrectMcqEnum.answer1,
     }
     this.service.GetMCQ(this.prof_code,this.subject_id,this.chapter_id,this.id).subscribe(x=>{
@@ -91,6 +92,7 @@ export class ShowMCQQuestionsDialogComponent implements OnInit {
       answer2:this.Data.answer2,
       answer3:this.Data.answer3,
       answer4:this.Data.answer4,
+      grade:this.Data.grade,
       CorrectAnswer:this.Data.CorrectAnswer,
     })
    }

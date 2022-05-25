@@ -17,7 +17,7 @@ export class AssignSubjectsToProfessorsDialogComponent implements OnInit {
 
   hide = true;
   levelSubjects:levelSubjects
-  departments:Departments[]
+  departments:Departments[] 
   subjects:Subjects[]
   message:string;
   errorMsg:string;

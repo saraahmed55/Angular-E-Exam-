@@ -23,6 +23,10 @@ import { EditDepartmentModel } from '../Models/EditDepartmentModel';
 import { StudentResults } from '../Models/StudentResults';
 import { AverageResults } from '../Models/AverageResults';
 import { levelSubjects } from '../Models/levelSubjects';
+import { StudentsForAdmin } from '../Models/StudentsForAdmin';
+import { ProfessorsForAdmin } from '../Models/ProfessorsForAdmin';
+import { AddProfessorInAdmin } from '../Models/AddProfessorInAdmin';
+import { EditProfessorInAdmin } from '../Models/EditProfessorInAdmin';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +52,8 @@ export class AdminService {
       "Authorization": "Bearer " +localStorage.getItem('token'),
     });
 
-  GetAllStudents(): Observable<Students[]> {
-    return this.httpClient.get<Students[]>(this.baseUrl+'students',{headers: this.headers}).pipe();
+  GetAllStudents(): Observable<StudentsForAdmin[]> {
+    return this.httpClient.get<StudentsForAdmin[]>(this.baseUrl+'students',{headers: this.headers}).pipe();
   }
 
   AddNewStudent(model:StudentsModel):Observable<StudentsModel[]>{
@@ -101,8 +105,8 @@ export class AdminService {
     return this.httpClient.delete(this.baseUrl+'deletedepartment/'+id, {headers: this.headers});
   }
 
-  GetAllprofessors(): Observable<ProfessorsModel[]> {
-    return this.httpClient.get<ProfessorsModel[]>(this.baseUrl+'professors', {headers: this.headers}).pipe();
+  GetAllprofessors(): Observable<ProfessorsForAdmin[]> {
+    return this.httpClient.get<ProfessorsForAdmin[]>(this.baseUrl+'professors', {headers: this.headers}).pipe();
   }
 
   GetProfessor(code:any){
@@ -115,8 +119,8 @@ export class AdminService {
     return this.httpClient.get(this.baseUrl+'departments/'+code, {headers: this.headers}).pipe();
   }
 
-  EditProfessor(model:EditProfessorModel,id:any): Observable<professors> {
-    return this.httpClient.put<professors>(this.baseUrl + 'editprofessor/'+id,model, {headers: this.headers}).pipe();
+  EditProfessor(model:EditProfessorInAdmin,id:any): Observable<EditProfessorInAdmin> {
+    return this.httpClient.put<EditProfessorInAdmin>(this.baseUrl + 'editprofessor/'+id,model, {headers: this.headers}).pipe();
   }
 
   EditSubject(model:EditSubjectModel,id:any): Observable<Subjects> {
@@ -127,8 +131,8 @@ export class AdminService {
     return this.httpClient.put<Departments>(this.baseUrl + 'editdepartment/'+id,model, {headers: this.headers}).pipe();
   }
 
-  AddNewProfessor(model:ProfessorsModel):Observable<ProfessorsModel[]>{
-    return this.httpClient.post<ProfessorsModel[]>(this.baseUrl+'addprofessor/',model, {headers: this.headers}).pipe();
+  AddNewProfessor(model:AddProfessorInAdmin):Observable<AddProfessorInAdmin[]>{
+    return this.httpClient.post<AddProfessorInAdmin[]>(this.baseUrl+'addprofessor/',model, {headers: this.headers}).pipe();
   }
 
   DeleteProfessor(id:any){

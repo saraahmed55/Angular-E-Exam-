@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add new Chapter</h1>
+<h1 mat-dialog-title>Add new Question</h1>
 <mat-divider></mat-divider>
 
 <div class="alert alert-success fade show" role="alert" *ngIf="this.message != null && this.message != ''">
@@ -52,6 +52,12 @@
       <mat-form-field appearance="fill">
           <mat-label>Answer 4</mat-label>
           <input matInput placeholder="answer4"name="answer4" formControlName="answer4">
+        </mat-form-field>
+    </div>
+    <div class="container">
+      <mat-form-field appearance="fill">
+          <mat-label>Grade</mat-label>
+          <input matInput placeholder="grade"name="grade" formControlName="grade">
         </mat-form-field>
     </div>
     <div class="container">

@@ -7,6 +7,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { professors } from 'src/app/Models/professors';
 import { EditProfessorModel } from 'src/app/Models/EditProfessorModel';
 import { RolesModel } from 'src/app/Models/RolesModel';
+import { EditProfessorInAdmin } from 'src/app/Models/EditProfessorInAdmin';
+import { Departments } from 'src/app/Models/Departments';
 
 
 export interface PeriodicElement {
@@ -36,8 +38,8 @@ export class EditProfDialogComponent implements OnInit {
   id:any;
   roles:RolesModel[];
   professors:professors;
-  editUserData:EditProfessorModel;
-
+  editUserData:EditProfessorInAdmin;
+  departments:Departments[]
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -52,12 +54,15 @@ export class EditProfDialogComponent implements OnInit {
 
     this.id=this.data.Id;
     this.roles=[];
+    this.departments=[]
+    this.GetDepartments()
     this.professorForm=this.fb.group({
       prof_code:[''],
       first_name:[''],
       last_name:[''],
       email:[''],
       password:[''],
+      department_id:[''],
       roles_id:[0],
 
     });
@@ -67,6 +72,7 @@ export class EditProfDialogComponent implements OnInit {
       email: '',
       roles_id: '',
       prof_code: '',
+      department_id:'',
       password: '',
     }
     this.GetRoles();
@@ -78,7 +84,7 @@ export class EditProfDialogComponent implements OnInit {
       },ex=>console.log(ex));
   }
 
-  displayedColumns: string[]=['id', 'prof_code'  , 'first_name' , 'last_name' ,  'email' ,'password' ,'roles_id', "action"]
+  displayedColumns: string[]=['id', 'prof_code'  , 'first_name' , 'last_name' ,  'email' ,'password' ,'department_id','roles_id', "action"]
 
   AddUserData() {
     if(this.userData!==null){
@@ -89,10 +95,16 @@ export class EditProfDialogComponent implements OnInit {
       last_name:this.userData.last_name,
       email:this.userData.email,
       roles_id:this.userData.roles_id,
+      department_id:this.userData.department_id,
     })
    }
   }
 
+  GetDepartments() {
+    this.service.GetDepartments().subscribe(subs=>{
+      this.departments=subs;
+    },ex=>this.errorMsg = 'No Departments Found');
+  }
   AddUser(){
     if(this.professorForm.valid){
       this.editUserData.first_name=this.professorForm.value.first_name;
@@ -101,6 +113,7 @@ export class EditProfDialogComponent implements OnInit {
       this.editUserData.roles_id=this.professorForm.value.roles_id;
       this.editUserData.prof_code=this.professorForm.value.prof_code;
       this.editUserData.password=this.professorForm.value.password;
+      this.editUserData.department_id=this.professorForm.value.department_id;
 
       this.service.EditProfessor(this.editUserData,this.id).subscribe(x=>{
         this.message="Information is Updated Succesfully";

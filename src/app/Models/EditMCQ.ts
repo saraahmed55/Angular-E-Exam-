@@ -8,6 +8,7 @@ export class EditMCQ {
   answer2:String;
   answer3:String;
   answer4:String;
+  grade:any;
   CorrectAnswer:CorrectMcqEnum;
 
 

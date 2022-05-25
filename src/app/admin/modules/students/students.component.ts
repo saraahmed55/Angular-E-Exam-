@@ -29,7 +29,7 @@ export interface PeriodicElement {
 export class StudentsComponent implements OnInit {
 
   students:any=[];
-  displayedColumns: string[]=['id', 'student_code'  , 'first_name' , 'last_name' , 'level' , 'email' ,'department_id' ,'password' , "action"]
+  displayedColumns: string[]=['id', 'student_code'  , 'first_name' , 'last_name' , 'level' , 'email' ,'department' ,'password' , "action"]
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: true })

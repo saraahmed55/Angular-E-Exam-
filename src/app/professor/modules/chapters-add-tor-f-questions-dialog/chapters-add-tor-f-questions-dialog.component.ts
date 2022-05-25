@@ -35,7 +35,6 @@ export class ChaptersAddTorFQuestionsDialogComponent implements OnInit {
 
   constructor(
     private service:ProfessorService,
-    private http:HttpClient,
     private route: Router,
     private fb:FormBuilder,
   ) { }
@@ -50,12 +49,14 @@ export class ChaptersAddTorFQuestionsDialogComponent implements OnInit {
     this.TorFForm=this.fb.group({
       difficulty:[''],
       question_text:[''],
+      grade:[''],
       CorrectAnswer:[''],
     });
     this.addData={
       chapters_id:0,
       difficulty:this.DeficultyEnum.easy,
       question_text:'',
+      grade:'',
       CorrectAnswer:this.CorrectTorFEnum.true,
     }
 
@@ -66,6 +67,7 @@ export class ChaptersAddTorFQuestionsDialogComponent implements OnInit {
     this.addData.chapters_id=this.chapter_id;
     this.addData.difficulty=this.TorFForm.value.difficulty;
     this.addData.question_text=this.TorFForm.value.question_text;
+    this.addData.grade=this.TorFForm.value.grade;
     this.addData.CorrectAnswer=this.TorFForm.value.CorrectAnswer;
 
   }

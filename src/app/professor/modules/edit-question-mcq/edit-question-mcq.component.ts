@@ -68,6 +68,7 @@ export class EditQuestionMcqComponent implements OnInit {
       answer2:[''],
       answer3:[''],
       answer4:[''],
+      grade:[''],
       CorrectAnswer:[''],
     });
     this.editData={
@@ -77,6 +78,7 @@ export class EditQuestionMcqComponent implements OnInit {
       answer2:'',
       answer3:'',
       answer4:'',
+      grade:'',
       CorrectAnswer:this.CorrectMcqEnum.answer1,
     }
     this.service.GetMCQ(this.prof_code,this.subject_id,this.chapter_id,this.id).subscribe(x=>{
@@ -96,6 +98,7 @@ export class EditQuestionMcqComponent implements OnInit {
       answer2:this.Data.answer2,
       answer3:this.Data.answer3,
       answer4:this.Data.answer4,
+      grade:this.Data.grade,
       CorrectAnswer:this.Data.CorrectAnswer,
     })
    }
@@ -110,6 +113,7 @@ export class EditQuestionMcqComponent implements OnInit {
       this.editData.answer2=this.mcqsForm.value.answer2;
       this.editData.answer3=this.mcqsForm.value.answer3;
       this.editData.answer4=this.mcqsForm.value.answer4;
+      this.editData.grade=this.mcqsForm.value.grade;
       this.editData.CorrectAnswer=this.mcqsForm.value.CorrectAnswer;
 
       this.service.EditMcq(this.editData,this.prof_code,this.subject_id,this.chapter_id,this.id).subscribe(x=>{

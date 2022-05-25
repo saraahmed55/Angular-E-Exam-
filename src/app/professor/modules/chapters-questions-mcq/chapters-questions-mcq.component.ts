@@ -23,6 +23,7 @@ export interface PeriodicElement {
   answer2:String;
   answer3:String;
   answer4:String;
+  grade:any;
   CorrectAnswer:CorrectMcqEnum;
 }
 
@@ -38,7 +39,7 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
   subject_id:any;
   chapter_id:any;
 
-  displayedColumns: string[]=['mcq_id' ,'difficulty' ,'question_text' ,'answer1' , 'answer2' ,'answer3' ,'answer4','CorrectAnswer' ,"action" ]
+  displayedColumns: string[]=['mcq_id' ,'difficulty' ,'question_text' ,'answer1' , 'answer2' ,'answer3' ,'answer4','grade','CorrectAnswer' ,"action" ]
   dataSource:MatTableDataSource<Mcqs>;
 
   @ViewChild(MatPaginator, { static: true })
@@ -51,7 +52,6 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private http:HttpClient,
     private route: Router,
     private service:ProfessorService,
   ) { }
@@ -82,7 +82,6 @@ export class ChaptersQuestionsMcqComponent implements OnInit {
     console.log(id);
     const dialogRef = this.dialog.open(EditQuestionMcqComponent , { width:'50%',
     data: {  Id:id, },});
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

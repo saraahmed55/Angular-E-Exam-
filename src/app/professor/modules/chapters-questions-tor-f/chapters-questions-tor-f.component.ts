@@ -16,6 +16,7 @@ export interface PeriodicElement {
   chapters_id:any;
   difficulty:DeficultyEnum;
   question_text:string;
+  grade:any;
   CorrectAnswer:CorrectTorFEnum;
 }
 
@@ -31,7 +32,7 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
   subject_id:any;
   chapter_id:any;
 
-  displayedColumns: string[]=['tf_id' ,'difficulty' ,'question_text' ,'CorrectAnswer' ,"action" ]
+  displayedColumns: string[]=['tf_id' ,'difficulty' ,'question_text','grade' ,'CorrectAnswer' ,"action" ]
   dataSource: MatTableDataSource<TrueOrFalse>;
 
   @ViewChild(MatPaginator, { static: true })
@@ -44,7 +45,6 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private http:HttpClient,
     private route: Router,
     private service:ProfessorService,
   ) { }
@@ -74,7 +74,6 @@ export class ChaptersQuestionsTorFComponent implements OnInit {
     console.log(id);
     const dialogRef = this.dialog.open(EditQuestionTorFComponent , { width:'50%',
     data: {  Id:id,},});
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

@@ -28,7 +28,12 @@
             <mat-label>Code</mat-label>
             <input matInput placeholder="Placeholder" name="prof_code"formControlName="prof_code">
           </mat-form-field>
-
+          <mat-form-field appearance="fill">
+            <mat-label>Select Department</mat-label>
+            <mat-select formControlName="department_id" name="department_id">
+              <mat-option *ngFor="let department of departments" [value]="department.id" >{{department.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Enter Professer email</mat-label>
             <input matInput placeholder="pat@example.com" name="email" formControlName="email">

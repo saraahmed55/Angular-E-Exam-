@@ -58,6 +58,11 @@
                       <td mat-cell *matCellDef="let element"> {{element.answer4}} </td>
                     </ng-container>
 
+                    <ng-container matColumnDef="grade">
+                      <th mat-header-cell *matHeaderCellDef> Grade </th>
+                      <td mat-cell *matCellDef="let element"> {{element.grade}} </td>
+                    </ng-container>
+
                     <ng-container matColumnDef="CorrectAnswer">
                       <th mat-header-cell *matHeaderCellDef> Correct Answer </th>
                       <td mat-cell *matCellDef="let element"> {{element.CorrectAnswer}} </td>
