@@ -95,7 +95,6 @@ export class DialogEditComponent implements OnInit {
     if(this.userData!==null){
     this.studentForm.patchValue({
       student_code:this.userData.student_code,
-      password:this.userData.password,
       first_name:this.userData.first_name,
       last_name:this.userData.last_name,
       email:this.userData.email,

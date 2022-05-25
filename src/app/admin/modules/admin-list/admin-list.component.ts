@@ -9,6 +9,7 @@ import { AdminService } from 'src/app/services/admin.service';
 import { professors } from 'src/app/Models/professors';
 import { Router } from '@angular/router';
 import { AddToAdminComponent } from '../add-to-admin/add-to-admin.component';
+import { ProfessorsForAdmin } from 'src/app/Models/ProfessorsForAdmin';
 
 @Component({
   selector: 'app-admin-list',
@@ -17,12 +18,12 @@ import { AddToAdminComponent } from '../add-to-admin/add-to-admin.component';
 })
 export class AdminListComponent implements OnInit {
 
-  professors:professors[]=[];
+  professors:ProfessorsForAdmin[]=[];
   id:any;
 
 
-  displayedColumns: string[]=['id', 'first_name' ,'last_name' , 'prof_code'  , 'email'  , "action"]
-  dataSource : MatTableDataSource<professors>;
+  displayedColumns: string[]=['id', 'first_name' ,'last_name' , 'prof_code'  , 'email','department'  , "action"]
+  dataSource : MatTableDataSource<ProfessorsForAdmin>;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;

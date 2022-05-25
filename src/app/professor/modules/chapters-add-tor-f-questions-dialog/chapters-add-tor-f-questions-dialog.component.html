@@ -32,12 +32,6 @@
 
     <div class="container">
       <mat-form-field appearance="fill">
-          <mat-label>Grade</mat-label>
-          <input matInput placeholder="grade"name="grade" formControlName="grade">
-        </mat-form-field>
-    </div>
-    <div class="container">
-      <mat-form-field appearance="fill">
           <mat-label>Correct Answer</mat-label>
           <mat-select formControlName="CorrectAnswer">
             <mat-option name="CorrectAnswer"  *ngFor="let element of this.CorrectTorFkeys" [value]="element">
@@ -46,7 +40,12 @@
           </mat-select>
         </mat-form-field>
     </div>
-
+    <div class="container">
+      <mat-form-field appearance="fill">
+          <mat-label>Grade</mat-label>
+          <input matInput type="number" placeholder="grade"name="grade" formControlName="grade">
+        </mat-form-field>
+    </div>
     <div class="container">
       <div mat-dialog-actions [align]="'end'">
         <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>

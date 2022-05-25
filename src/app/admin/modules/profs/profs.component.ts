@@ -30,7 +30,7 @@ export class ProfsComponent implements OnInit {
   professors:ProfessorsForAdmin[]=[];
 
 
-  displayedColumns: string[]=['id', 'first_name' ,'last_name' , 'prof_code'  , 'email' ,'department','password' , "action"]
+  displayedColumns: string[]=['id', 'first_name' ,'last_name' , 'prof_code'  , 'email' ,'department',"action"]
   dataSource: MatTableDataSource<ProfessorsForAdmin>;
 
   @ViewChild(MatPaginator, { static: true })

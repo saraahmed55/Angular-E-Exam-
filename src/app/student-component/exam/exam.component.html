@@ -41,13 +41,16 @@
             <div class="card p-3">
               <form [formGroup]="examForm" (ngSubmit)="submitexam()">
                 <div *ngFor="let question of questionList; index as i">
-                  <h2 id="example-radio-group-label">{{question.question_text}}</h2>
-                  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [formControlName]="'question' + i.toString()" >
-                    <mat-radio-button class="example-radio-button" value="answer1">{{question.answer1}}</mat-radio-button>
-                    <mat-radio-button class="example-radio-button" value="answer2">{{question.answer2}}</mat-radio-button>
-                    <mat-radio-button class="example-radio-button" value="answer3" *ngIf="question.type == 'mcq'">{{question.answer3}}</mat-radio-button>
-                    <mat-radio-button class="example-radio-button" value="answer4" *ngIf="question.type == 'mcq'">{{question.answer4}}</mat-radio-button>
-                  </mat-radio-group>
+                  <div class="questioncontainer">
+                    <span class="grade text-danger">{{question.grade}} Points</span>
+                    <h2 id="example-radio-group-label">{{question.question_text}}</h2>
+                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [formControlName]="'question' + i.toString()" >
+                      <mat-radio-button class="example-radio-button" value="answer1">{{question.answer1}}</mat-radio-button>
+                      <mat-radio-button class="example-radio-button" value="answer2">{{question.answer2}}</mat-radio-button>
+                      <mat-radio-button class="example-radio-button" value="answer3" *ngIf="question.type == 'mcq'">{{question.answer3}}</mat-radio-button>
+                      <mat-radio-button class="example-radio-button" value="answer4" *ngIf="question.type == 'mcq'">{{question.answer4}}</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
                 </div>
               </form>
             </div>

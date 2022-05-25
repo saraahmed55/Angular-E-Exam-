@@ -35,6 +35,16 @@ body {
   align-items: flex-start;
 }
 
+.questioncontainer {
+  position: relative;
+}
+
+.grade{
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
 .example-radio-button {
   margin: 5px;
   display: inline;

@@ -20,7 +20,8 @@ export class ExamComponent implements OnInit {
   examForm: FormGroup;
   exam:AdminExams;
   answers: any =[];
-  numberOfCorrectAnswers = 0;
+  gradesOfCorrectAnswers = 0;
+  totalGrades =0;
   saveResult: SaveResults
   public questionList: any =[];
   public numberOfQuestions:number =0;
@@ -52,7 +53,8 @@ export class ExamComponent implements OnInit {
 
   createExamForm(questionsNumber: number){
     for (let i = 0; i < questionsNumber; i++){
-      this.examForm.addControl('question' + i.toString(), new FormControl('') )
+      this.examForm.addControl('question' + i.toString(), new FormControl('') );
+      this.totalGrades += this.questionList[i].grade;
     }
   }
 
@@ -118,18 +120,18 @@ export class ExamComponent implements OnInit {
     for(let i = 0; i < this.numberOfQuestions; i++){
       if(this.questionList[i].type == 'mcq'){
         if(this.questionList[i].CorrectAnswer == this.examForm.get('question' + i.toString())?.value){
-          this.numberOfCorrectAnswers++;
+          this.gradesOfCorrectAnswers+=this.questionList[i].grade;
         }
       } else if(this.questionList[i].type == 'true or false') {
         if(this.questionList[i].CorrectAnswer == 'true' &&  this.examForm.get('question' + i.toString())?.value == 'answer1'){
-          this.numberOfCorrectAnswers++;
+          this.gradesOfCorrectAnswers+= this.questionList[i].grade;
         } else if(this.questionList[i].CorrectAnswer == 'false' &&  this.examForm.get('question' + i.toString())?.value == 'answer2'){
-          this.numberOfCorrectAnswers++;
+          this.gradesOfCorrectAnswers+=this.questionList[i].grade;
         }
 
       }
     }
-    const result = Math.ceil((this.numberOfCorrectAnswers / this.numberOfQuestions) * 100);
+    const result = Math.ceil((this.gradesOfCorrectAnswers / this.totalGrades) * 100);
 
     this.saveResult.exams_id = this.id;
     this.saveResult.result = result;

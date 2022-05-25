@@ -90,7 +90,6 @@ export class EditProfDialogComponent implements OnInit {
     if(this.userData!==null){
     this.professorForm.patchValue({
       prof_code:this.userData.prof_code,
-      password:this.userData.password,
       first_name:this.userData.first_name,
       last_name:this.userData.last_name,
       email:this.userData.email,

@@ -158,8 +158,8 @@ export class AdminService {
   GetAllRoles(): Observable<Roles[]> {
     return this.httpClient.get<Roles[]>(this.baseUrl+'user_roles', {headers: this.headers}).pipe();
   }
-  GetRolesProfessors(role_id:any): Observable<professors[]> {
-    return this.httpClient.get<professors[]>(this.baseUrl+'user_roles/'+role_id+'/professors', {headers: this.headers}).pipe();
+  GetRolesProfessors(role_id:any): Observable<ProfessorsForAdmin[]> {
+    return this.httpClient.get<ProfessorsForAdmin[]>(this.baseUrl+'user_roles/'+role_id+'/professors', {headers: this.headers}).pipe();
   }
   GetExams(): Observable<AdminExams[]> {
     return this.httpClient.get<AdminExams[]>(this.baseUrl+'exams', {headers: this.headers}).pipe();
